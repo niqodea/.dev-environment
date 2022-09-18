@@ -31,3 +31,9 @@ function setup_prompt() {
 }
 setup_prompt
 
+# Don't save duplicate lines or lines starting with space in the history
+# No duplicate lines makes the history more browsable
+# Leading spaces can be used to avoid logging commands with sensitive info
+# Ref: https://stackoverflow.com/questions/6475524
+HISTCONTROL=ignoreboth
+
