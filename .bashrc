@@ -1,3 +1,5 @@
+source ~/.aliases
+
 function setup_prompt() {
 	unset -f $FUNCNAME  # No need to access this function after sourcing
 
