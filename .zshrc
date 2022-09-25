@@ -60,6 +60,15 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' format '%F{cyan}-- %d --%f'
 
+# MISCELLAENOUS
+
+# Enable vi mode
+# Ref: https://stackoverflow.com/a/58188295
+bindkey -v
+# Fix backspace only deleting inserted characters in insert mode
+# Ref: https://unix.stackexchange.com/a/290403
+bindkey -v '^?' backward-delete-char
+
 # NOTES
 # We use anonymous function to scope variables and avoid flooding the env
 # Ref: https://stackoverflow.com/a/13670749
