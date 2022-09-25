@@ -28,3 +28,8 @@ alias gsw="git switch"
 alias gswc="git switch --create"
 alias gswd="git switch --detach"
 
+# Listing files
+alias ls="ls --color"  # Add colors to ls
+alias ll="ls -l -h"  # -h is for human-readable file size
+alias la="ls -a"
+
