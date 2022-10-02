@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Install neovim
+sudo apt-get --yes install neovim
+
 # Install Z shell
 sudo apt-get --yes install zsh
 # Make it default shell
