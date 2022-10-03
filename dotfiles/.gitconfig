@@ -1,0 +1,10 @@
+[user]
+	name = Nicola De Angeli
+[core]
+	editor = nvim
+[push]
+	autoSetupRemote = true
+[include]
+	# Sensitive information
+	path = .gitconfig.local
+
