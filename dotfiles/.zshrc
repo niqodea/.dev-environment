@@ -69,6 +69,11 @@ bindkey -v
 # Ref: https://unix.stackexchange.com/a/290403
 bindkey -v '^?' backward-delete-char
 
+# Source local zsh config file, if it exists
+if [[ -f "$HOME/.zshrc.local"  ]]; then
+	source "$HOME/.zshrc.local" 
+fi
+
 # NOTES
 # We use anonymous function to scope variables and avoid flooding the env
 # Ref: https://stackoverflow.com/a/13670749
