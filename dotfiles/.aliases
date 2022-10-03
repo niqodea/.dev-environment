@@ -36,3 +36,9 @@ alias la="ls -a"
 # Renaming commands
 alias vim="nvim"
 
+# Easier navigation in directories
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
