@@ -74,6 +74,9 @@ if [[ -f "$HOME/.zshrc.local"  ]]; then
 	source "$HOME/.zshrc.local" 
 fi
 
+# Enable fzf autocompletion
+source /usr/share/doc/fzf/examples/completion.zsh
+
 # NOTES
 # We use anonymous function to scope variables and avoid flooding the env
 # Ref: https://stackoverflow.com/a/13670749

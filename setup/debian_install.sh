@@ -9,3 +9,6 @@ sudo apt-get --yes install zsh
 # Ref: https://askubuntu.com/a/131838
 chsh -s $(which zsh)
 
+# Install fzf
+sudo apt-get install fzf
+
