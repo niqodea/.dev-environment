@@ -74,6 +74,17 @@ if [[ -f "$HOME/.zshrc.local"  ]]; then
 	source "$HOME/.zshrc.local" 
 fi
 
+# EXTERNAL SUBMODULES
+
+# Set up fuzzy finder
+# Note: Must be done after setting keymap to vi
+# Ref: https://unix.stackexchange.com/a/651460
+if [ -f ~/.fzf.zsh ]; then
+	source ~/.fzf.zsh
+else
+	echo "WARNING: File $HOME/.fzf.zsh not found, did you run the install script on this machine?"
+fi
+
 # NOTES
 # We use anonymous function to scope variables and avoid flooding the env
 # Ref: https://stackoverflow.com/a/13670749
