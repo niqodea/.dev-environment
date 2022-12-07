@@ -13,8 +13,7 @@ dotfiles_dir=dotfiles
 
 # Find all dotfiles in the repo
 # Ref: https://unix.stackexchange.com/a/104803
-# Ref: https://stackoverflow.com/a/2596736
-dotfile_relpaths=$(cd ~/$repo_dir/$dotfiles_dir && find -type f -wholename ".*" -not -name "*.sample" -printf "%P\n")
+dotfile_relpaths=$(cd $dotfiles_repo_path && find .[^.]* -type f -not -name "*.sample")
 for dotfile_relpath in $dotfile_relpaths; do
 	# Check if a file with same name already exists
 	if [ -e ~/$dotfile_relpath ]; then
