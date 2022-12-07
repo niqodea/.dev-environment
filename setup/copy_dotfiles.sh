@@ -8,24 +8,28 @@
 dotfiles_backup_dir=dotfiles_backup_$(date +%Y%m%d_%H%M%S)
 mkdir ~/$dotfiles_backup_dir
 
-repo_dir=dotfiles
-dotfiles_dir=dotfiles
+dotfiles_repo_path=~/dotfiles/dotfiles
 
 # Find all dotfiles in the repo
 # Ref: https://unix.stackexchange.com/a/104803
 dotfile_relpaths=$(cd $dotfiles_repo_path && find .[^.]* -type f -not -name "*.sample")
 for dotfile_relpath in $dotfile_relpaths; do
-	# Check if a file with same name already exists
-	if [ -e ~/$dotfile_relpath ]; then
-		# Back up existing file
+	dotfile_repo_path=$dotfiles_repo_path/$dotfile_relpath
+	dotfile_home_path=~/$dotfile_relpath
+
+	# Check if a file with same name and different contents exists in home directory
+	# Ref: https://stackoverflow.com/a/60886404
+	# Ref: https://stackoverflow.com/a/12900693
+	if [[ -e $dotfile_home_path || -L $dotfile_home_path ]] && ! cmp -s $dotfile_home_path $dotfile_repo_path; then
+		# Back up existing file, preserving its directory structure
 		mkdir -p ~/$dotfiles_backup_dir/$(dirname $dotfile_relpath)
-		mv ~/$dotfile_relpath ~/$dotfiles_backup_dir/$dotfile_relpath
+		mv $dotfile_home_path ~/$dotfiles_backup_dir/$dotfile_relpath
 	fi
 
 	# Create directory containing dotfile if needed (e.g. ".config/nvim")
-	mkdir -p ~/$(dirname $dotfile_relpath)
+	mkdir -p $(dirname $dotfile_home_path)
 	echo "Copying $dotfile_relpath in $HOME"
-	cp ~/$repo_dir/$dotfiles_dir/$dotfile_relpath ~/$dotfile_relpath
+	cp $dotfile_repo_path $dotfile_home_path
 done
 
 # Check if back up directory is empty
