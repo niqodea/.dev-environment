@@ -24,6 +24,9 @@ nnoremap <Leader>to :tabonly<cr>
 " Clean highlighted text
 nnoremap <Leader>/ :nohlsearch<cr>
 
+" Turn tab into 4 spaces
+:set expandtab tabstop=4 shiftwidth=4
+
 " References:
 " - https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
 
