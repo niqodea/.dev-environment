@@ -1,10 +1,13 @@
 [user]
-	name = Nicola De Angeli
+    name = Nicola De Angeli
 [core]
-	editor = nvim
+    editor = nvim
+[merge]
+    conflictstyle = diff3  # Also show common ancestor in conflicts
+[pull]
+    rebase = true  # Rebase instead of merge to incorporate remote changes
 [push]
-	autoSetupRemote = true
+    autoSetupRemote = true  # Create on remote a branch with same name on first push
 [include]
-	# Sensitive information
-	path = .gitconfig.local
+    path = .gitconfig.local  # Sensitive information
 
