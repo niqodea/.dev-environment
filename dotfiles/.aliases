@@ -47,3 +47,15 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
+# Size of files
+alias duh="du -hs"
+
+# Find
+alias f="find ."
+alias fn="find . -name"
+
+# Search specific processes
+alias psg="ps -eo pid,user,etime,comm | grep"
+# Kill them
+alias k9="kill -9"  # SIGKILL
+
