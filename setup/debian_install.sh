@@ -15,7 +15,11 @@ sudo apt-get --yes install zsh
 # Ref: https://askubuntu.com/a/131838
 sudo chsh -s $(which zsh)
 
-# Install fzf
-# The .zshrc in this repo already sources ~/.fzf.zsh if it exists, so no rc update is required
-$submodules_path/fzf/install --key-bindings --completion --no-update-rc --no-bash
+# Install fuzzy finder
+# This appends stuff to .zshrc, we redirect the new lines in an ad-hoc file for tidyness
+mv ~/.zshrc ~/.zshrc.backup
+> ~/.zshrc.fzf
+ln -s ~/.zshrc.fzf ~/.zshrc
+yes | $submodules_path/fzf/install --no-bash
+mv ~/.zshrc.backup ~/.zshrc
 
