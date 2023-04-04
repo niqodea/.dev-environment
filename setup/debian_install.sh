@@ -15,6 +15,9 @@ sudo apt-get --yes install zsh
 # Ref: https://askubuntu.com/a/131838
 sudo chsh -s $(which zsh)
 
+# Pull submodules
+git submodule update --recursive $submodules_path
+
 # Install fuzzy finder
 # This appends stuff to .zshrc, we redirect the new lines in an ad-hoc file for tidyness
 mv ~/.zshrc ~/.zshrc.backup
