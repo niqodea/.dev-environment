@@ -27,6 +27,9 @@ nnoremap <Leader>/ :nohlsearch<cr>
 " Turn tab into 4 spaces
 :set expandtab tabstop=4 shiftwidth=4
 
+" Disable mouse features
+set mouse=
+
 " References:
 " - https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
 
