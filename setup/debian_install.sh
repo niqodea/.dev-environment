@@ -4,13 +4,13 @@
 # We use apt-get for programs that are not trivial to install via a script
 
 # Install Z shell
-sudo apt-get --yes install zsh
+sudo apt-get --yes install zsh=5.8-3ubuntu1.1
 # Make it default shell
 # Ref: https://askubuntu.com/a/131838
 sudo chsh -s $(which zsh)
 
 # Install neovim
-sudo apt-get --yes install neovim
+sudo apt-get --yes install neovim=0.4.3-3
 
 # Installing programs in the submodules directory
 # We use submodules for programs that offer a simple installation script
