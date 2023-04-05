@@ -1,4 +1,9 @@
 [submodule "submodules/fzf"]
 	path = submodules/fzf
 	url = git@github.com:junegunn/fzf.git
-
+[submodule "submodules/vim-surround"]
+	path = submodules/vim-surround
+	url = git@github.com:tpope/vim-surround.git
+[submodule "submodules/vim-commentary"]
+	path = submodules/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git
