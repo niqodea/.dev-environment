@@ -1,3 +1,4 @@
 [submodule "submodules/fzf"]
 	path = submodules/fzf
-	url = https://github.com/junegunn/fzf.git
+	url = git@github.com:junegunn/fzf.git
+
