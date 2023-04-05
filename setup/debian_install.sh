@@ -21,7 +21,7 @@ submodules_dir=submodules
 submodules_path=~/$repo_dir/$submodules_dir
 
 # Pull submodules
-git submodule update --recursive $submodules_path
+git submodule update --init --recursive $submodules_path
 
 # Install fuzzy finder
 # This appends stuff to .zshrc, we redirect the new lines in an ad-hoc file for tidyness
