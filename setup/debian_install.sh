@@ -31,3 +31,12 @@ ln -s ~/.zshrc.fzf ~/.zshrc
 yes | $submodules_path/fzf/install --no-bash
 mv ~/.zshrc.backup ~/.zshrc
 
+# Install neovim plugins
+nvim_plugins_path=~/.config/nvim/pack
+tpope_plugins_path=$nvim_plugins_path/tpope/start
+mkdir -p $tpope_plugins_path
+rm -rf $tpope_plugins_path/vim-commentary
+cp -r $submodules_path/vim-commentary $tpope_plugins_path
+rm -rf $tpope_plugins_path/vim-surround
+cp -r $submodules_path/vim-surround $tpope_plugins_path
+
