@@ -30,6 +30,10 @@ nnoremap <Leader>/ :nohlsearch<cr>
 " Disable mouse features
 set mouse=
 
+" Show hybrid line numbers
+" Ref: https://jeffkreeftmeijer.com/vim-number
+set number relativenumber
+
 " References:
 " - https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
 
