@@ -10,7 +10,12 @@ sudo apt-get --yes install zsh=5.8-3ubuntu1.1
 sudo chsh -s $(which zsh)
 
 # Install neovim
-sudo apt-get --yes install neovim=0.4.3-3
+# We want v0.8 to use nvim-lspconfig
+# Unfortunately, base apt has up to v0.4 and neovim-ppa/stable has up to 0.7
+neovim_url="https://github.com/neovim/neovim/releases/download/v0.8.3/nvim-linux64.deb"
+neovim_deb_path="/tmp/nvim-linux64.deb"
+curl -sSL $neovim_url > $neovim_deb_path  # Overwrite file if script is run multiple times
+sudo apt install $neovim_deb_path
 
 # Installing programs in the submodules directory
 # We use submodules for programs that offer a simple installation script
