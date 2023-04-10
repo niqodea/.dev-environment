@@ -7,3 +7,6 @@
 [submodule "submodules/vim-commentary"]
 	path = submodules/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
+[submodule "submodules/nvim-lspconfig"]
+	path = submodules/nvim-lspconfig
+	url = git@github.com:neovim/nvim-lspconfig.git

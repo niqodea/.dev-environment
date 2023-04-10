@@ -38,6 +38,10 @@ vim.o.mouse = ""
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- Source LSP config lua file
+local lspconfig_lua_path = vim.fn.stdpath('config') .. '/lspconfig.lua'
+vim.cmd('luafile ' .. lspconfig_lua_path )
+
 -- References:
 -- * https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
 
