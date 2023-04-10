@@ -17,6 +17,11 @@ neovim_deb_path="/tmp/nvim-linux64.deb"
 curl -sSL $neovim_url > $neovim_deb_path  # Overwrite file if script is run multiple times
 sudo apt install $neovim_deb_path
 
+# Install Pyright (Python language server)
+# We use sudo as we want to install it system-wide, not really recommended as permission issues may
+# arise, but for now it works without problems
+sudo pip3 install pyright
+
 # Installing programs in the submodules directory
 # We use submodules for programs that offer a simple installation script
 
@@ -38,10 +43,16 @@ mv ~/.zshrc.backup ~/.zshrc
 
 # Install neovim plugins
 nvim_plugins_path=~/.config/nvim/pack
+
 tpope_plugins_path=$nvim_plugins_path/tpope/start
 mkdir -p $tpope_plugins_path
 rm -rf $tpope_plugins_path/vim-commentary
 cp -r $submodules_path/vim-commentary $tpope_plugins_path
 rm -rf $tpope_plugins_path/vim-surround
 cp -r $submodules_path/vim-surround $tpope_plugins_path
+
+neovim_plugins_path=$nvim_plugins_path/neovim/start
+mkdir -p $neovim_plugins_path
+rm -rf $neovim_plugins_path/nvim-lspconfig
+cp -r $submodules_path/nvim-lspconfig $neovim_plugins_path
 
