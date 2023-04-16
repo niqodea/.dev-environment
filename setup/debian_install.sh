@@ -42,17 +42,13 @@ yes | $submodules_path/fzf/install --no-bash
 mv ~/.zshrc.backup ~/.zshrc
 
 # Install neovim plugins
-nvim_plugins_path=~/.config/nvim/pack
-
-tpope_plugins_path=$nvim_plugins_path/tpope/start
-mkdir -p $tpope_plugins_path
-rm -rf $tpope_plugins_path/vim-commentary
-cp -r $submodules_path/vim-commentary $tpope_plugins_path
-rm -rf $tpope_plugins_path/vim-surround
-cp -r $submodules_path/vim-surround $tpope_plugins_path
-
-neovim_plugins_path=$nvim_plugins_path/neovim/start
-mkdir -p $neovim_plugins_path
-rm -rf $neovim_plugins_path/nvim-lspconfig
-cp -r $submodules_path/nvim-lspconfig $neovim_plugins_path
+# Path should be of the form ~/.config/nvim/pack/*/start/plugin_repo
+nvim_plugins_path=~/.config/nvim/pack/plugins/start
+mkdir -p $nvim_plugins_path
+rm -rf $nvim_plugins_path/vim-commentary
+cp -r $submodules_path/vim-commentary $nvim_plugins_path
+rm -rf $nvim_plugins_path/vim-surround
+cp -r $submodules_path/vim-surround $nvim_plugins_path
+rm -rf $nvim_plugins_path/nvim-lspconfig
+cp -r $submodules_path/nvim-lspconfig $nvim_plugins_path
 
