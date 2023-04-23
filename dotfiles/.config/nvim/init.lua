@@ -26,9 +26,9 @@ vim.o.shiftwidth = 4
 -- Disable mouse features
 vim.o.mouse = ""
 
--- Use sign column of size 2 to show lsp diagnostic and git diff markers
+-- Use sign column of size 1 to show git diff markers
 -- Setting this to auto causes sign column to appear from nowhere pushing everything to the right
-vim.wo.signcolumn = "yes:2"
+vim.wo.signcolumn = "yes:1"
 
 -- Use smaller updatetime to update git diff markers quicker
 vim.o.updatetime = 500
@@ -38,12 +38,13 @@ vim.o.updatetime = 500
 vim.o.number = true
 vim.o.relativenumber = true
 
--- Source LSP config lua file
-local lspconfig_lua_path = vim.fn.stdpath('config') .. '/lspconfig.lua'
-vim.cmd('luafile ' .. lspconfig_lua_path )
-
 -- Color scheme
 vim.cmd('colorscheme slate')
+
+-- Source LSP config lua file
+-- We put it after the color scheme to overwrite important lsp highlight groups
+local lspconfig_lua_path = vim.fn.stdpath('config') .. '/lspconfig.lua'
+vim.cmd('luafile ' .. lspconfig_lua_path )
 
 -- References:
 -- * https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
