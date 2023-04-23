@@ -26,6 +26,10 @@ vim.o.shiftwidth = 4
 -- Disable mouse features
 vim.o.mouse = ""
 
+-- Use sign column of size 1 to show lsp diagnostic
+-- Setting this to auto causes sign column to appear from nowhere pushing everything to the right
+vim.wo.signcolumn = "yes:1"
+
 -- Show hybrid line numbers
 -- Ref: https://jeffkreeftmeijer.com/vim-number
 vim.o.number = true
