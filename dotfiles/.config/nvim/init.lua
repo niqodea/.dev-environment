@@ -3,13 +3,6 @@
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
 vim.g.mapleader = " "
 
--- Moving up and down faster in normal mode
-vim.api.nvim_set_keymap('', 'J', '5j', {})
-vim.api.nvim_set_keymap('', 'K', '5k', {})
-
--- Remap joining lines
-vim.api.nvim_set_keymap('', vim.g.mapleader..'j', 'J', {noremap = true})
-
 -- Easier switching between splits
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
