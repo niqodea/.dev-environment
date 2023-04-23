@@ -43,3 +43,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+-- Disable inline diagnostic
+-- Ref: https://github.com/neovim/nvim-lspconfig/issues/662#issuecomment-983423169
+vim.diagnostic.config({virtual_text = false})
+
