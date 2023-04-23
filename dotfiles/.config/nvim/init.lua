@@ -35,6 +35,9 @@ vim.o.relativenumber = true
 local lspconfig_lua_path = vim.fn.stdpath('config') .. '/lspconfig.lua'
 vim.cmd('luafile ' .. lspconfig_lua_path )
 
+-- Color scheme
+vim.cmd('colorscheme slate')
+
 -- References:
 -- * https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
 
