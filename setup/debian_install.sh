@@ -51,4 +51,6 @@ rm -rf $nvim_plugins_path/vim-surround
 cp -r $submodules_path/vim-surround $nvim_plugins_path
 rm -rf $nvim_plugins_path/nvim-lspconfig
 cp -r $submodules_path/nvim-lspconfig $nvim_plugins_path
+rm -rf $nvim_plugins_path/vim-gitgutter
+cp -r $submodules_path/vim-gitgutter $nvim_plugins_path
 

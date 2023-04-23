@@ -26,9 +26,12 @@ vim.o.shiftwidth = 4
 -- Disable mouse features
 vim.o.mouse = ""
 
--- Use sign column of size 1 to show lsp diagnostic
+-- Use sign column of size 2 to show lsp diagnostic and git diff markers
 -- Setting this to auto causes sign column to appear from nowhere pushing everything to the right
-vim.wo.signcolumn = "yes:1"
+vim.wo.signcolumn = "yes:2"
+
+-- Use smaller updatetime to update git diff markers quicker
+vim.o.updatetime = 500
 
 -- Show hybrid line numbers
 -- Ref: https://jeffkreeftmeijer.com/vim-number

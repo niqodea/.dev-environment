@@ -10,3 +10,6 @@
 [submodule "submodules/nvim-lspconfig"]
 	path = submodules/nvim-lspconfig
 	url = git@github.com:neovim/nvim-lspconfig.git
+[submodule "submodules/vim-gitgutter"]
+	path = submodules/vim-gitgutter
+	url = git@github.com:airblade/vim-gitgutter.git
