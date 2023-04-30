@@ -1,10 +1,6 @@
 -- Suggested configuration for nvim-lspconfig plugin
 -- Ref: https://github.com/neovim/nvim-lspconfig/tree/10fa01d553ce10646350461ac5ddc71f189e9d1a#suggested-configuration
 
--- Setup language servers.
-local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
-
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
@@ -50,4 +46,11 @@ vim.diagnostic.config({virtual_text = false, signs = false})
 -- Use meaningful colors for errors and warnings
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underline = true, ctermfg = 'DarkRed' })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true, ctermfg = 'DarkYellow' })
+
+-- User commands to start language servers
+vim.api.nvim_create_user_command('StartLspPython', function()
+    require('lspconfig').pyright.setup {}
+    -- We need an explicit command to start pyright when nvim-lspconfig is optionally loaded...
+    vim.cmd('LspStart')
+end, {})
 
