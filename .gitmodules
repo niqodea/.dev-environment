@@ -1,15 +1,6 @@
 [submodule "submodules/fzf"]
 	path = submodules/fzf
 	url = git@github.com:junegunn/fzf.git
-[submodule "submodules/vim-surround"]
-	path = submodules/vim-surround
-	url = git@github.com:tpope/vim-surround.git
-[submodule "submodules/vim-commentary"]
-	path = submodules/vim-commentary
-	url = git@github.com:tpope/vim-commentary.git
-[submodule "submodules/nvim-lspconfig"]
-	path = submodules/nvim-lspconfig
-	url = git@github.com:neovim/nvim-lspconfig.git
-[submodule "submodules/vim-gitgutter"]
-	path = submodules/vim-gitgutter
-	url = git@github.com:airblade/vim-gitgutter.git
+[submodule "submodules/packer.nvim"]
+	path = submodules/packer.nvim
+	url = git@github.com:wbthomason/packer.nvim.git

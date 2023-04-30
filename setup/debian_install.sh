@@ -41,16 +41,13 @@ ln -s ~/.zshrc.fzf ~/.zshrc
 yes | $submodules_path/fzf/install --no-bash
 mv ~/.zshrc.backup ~/.zshrc
 
-# Install neovim plugins
-# Path should be of the form ~/.config/nvim/pack/*/start/plugin_repo
-nvim_plugins_path=~/.config/nvim/pack/plugins/start
-mkdir -p $nvim_plugins_path
-rm -rf $nvim_plugins_path/vim-commentary
-cp -r $submodules_path/vim-commentary $nvim_plugins_path
-rm -rf $nvim_plugins_path/vim-surround
-cp -r $submodules_path/vim-surround $nvim_plugins_path
-rm -rf $nvim_plugins_path/nvim-lspconfig
-cp -r $submodules_path/nvim-lspconfig $nvim_plugins_path
-rm -rf $nvim_plugins_path/vim-gitgutter
-cp -r $submodules_path/vim-gitgutter $nvim_plugins_path
+# Install nvim plugin manager
+packer_installation_path=~/.config/nvim/pack/packer/start
+mkdir -p $packer_installation_path
+rm -rf $packer_installation_path/packer.nvim
+cp -r $submodules_path/packer.nvim $packer_installation_path
+# Install the plugins
+# We use the last command to wait for the other two to finish
+# Ref: https://github.com/wbthomason/packer.nvim/pull/259
+nvim --headless -c "PackerCompile" -c "PackerInstall" -c "autocmd User PackerComplete qa"
 
