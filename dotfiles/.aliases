@@ -39,7 +39,7 @@ alias ll="ls -l -h"  # -h is for human-readable file size
 alias la="ls -a"
 
 # Renaming commands
-alias vim="nvim"
+alias v="nvim"
 alias vpy='nvim -c "LoadDevEnv" -c "StartLspPython"'
 
 # Easier navigation in directories
