@@ -25,9 +25,9 @@ packer.startup(function(use)
         commit = '3d188ed2113431cf8dac77be61b842acb64433d9',
     }
     use {
-        'https://github.com/ggandor/lightspeed.nvim',
-        commit = '299eefa6a9e2d881f1194587c573dad619fdb96f',
-        config = [[require('plugins.lightspeed')]],
+        'https://github.com/ggandor/leap.nvim',
+        commit = '6f2912755c9c4ae790abd829f0cf1b07c037b2a4',
+        config = [[require('plugins.leap')]],
     }
     use {
         'https://github.com/neovim/nvim-lspconfig',
