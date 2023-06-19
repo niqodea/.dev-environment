@@ -41,11 +41,23 @@ packer.startup(function(use)
         opt = true,
         config = [[require('plugins.vim-gitgutter')]],
     }
+    use {
+        'https://github.com/hrsh7th/nvim-cmp',
+        commit = '3874e09e80f5fd97ae941442f1dc433317298ae9',
+        opt = true,
+        config = [[require('plugins.nvim-cmp')]],
+    }
+    use {
+        'https://github.com/hrsh7th/cmp-nvim-lsp',
+        commit = '0e6b2ed705ddcff9738ec4ea838141654f12eeef',
+        opt = true,
+    }
 end)
 
 -- User commands to load subsets of related optional plugins
 vim.api.nvim_create_user_command('LoadDevEnv', function()
     vim.cmd('PackerLoad nvim-lspconfig')
     vim.cmd('PackerLoad vim-gitgutter')
+    vim.cmd('PackerLoad nvim-cmp')
 end, {})
 
