@@ -20,6 +20,7 @@ sudo apt install $neovim_deb_path
 # Install Pyright (Python language server)
 # We use sudo as we want to install it system-wide, not really recommended as permission issues may
 # arise, but for now it works without problems
+sudo apt-get --yes install python3-pip
 sudo pip3 install pyright
 
 # Installing programs in the submodules directory
