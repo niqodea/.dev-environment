@@ -1,6 +1,6 @@
 [submodule "submodules/fzf"]
 	path = submodules/fzf
-	url = git@github.com:junegunn/fzf.git
+	url = https://github.com/junegunn/fzf.git
 [submodule "submodules/packer.nvim"]
 	path = submodules/packer.nvim
-	url = git@github.com:wbthomason/packer.nvim.git
+	url = https://github.com/wbthomason/packer.nvim.git
