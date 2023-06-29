@@ -27,12 +27,12 @@ sudo pip3 install pyright
 # We use submodules for programs that offer a simple installation script
 
 # Note: For this to work you must have cloned the github repo to your home folder as ~/dotfiles
-repo_dir=dotfiles
+repo_path=~/dotfiles
 submodules_dir=submodules
-submodules_path=~/$repo_dir/$submodules_dir
+submodules_path=$repo_path/$submodules_dir
 
 # Pull submodules
-git submodule update --init --recursive $submodules_path
+cd $repo_path && git submodule update --init --recursive $submodules_path
 
 # Install fuzzy finder
 # This appends stuff to .zshrc, we redirect the new lines in an ad-hoc file for tidyness
