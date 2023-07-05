@@ -3,17 +3,25 @@
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
 vim.g.mapleader = " "
 
--- Easier switching between splits
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {noremap = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {noremap = true})
+-- Easier split handling
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'j', '<C-w>j', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'k', '<C-w>k', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'h', '<C-w>h', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'l', '<C-w>l', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'s', '<C-w>s', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'v', '<C-w>v', {noremap = true})
 
 -- Easier tab handling
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'tt', ':tabnew<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'tn', ':tabnext<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'tp', ':tabprevious<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'to', ':tabonly<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'t', ':tabnew<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'n', ':tabnext<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'p', ':tabprevious<cr>', {noremap = true})
+
+-- Quick common actions
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'q', ':qall<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':wall<cr>', {noremap = true})
+
+-- Quick exit from terminal mode
+vim.api.nvim_set_keymap('t', '<C-\\><C-\\>', '<C-\\><C-n>', {noremap = true})
 
 -- Clean highlighted text
 vim.api.nvim_set_keymap('', vim.g.mapleader..'/', ':nohlsearch<cr>', {noremap = true})
