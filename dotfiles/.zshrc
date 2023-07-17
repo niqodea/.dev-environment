@@ -70,7 +70,7 @@ bindkey -v
 bindkey -v '^?' backward-delete-char
 
 # If inside tmux pane, set its title to running command
-if [ -n $TMUX_PANE ]; then
+if [ -n "$TMUX_PANE" ]; then
     # Initially set the pane title to empty string
     tmux select-pane -T ""
     function set_tmux_pane_title() {
