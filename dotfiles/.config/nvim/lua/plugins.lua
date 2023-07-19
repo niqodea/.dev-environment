@@ -54,5 +54,8 @@ vim.api.nvim_create_user_command('LoadDevEnv', function()
     vim.cmd('PackerLoad nvim-lspconfig')
     vim.cmd('PackerLoad vim-gitgutter')
     vim.cmd('PackerLoad nvim-cmp')
+    -- Automatically read/write files on focus gained/lost
+    vim.o.autoread = true  -- Read files on focus gain
+    vim.cmd('autocmd FocusLost * silent! wall')
 end, {})
 
