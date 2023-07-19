@@ -17,8 +17,10 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'n', ':tabnext<cr>', {noremap = tr
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'p', ':tabprevious<cr>', {noremap = true})
 
 -- Quick common actions
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'q', ':qall<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':wall<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'q', ':quit<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':write<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'Q', ':qall<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'W', ':wall<cr>', {noremap = true})
 
 -- Quick exit from terminal mode
 vim.api.nvim_set_keymap('t', '<C-\\><C-\\>', '<C-\\><C-n>', {noremap = true})
