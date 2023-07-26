@@ -25,6 +25,10 @@ packer.startup(function(use)
         commit = '3d188ed2113431cf8dac77be61b842acb64433d9',
     }
     use {
+        'https://github.com/ibhagwan/fzf-lua',
+        commit = '1bba731df46feb1751dca1632268aae41ed5ac15',
+    }
+    use {
         'https://github.com/neovim/nvim-lspconfig',
         commit = 'cf95480e876ef7699bf08a1d02aa0ae3f4d5f353',
         opt = true,
@@ -49,8 +53,12 @@ packer.startup(function(use)
     }
 end)
 
+-- Source auto-loaded plugin lua files
+fzf_lua = require('plugins.fzf-lua')
+
 -- User commands to load subsets of related optional plugins
 vim.api.nvim_create_user_command('LoadDevEnv', function()
+    fzf_lua.set_optional_git_keymaps()
     vim.cmd('PackerLoad nvim-lspconfig')
     vim.cmd('PackerLoad vim-gitgutter')
     vim.cmd('PackerLoad nvim-cmp')
