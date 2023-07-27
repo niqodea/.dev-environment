@@ -1,3 +1,8 @@
+-- Set POSIX-compliant find command for MacOS
+require('fzf-lua').setup({
+  files = { cmd = 'find . -type f' }
+})
+
 vim.api.nvim_set_keymap(
     'n',
     vim.g.mapleader..'ff',
