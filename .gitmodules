@@ -8,7 +8,7 @@
 	path = nvim/src
 	url = https://github.com/neovim/neovim.git
 [submodule "submodules/core/git"]
-	path = submodules/core/git
+	path = git/src
 	url = https://github.com/git/git.git
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary"]
 	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary
