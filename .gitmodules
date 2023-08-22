@@ -2,7 +2,7 @@
 	path = submodules/core/tmux
 	url = https://github.com/tmux/tmux.git
 [submodule "submodules/core/zsh"]
-	path = submodules/core/zsh
+	path = zsh/src
 	url = https://github.com/zsh-users/zsh.git
 [submodule "submodules/core/nvim"]
 	path = nvim/src
