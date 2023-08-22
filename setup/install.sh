@@ -19,11 +19,3 @@ make configure
 # Do not localize Git and do not install gitk/git-gui
 make install install-man NO_GETTEXT=YesPlease NO_TCLTK=YesPlease
 
-echo "Compiling and installing tmux..."
-cd $core_submodules_path/tmux
-sudo apt install --yes --no-install-recommends autoconf automake bison libevent-dev pkg-config
-sh autogen.sh
-./configure --prefix=$install_path
-make
-make install
-

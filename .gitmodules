@@ -1,5 +1,5 @@
 [submodule "submodules/core/tmux"]
-	path = submodules/core/tmux
+	path = tmux/src
 	url = https://github.com/tmux/tmux.git
 [submodule "submodules/core/zsh"]
 	path = zsh/src
