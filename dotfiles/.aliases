@@ -40,8 +40,9 @@ alias la="ls -a"
 
 # Renaming commands
 alias v="nvim"
-alias vd='nvim -c "LoadDevEnv"'
-alias vpy='vd -c "StartLspPython"'
+alias vc='nvim -c "LoadCore"'
+alias vd='nvim -c "LoadDev"'
+alias vdpy='vd -c "StartPyright"'
 
 # Easier navigation in directories
 alias ..="cd .."

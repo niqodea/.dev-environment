@@ -2,7 +2,6 @@
 -- Ref: https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion#nvim-cmp
 
 local cmp = require('cmp')
-
 cmp.setup {
     sources = {
         { name = 'nvim_lsp' },
@@ -18,11 +17,5 @@ cmp.setup {
             },
         }
     ),
-}
-
--- Add LSP capabilities supported by nvim-cmp to pyright
-vim.cmd('PackerLoad cmp-nvim-lsp')
-require('lspconfig')['pyright'].setup {
-    capabilities = require("cmp_nvim_lsp").default_capabilities()
 }
 
