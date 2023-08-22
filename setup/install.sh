@@ -35,9 +35,3 @@ sh autogen.sh
 make
 make install
 
-echo "Compiling and installing nvim..."
-cd $core_submodules_path/neovim
-sudo apt install --yes --no-install-recommends cmake curl gettext ninja-build unzip
-make CMAKE_BUILD_TYPE=Release CMAKE_INSTALL_PREFIX=$install_path
-make install
-

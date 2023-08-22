@@ -47,8 +47,8 @@ vim.o.relativenumber = true
 -- Color scheme
 vim.cmd('colorscheme slate')
 
--- Let the plugin manager handle the plugins
-require("plugins")
+-- Submodules
+require("plugins.main")
 
 -- References:
 -- * https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings

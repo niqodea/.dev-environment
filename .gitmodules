@@ -5,8 +5,29 @@
 	path = submodules/core/zsh
 	url = https://github.com/zsh-users/zsh.git
 [submodule "submodules/core/nvim"]
-	path = submodules/core/neovim
+	path = nvim/src
 	url = https://github.com/neovim/neovim.git
 [submodule "submodules/core/git"]
 	path = submodules/core/git
 	url = https://github.com/git/git.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-surround"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/fzf-lua"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-lspconfig"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-cmp"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-gitgutter"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/cmp-nvim-lsp"]
+	path = nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git

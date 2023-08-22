@@ -5,7 +5,7 @@
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
 -- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 -- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 -- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
@@ -50,7 +50,7 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underline = true, ctermfg =
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true, ctermfg = 'DarkYellow' })
 
 -- User commands to start language servers
-vim.api.nvim_create_user_command('StartLspPython', function()
+vim.api.nvim_create_user_command('StartPyright', function()
     require('lspconfig').pyright.setup {}
     -- We need an explicit command to start pyright when nvim-lspconfig is optionally loaded...
     vim.cmd('LspStart')
