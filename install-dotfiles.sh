@@ -31,7 +31,7 @@ while [ $# -gt 0 ]; do
                 backup_dir="${backup_dir%/.}"
             fi
 
-            rsync --backup --backup-dir=$backup_dir \
+            rsync --archive --backup --backup-dir=$backup_dir \
                 $source_dotfile_path $HOME/$target_dotfile_relpath
         fi
 
