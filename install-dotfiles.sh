@@ -3,12 +3,20 @@
 set -eu
 
 repo_root=$(dirname $0) # this script should be in repo root
+cd $repo_root
+
+if [ -n "${1+x}" ]; then
+    modules=$1
+else
+    # Consider all modules, i.e. all directories in repo root
+    modules=$(ls -dm */ | tr -d "/" | tr -d " ")
+fi
 
 backup_path=$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)
 
-while [ $# -gt 0 ]; do
-    module=$1
-    source_dotfiles_path=$repo_root/$module/dotfiles
+IFS=","
+for module in $modules; do
+    source_dotfiles_path=$module/dotfiles
 
     if [ ! -d $source_dotfiles_path ]; then
         >&2 echo "Dotfiles directory not found for module $module"
@@ -36,8 +44,6 @@ while [ $# -gt 0 ]; do
         fi
 
     done
-
-    shift
 
 done
 
