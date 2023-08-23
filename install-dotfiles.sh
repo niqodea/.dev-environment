@@ -17,6 +17,7 @@ backup_path=$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)
 IFS=","
 for module in $modules; do
     source_dotfiles_path=$module/dotfiles
+    git submodule update --init --recursive $source_dotfiles_path
 
     if [ ! -d $source_dotfiles_path ]; then
         >&2 echo "Dotfiles directory not found for module $module"
