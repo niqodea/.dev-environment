@@ -2,6 +2,8 @@
 
 set -eu
 
+cd $(dirname $0)/.gitroot
+
 # Reorder arguments to first process options
 args=$(getopt -o p: -n "\\$0" -- "$@")
 eval set -- $args
@@ -16,9 +18,6 @@ while [ $1 != "--" ]; do
     esac
 done
 shift
-
-repo_root=$(dirname $0) # this script should be in repo root
-cd $repo_root
 
 if [ -n "${1+x}" ]; then
     modules=$1
