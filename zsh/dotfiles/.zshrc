@@ -1,5 +1,3 @@
-source ~/.aliases
-
 # PROMPT SETUP
 # Ref: https://gist.github.com/reinvanoyen/05bcfe95ca9cb5041a4eafd29309ff29
 function () {
@@ -85,20 +83,16 @@ if [ -n "$TMUX_PANE" ]; then
     precmd_functions+=(reset_tmux_pane_title)
 fi
 
-# Source local zsh config file, if it exists
-if [[ -f "$HOME/.zshrc.local"  ]]; then
-	source "$HOME/.zshrc.local" 
-fi
+# EXTRA MODULES
 
-# EXTERNAL SUBMODULES
+for extra_zshrc_path in ~/.zsh/*.zshrc; do
+    source $extra_zshrc_path
+done
 
-# Set up fuzzy finder
-# Note: Must be done after setting keymap to vi
-# Ref: https://unix.stackexchange.com/a/651460
-if [ -f ~/.zshrc.fzf ]; then
-	source ~/.zshrc.fzf
-else
-	echo "WARNING: File $HOME/.zshrc.fzf not found, did you run the install script on this machine?"
+# Source local zshrc, if it exists
+local_zshrc_path=~/.local.zshrc
+if [[ -f $local_zshrc_path  ]]; then
+	source $local_zshrc_path
 fi
 
 # NOTES
