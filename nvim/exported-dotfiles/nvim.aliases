@@ -1,5 +1,3 @@
-# Aliases for Neovim
-
 alias v="nvim"
 
 alias vc='nvim -c "LoadCore"'

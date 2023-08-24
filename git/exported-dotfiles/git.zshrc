@@ -1,1 +1,0 @@
-.gitroot/zsh/dotfiles/.zsh/git.zshrc
