@@ -31,6 +31,6 @@ fi
 IFS=","
 for module in $modules; do
     echo "Installing binary for module $module"
-    sh $module/install-bin.sh $install_path
+    $module/install-bin.sh $install_path
 done
 
