@@ -1,0 +1,1 @@
+.gitroot/zsh/dotfiles/.zsh/nvim.zshrc

@@ -1,4 +1,5 @@
-# Git
+# Aliases for Git
+
 alias g="git"
 alias ga="git add"
 alias gap="git add --patch"
@@ -32,33 +33,4 @@ alias gshp="git stash pop"
 alias gsw="git switch"
 alias gswc="git switch --create"
 alias gswd="git switch --detach"
-
-# Listing files
-alias ls="ls --color"  # Add colors to ls
-alias ll="ls -l -h"  # -h is for human-readable file size
-alias la="ls -a"
-
-# Renaming commands
-alias v="nvim"
-alias vc='nvim -c "LoadCore"'
-alias vd='nvim -c "LoadDev"'
-alias vdpy='vd -c "StartPyright"'
-
-# Easier navigation in directories
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-
-# Size of files
-alias duh="du -hs"
-
-# Find
-alias f="find ."
-alias fn="find . -name"
-
-# Search specific processes
-alias psg="ps -eo pid,user,etime,comm | grep"
-# Kill them
-alias k9="kill -9"  # SIGKILL
 
