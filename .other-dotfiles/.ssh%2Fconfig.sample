@@ -1,0 +1,8 @@
+Host abc
+    user xyz
+    hostname 0.0.0.0
+
+    # Attach to tmux server if running, or start a new one with login environment
+    RemoteCommand tmux attach || sh -l -c "tmux new"
+    RequestTTY yes
+
