@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO: fix git submodule add https://github.com/author/repo.git
+# git: 'remote-https' is not a git command.
+
 set -eux
 
 install_path=$1
