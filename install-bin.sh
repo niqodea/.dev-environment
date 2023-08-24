@@ -2,30 +2,30 @@
 
 set -eu
 
-cd $(dirname $0)/.gitroot
+usage="Usage: $0 [-a] [-p /install/path] [module1,...,moduleN]"
+if [ $# -eq 0 ]; then >&2 echo "$usage"; exit 1; fi
 
-# Reorder arguments to first process options
-args=$(getopt -o ap: -n "\\$0" -- "$@")
-eval set -- $args
+cd $(dirname $0)/.gitroot
 
 # Default option values
 install_all_modules=false
 install_path=$HOME/.local
 
-while [ $1 != "--" ]; do
-    case $1 in
-        -a) install_all_modules=true; shift 1;;
-        -p) install_path="$2"; shift 2;;
-        *) >&2 echo "Unhandled option: $1"; exit 1;;
+while getopts "ap:" opt; do
+    case $opt in
+        a) install_all_modules=true;;
+        p) install_path=$OPTARG;;
+        *) >&2 echo "$usage"; exit 1;;
     esac
 done
-shift
+shift $((OPTIND-1))  # positional arguments follow options
+if [ $# -gt 1 ]; then echo "$usage"; exit 1; fi
 
 if [ $install_all_modules = true ]; then
     # Get all non-dot subdirectories in root as a comma-separated string
     modules=$(ls -dm */ | tr -d "/" | tr -d " ")
 else
-    modules=$1
+    modules=${1+$1}  # empty string if unset
 fi
 
 IFS=","
