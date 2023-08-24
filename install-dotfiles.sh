@@ -2,25 +2,25 @@
 
 set -eu
 
-cd $(dirname $0)/.gitroot
+usage="Usage: $0 [-a] [-m] [-o] [module1,...,moduleN]"
+if [ $# -eq 0 ]; then >&2 echo "$usage"; exit 1; fi
 
-# Reorder arguments to first process options
-args=$(getopt -o amo -n "\\$0" -- "$@")
-eval set -- $args
+cd $(dirname $0)/.gitroot
 
 # Default option values
 install_all_modules=false
 install_other=false
 
-while [ $1 != "--" ]; do
-    case $1 in
-        -a) install_other=true; install_all_modules=true; shift 1;;
-        -m) install_all_modules=true; shift 1;;
-        -o) install_other=true; shift 1;;
-        *) >&2 echo "Unhandled option: $1"; exit 1;;
+while getopts "amo" opt; do
+    case $opt in
+        a) install_other=true; install_all_modules=true;;
+        m) install_all_modules=true;;
+        o) install_other=true;;
+        *) >&2 echo "$usage"; exit 1;;
     esac
 done
-shift
+shift $((OPTIND-1))  # positional arguments follow options
+if [ $# -gt 1 ]; then echo "$usage"; exit 1; fi
 
 if [ $install_all_modules = true ]; then
     # Get all non-dot subdirectories in root as a comma-separated string
