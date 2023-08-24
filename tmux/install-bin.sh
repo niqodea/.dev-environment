@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# NOTE: for now we compile version 3.1c, as newer versions sometimes fails to escape character
+# sequences sent by the terminal in response to a request for capabilities.
+# Ref: https://github.com/tmux-plugins/tmux-sensible/issues/61#issuecomment-1691383965
+
 set -eux
 
 install_path=$1
