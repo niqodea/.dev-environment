@@ -2,8 +2,7 @@
 
 set -eu
 
-repo_root=$(dirname $0) # this script should be in repo root
-cd $repo_root
+cd $(dirname $0)/.gitroot
 
 if [ -n "${1+x}" ]; then
     modules=$1
