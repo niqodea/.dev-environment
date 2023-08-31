@@ -3,11 +3,15 @@
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
 vim.g.mapleader = " "
 
--- Easier split handling
+-- Easier split management
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'j', '<C-w>j', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'k', '<C-w>k', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'h', '<C-w>h', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'l', '<C-w>l', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-j>', '2<C-w>+', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-k>', '2<C-w>-', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-l>', '2<C-w>>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-h>', '2<C-w><', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'s', '<C-w>s', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'v', '<C-w>v', {noremap = true})
 
