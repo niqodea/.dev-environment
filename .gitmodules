@@ -34,3 +34,6 @@
 [submodule "fzf/src"]
 	path = fzf/src
 	url = https://github.com/junegunn/fzf.git
+[submodule "nvim/dotfiles-submodules/nvim-tree.lua"]
+	path = nvim/dotfiles-submodules/nvim-tree.lua
+	url = https://github.com/nvim-tree/nvim-tree.lua.git
