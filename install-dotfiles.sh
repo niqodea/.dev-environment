@@ -36,6 +36,7 @@ install_dotfiles() {
 
     for source_dotfile_path in $source_dotfiles_path/.[!.]*; do
         target_dotfile_relpath=$(basename $source_dotfile_path | sed "s/%2F/\//g")
+        mkdir -p $(dirname $HOME/$target_dotfile_relpath)  # rsync expects parent dir to exist
 
         if [ -d $source_dotfile_path ]; then
             rsync --archive --copy-unsafe-links --delete \
