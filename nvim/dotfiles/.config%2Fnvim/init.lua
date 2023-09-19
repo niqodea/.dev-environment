@@ -26,6 +26,11 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':write<cr>', {noremap = true
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'Q', ':qall<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'W', ':wall<cr>', {noremap = true})
 
+-- Quick file explorer (we use '-' for consistency with netrw)
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'-', ':Explore<cr>', {noremap = true})
+-- Remove instructions banner from netrw
+vim.g.netrw_banner = 0
+
 -- Quick exit from terminal mode
 vim.api.nvim_set_keymap('t', '<C-\\><C-\\>', '<C-\\><C-n>', {noremap = true})
 
