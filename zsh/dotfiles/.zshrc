@@ -1,3 +1,11 @@
+# START DIRECTORY
+# We keep track of the start directory, which should represent the working space of the shell
+# Programs run from the shell can use this information to contextualize their operation, allowing
+# them to tailor their behavior based on the originating workspace
+export START_DIR=$(pwd)
+alias cds='cd $START_DIR'
+
+
 # PROMPT SETUP
 # Ref: https://gist.github.com/reinvanoyen/05bcfe95ca9cb5041a4eafd29309ff29
 function () {
