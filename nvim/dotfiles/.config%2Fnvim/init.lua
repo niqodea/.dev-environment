@@ -61,8 +61,18 @@ vim.o.relativenumber = true
 -- Color scheme
 vim.cmd('colorscheme slate')
 
--- Submodules
+-- Load plugin handling logic
 require("plugins.main")
+
+-- Load submodules
+lasso = require("lasso")
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'m', '<cmd>lua lasso.mark_file()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'M', '<cmd>lua lasso.open_index_file()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'1', '<cmd>lua lasso.open_marked_file(1)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'2', '<cmd>lua lasso.open_marked_file(2)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'3', '<cmd>lua lasso.open_marked_file(3)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'4', '<cmd>lua lasso.open_marked_file(4)<cr>', {noremap = true})
+
 
 -- References:
 -- * https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
