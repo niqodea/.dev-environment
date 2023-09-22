@@ -5,25 +5,25 @@ require('fzf-lua').setup({
 
 vim.api.nvim_set_keymap(
     'n',
-    vim.g.mapleader..'ff',
+    vim.g.mapleader..'f-',
     '<cmd>lua require("fzf-lua").files()<CR>',
     {noremap = true}
 )
 vim.api.nvim_set_keymap(
     'n',
-    vim.g.mapleader..'fr',
+    vim.g.mapleader..'f/',
     '<cmd>lua require("fzf-lua").live_grep()<CR>',
     {noremap = true}
 )
 vim.api.nvim_set_keymap(
     'n',
-    vim.g.mapleader..'fw',
+    vim.g.mapleader..'f*',
     '<cmd>lua require("fzf-lua").grep_cword()<CR>',
     {noremap = true}
 )
 vim.api.nvim_set_keymap(
     'v',
-    vim.g.mapleader..'fr',
+    vim.g.mapleader..'f*',
     '<cmd>lua require("fzf-lua").grep_visual()<CR>',
     {noremap = true}
 )
