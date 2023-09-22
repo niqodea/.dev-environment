@@ -2,6 +2,8 @@
 -- Ref: https://stackoverflow.com/a/446293
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
 vim.g.mapleader = " "
+-- No leader timeout
+vim.o.timeout = false
 
 -- Easier split management
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'j', '<C-w>j', {noremap = true})
