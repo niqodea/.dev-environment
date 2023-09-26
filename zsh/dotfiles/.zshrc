@@ -1,9 +1,8 @@
-# START DIRECTORY
-# We keep track of the start directory, which should represent the working space of the shell
+# SESSION DIRECTORY
+# We can inject zsh with a session directory
 # Programs run from the shell can use this information to contextualize their operation, allowing
 # them to tailor their behavior based on the originating workspace
-export START_DIR=$(pwd)
-alias cds='cd $START_DIR'
+alias cds='cd $ZSH_SESSION_ROOT'
 
 
 # PROMPT SETUP
@@ -26,10 +25,9 @@ function () {
 	local COLOR_OFF="%f"
 	local COLOR_USERHOST="%F{099}"  # Purple
 	local COLOR_CWD="%F{220}"  # Yellow
-	local COLOR_GIT="%F{034}"  # Green
 
-	setopt PROMPT_SUBST
-	export PROMPT="${COLOR_USERHOST}${USER}@${HOST}${COLOR_CWD}[${CWD}]${COLOR_GIT}${GIT_BRANCH}${COLOR_OFF}${SHELL_STATE} "
+	export PROMPT_BASE="${COLOR_USERHOST}${USER}@${HOST}${COLOR_CWD}[${CWD}]"
+	export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
 }
 
 
@@ -75,17 +73,40 @@ bindkey -v
 # Ref: https://unix.stackexchange.com/a/290403
 bindkey -v '^?' backward-delete-char
 
-# EXTRA MODULES
-
-for extra_zshrc_path in ~/.zsh/*.zshrc; do
-    source $extra_zshrc_path
-done
-
 # Source local zshrc, if it exists
 local_zshrc_path=~/.local.zshrc
 if [[ -f $local_zshrc_path  ]]; then
 	source $local_zshrc_path
 fi
+
+# CORE MODULES
+for core_module_path in ~/.zsh/core/*.zshrc; do
+    source $core_module_path
+done
+
+# OPTIONAL MODULES
+zsh_sourced_optional_modules=()
+function so() {  # source-optional
+    local optional_module=$1
+    if [[ " $zsh_sourced_optional_modules " == *" $optional_module "* ]]; then
+        return
+    fi
+    local optional_module_path=~/.zsh/opt/$optional_module.zshrc
+    source $optional_module_path
+    zsh_sourced_optional_modules+=($optional_module)
+}
+
+function () {
+    if [ -n "${ZSH_STARTING_OPTIONAL_MODULES+x}" ]; then
+        local optional_modules_array
+        read -rA optional_modules_array <<< "$ZSH_STARTING_OPTIONAL_MODULES"
+
+        local optional_module
+        for optional_module in "${optional_modules_array[@]}"; do
+            so $optional_module
+        done
+    fi
+}
 
 # NOTES
 # We use anonymous function to scope variables and avoid flooding the env

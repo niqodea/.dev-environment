@@ -1,3 +1,17 @@
+function () {
+    # Append git branch to prompt
+
+	local COLOR_GIT="%F{034}"  # Green
+    local GIT_INFO='$(git rev-parse --is-inside-work-tree &> /dev/null && (git symbolic-ref --short -q HEAD || git rev-parse --short HEAD))'
+	local COLOR_OFF="%f"
+	local SHELL_STATE="%#"
+
+	setopt PROMPT_SUBST
+	export PROMPT_BASE="${PROMPT_BASE}${COLOR_GIT}(${GIT_INFO})"
+	export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
+}
+
+
 alias g="git"
 alias ga="git add"
 alias gap="git add --patch"
