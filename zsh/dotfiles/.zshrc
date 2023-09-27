@@ -1,7 +1,10 @@
-# SESSION DIRECTORY
-# We can inject zsh with a session directory
+# SESSION ROOT
+# We can inject zsh with a session root
 # Programs run from the shell can use this information to contextualize their operation, allowing
 # them to tailor their behavior based on the originating workspace
+if [ -z "${ZSH_SESSION_ROOT+x}" ]; then
+    export ZSH_SESSION_ROOT=$HOME
+fi
 alias cds='cd $ZSH_SESSION_ROOT'
 
 
