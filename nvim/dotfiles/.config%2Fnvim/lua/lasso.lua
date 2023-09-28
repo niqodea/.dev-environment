@@ -2,13 +2,7 @@ local M = {}
 
 
 local function get_root()
-    local lasso_root_envname = 'NVIM_LASSO_ROOT'
-    local root = os.getenv(lasso_root_envname)
-
-    if not root or root == "" then
-        error('Env variable ' .. lasso_root_envname .. ' not set!', 0)
-    end
-
+    local root = os.getenv('NVIM_LASSO_ROOT') or os.getenv('HOME')
     return root
 end
 

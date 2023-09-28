@@ -1,14 +1,14 @@
 function () {
-    # Append git branch to prompt
+    if [ "$ZSH_GIT_PROMPT_SETUP" = true ]; then
+        return
+    fi
+
+    export ZSH_GIT_PROMPT_SETUP=true
 
 	local COLOR_GIT="%F{034}"  # Green
     local GIT_INFO='$(git rev-parse --is-inside-work-tree &> /dev/null && (git symbolic-ref --short -q HEAD || git rev-parse --short HEAD))'
-	local COLOR_OFF="%f"
-	local SHELL_STATE="%#"
 
-	setopt PROMPT_SUBST
-	export PROMPT_BASE="${PROMPT_BASE}${COLOR_GIT}(${GIT_INFO})"
-	export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
+	setup_prompt_base "${PROMPT_BASE}${COLOR_GIT}(${GIT_INFO})"
 }
 
 
