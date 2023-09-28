@@ -9,9 +9,11 @@ export SHELL=$(readlink /proc/$$/exe)
 # We can inject zsh with a session root
 # Programs run from the shell can use this information to contextualize their operation, allowing
 # them to tailor their behavior based on the originating workspace
-if [ -n "${ZSH_SESSION_ROOT+x}" ]; then
-    alias cds='cd $ZSH_SESSION_ROOT'
+if [ -z "$ZSH_SESSION_ROOT" ]; then
+    export ZSH_SESSION_ROOT=$HOME
 fi
+
+alias cds='cd $ZSH_SESSION_ROOT'
 
 
 # PROMPT SETUP

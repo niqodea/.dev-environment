@@ -3,11 +3,7 @@ function () {
         return  # Virtual environment already set
     fi
 
-    if [ -n "${ZSH_SESSION_ROOT+x}" ]; then
-        local virtual_env=$ZSH_SESSION_ROOT/.venv
-    else
-        local virtual_env=$HOME/.venv
-    fi
+    local virtual_env=$ZSH_SESSION_ROOT/.venv
 
     if [ ! -e $virtual_env ]; then
         >&2 echo "Virtual environment not found in $virtual_env"
