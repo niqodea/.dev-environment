@@ -15,6 +15,11 @@ fi
 
 alias cds='cd $ZSH_SESSION_ROOT'
 
+local zsh_session_env_path=$ZSH_SESSION_ROOT/.env.zshrc
+if [ -f $zsh_session_env_path ]; then
+    source $zsh_session_env_path
+fi
+
 
 # PROMPT SETUP
 setopt PROMPT_SUBST
@@ -99,14 +104,16 @@ done
 
 # OPTIONAL MODULES
 function () {
-    if [ -n "${ZSH_OPTIONAL_MODULES+x}" ]; then
+    # Source optional modules
+    if [ -n "$ZSH_OPTIONAL_MODULES" ]; then
         for optional_module in ${(z)ZSH_OPTIONAL_MODULES}; do
             source ~/.zsh/opt/$optional_module.zshrc
         done
     fi
 }
 
-function sm() {  # source-module
+function sm() {
+    # Source a new optional module by name
     local optional_module=$1
     local optional_module_path=~/.zsh/opt/$optional_module.zshrc
 
@@ -116,17 +123,27 @@ function sm() {  # source-module
     fi
 
     if [[ " $ZSH_OPTIONAL_MODULES " == *" $optional_module "* ]]; then
-        >&2 echo "zsh module $optional_module already sourced"
-        return 1
+        return  # optional_module already sourced
     fi
 
-    if [ -z "${ZSH_OPTIONAL_MODULES+x}" ]; then
+    if [ -z "$ZSH_OPTIONAL_MODULES" ]; then
         export ZSH_OPTIONAL_MODULES="$optional_module"
     else
         export ZSH_OPTIONAL_MODULES="$ZSH_OPTIONAL_MODULES $optional_module"
     fi
 
     source $optional_module_path
+}
+
+function () {
+    # Source session-specific optional modules
+    if [ -z "$ZSH_SESSION_OPTIONAL_MODULES" ]; then
+        return
+    fi
+
+    for session_optional_module in ${(z)ZSH_SESSION_OPTIONAL_MODULES}; do
+        sm $session_optional_module
+    done
 }
 
 
