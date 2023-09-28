@@ -26,3 +26,13 @@ vim.api.nvim_create_user_command('LspStartPython', function()
     }
     vim.cmd('LspStart')
 end, {})
+
+-- Activate default language, if any
+local default_language = os.getenv('NVIM_DEFAULT_LANGUAGE')
+if default_language then
+    if default_language == 'python' then
+        vim.cmd('LspStartPython')
+    else
+        error('Language not supported: ' .. default_language)
+    end
+end
