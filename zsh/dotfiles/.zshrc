@@ -1,3 +1,10 @@
+# SHELL VARIABLE
+# The zsh we use might be /bin/zsh or, if we manage to compile it, $HOME/.local/bin/zsh
+# Changing SHELL to refer to a locally installed one using chsh is risky, so we dynamically update
+# it to refer to the currently running zsh instead
+# Ref: https://www.cyberciti.biz/tips/how-do-i-find-out-what-shell-im-using.html
+export SHELL=$(readlink /proc/$$/exe)
+
 # SESSION ROOT
 # We can inject zsh with a session root
 # Programs run from the shell can use this information to contextualize their operation, allowing
