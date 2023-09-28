@@ -1,7 +1,7 @@
 alias v='nvim -c "LoadCore"'
 alias vd='nvim -c "LoadDev"'
 
-if [ -z "$NVIM_LASSO_ROOT" ]; then
+if [ -z "$NVIM_LASSO_ROOT" ] && [ -n "$ZSH_SESSION_ROOT" ]; then
     export NVIM_LASSO_ROOT=$ZSH_SESSION_ROOT
 fi
 
