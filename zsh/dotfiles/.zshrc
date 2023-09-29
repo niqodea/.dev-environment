@@ -93,6 +93,7 @@ bindkey -v
 # Ref: https://unix.stackexchange.com/a/290403
 bindkey -v '^?' backward-delete-char
 
+# EXTENSIONS
 # Source local zshrc, if it exists
 function () {
     local local_zshrc_path=~/.local.zshrc
@@ -100,42 +101,7 @@ function () {
         source $local_zshrc_path
     fi
 }
-
-# MODULES
-for core_module_path in ~/.zsh-modules/core/*.zshrc; do
-    source $core_module_path
-done
-
-if [ -n "$ZSH_SESSION_MODULES" ]; then
-    for session_module in ${(z)ZSH_SESSION_MODULES}; do
-        source ~/.zsh-modules/extra/$session_module.zshrc
-    done
-fi
-
-if [ -n "$ZSH_EXTRA_MODULES" ]; then
-    for extra_module in ${(z)ZSH_EXTRA_MODULES}; do
-        source ~/.zsh-modules/extra/$extra_module.zshrc
-    done
-fi
-
-function sm() {
-    # Source a new optional module by name
-    local extra_module=$1
-    local extra_module_path=~/.zsh-modules/extra/$extra_module.zshrc
-
-    if [ ! -e $extra_module_path ]; then
-        >&2 echo "zsh module not found at $extra_module_path"
-        return 1
-    fi
-
-    if [[ " $ZSH_EXTRA_MODULES " == *" $extra_module "* ]]; then
-        return  # extra_module already sourced
-    fi
-
-    export ZSH_EXTRA_MODULES="${ZSH_EXTRA_MODULE+$ZSH_EXTRA_MODULES }$extra_module"
-
-    source $extra_module_path
-}
+source ~/.zsh-modules/main.zshrc
 
 
 # NOTES
