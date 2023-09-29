@@ -15,10 +15,12 @@ fi
 
 alias cds='cd $ZSH_SESSION_ROOT'
 
-local zsh_session_env_path=$ZSH_SESSION_ROOT/.env.zshrc
-if [ -f $zsh_session_env_path ]; then
-    source $zsh_session_env_path
-fi
+function () {
+    local zsh_session_env_path=$ZSH_SESSION_ROOT/.session-env.zshrc 
+    if [ -f $zsh_session_env_path ]; then
+        source $zsh_session_env_path
+    fi
+}
 
 
 # PROMPT SETUP
@@ -92,58 +94,47 @@ bindkey -v
 bindkey -v '^?' backward-delete-char
 
 # Source local zshrc, if it exists
-local_zshrc_path=~/.local.zshrc
-if [[ -f $local_zshrc_path  ]]; then
-	source $local_zshrc_path
-fi
+function () {
+    local local_zshrc_path=~/.local.zshrc
+    if [[ -f $local_zshrc_path  ]]; then
+        source $local_zshrc_path
+    fi
+}
 
-# CORE MODULES
-for core_module_path in ~/.zsh/core/*.zshrc; do
+# MODULES
+for core_module_path in ~/.zsh-modules/core/*.zshrc; do
     source $core_module_path
 done
 
-# OPTIONAL MODULES
-function () {
-    # Source optional modules
-    if [ -n "$ZSH_OPTIONAL_MODULES" ]; then
-        for optional_module in ${(z)ZSH_OPTIONAL_MODULES}; do
-            source ~/.zsh/opt/$optional_module.zshrc
-        done
-    fi
-}
+if [ -n "$ZSH_SESSION_MODULES" ]; then
+    for session_module in ${(z)ZSH_SESSION_MODULES}; do
+        source ~/.zsh-modules/extra/$session_module.zshrc
+    done
+fi
+
+if [ -n "$ZSH_EXTRA_MODULES" ]; then
+    for extra_module in ${(z)ZSH_EXTRA_MODULES}; do
+        source ~/.zsh-modules/extra/$extra_module.zshrc
+    done
+fi
 
 function sm() {
     # Source a new optional module by name
-    local optional_module=$1
-    local optional_module_path=~/.zsh/opt/$optional_module.zshrc
+    local extra_module=$1
+    local extra_module_path=~/.zsh-modules/extra/$extra_module.zshrc
 
-    if [ ! -e $optional_module_path ]; then
-        >&2 echo "zsh module not found at $optional_module_path"
+    if [ ! -e $extra_module_path ]; then
+        >&2 echo "zsh module not found at $extra_module_path"
         return 1
     fi
 
-    if [[ " $ZSH_OPTIONAL_MODULES " == *" $optional_module "* ]]; then
-        return  # optional_module already sourced
+    if [[ " $ZSH_EXTRA_MODULES " == *" $extra_module "* ]]; then
+        return  # extra_module already sourced
     fi
 
-    if [ -z "$ZSH_OPTIONAL_MODULES" ]; then
-        export ZSH_OPTIONAL_MODULES="$optional_module"
-    else
-        export ZSH_OPTIONAL_MODULES="$ZSH_OPTIONAL_MODULES $optional_module"
-    fi
+    export ZSH_EXTRA_MODULES="${ZSH_EXTRA_MODULE+$ZSH_EXTRA_MODULES }$extra_module"
 
-    source $optional_module_path
-}
-
-function () {
-    # Source session-specific optional modules
-    if [ -z "$ZSH_SESSION_OPTIONAL_MODULES" ]; then
-        return
-    fi
-
-    for session_optional_module in ${(z)ZSH_SESSION_OPTIONAL_MODULES}; do
-        sm $session_optional_module
-    done
+    source $extra_module_path
 }
 
 
