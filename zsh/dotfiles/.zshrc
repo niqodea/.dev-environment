@@ -8,22 +8,6 @@ function() {
     export SHELL=$(readlink /proc/$$/exe)
 
 
-    # SESSION ROOT
-    # We can inject zsh with a session root
-    # Programs run from the shell can use this information to contextualize their operation,
-    # allowing them to tailor their behavior based on the originating workspace
-    if [ -z "$ZSH_SESSION_ROOT" ]; then
-        export ZSH_SESSION_ROOT=$HOME
-    fi
-
-    alias cds='cd $ZSH_SESSION_ROOT'
-
-    local zsh_session_env_path=$ZSH_SESSION_ROOT/.session-env.zshrc 
-    if [ -f $zsh_session_env_path ]; then
-        source $zsh_session_env_path
-    fi
-
-
     # PROMPT SETUP
     setopt PROMPT_SUBST
 
@@ -91,11 +75,30 @@ function() {
     bindkey -v '^?' backward-delete-char
 
 
+    # SESSION ROOT
+    # We can inject zsh with a session root
+    # Ideally, zsh should always operate inside the session root
+    # Programs run from the shell can use this information to contextualize their operation,
+    # allowing them to tailor their behavior based on the originating workspace
+    # NOTE: the session root is a first-class citizen, it is always set
+    if [ -z "$ZSH_SESSION_ROOT" ]; then
+        export ZSH_SESSION_ROOT=$HOME
+    fi
+
+    alias cds='cd $ZSH_SESSION_ROOT'
+
+
     # EXTENSIONS
     # Source local zshrc, if it exists
     local local_zshrc_path=~/.local.zshrc
     if [[ -f $local_zshrc_path  ]]; then
         source $local_zshrc_path
+    fi
+
+    # Source modules
+    local zsh_modules_env_path=$ZSH_SESSION_ROOT/.zsh-modules-env.zshrc
+    if [ -f $zsh_modules_env_path ]; then
+        source $zsh_modules_env_path
     fi
     source ~/.zsh-modules/main.zshrc
 
