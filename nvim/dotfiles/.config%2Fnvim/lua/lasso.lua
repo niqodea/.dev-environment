@@ -1,6 +1,8 @@
 local M = {}
 
 
+-- LASSO FILES
+
 local function get_root()
     local root = os.getenv('NVIM_LASSO_ROOT') or os.getenv('HOME')
     return root
@@ -97,6 +99,25 @@ end
 function M.open_index_file()
     local index_bufnr = get_index_bufnr()
     vim.api.nvim_win_set_buf(0, index_bufnr)
+end
+
+
+-- LASSO TERMINALS
+
+
+function M.open_terminal(n)
+
+    local bufname = 'term://lasso-' .. n
+
+    local existing_bufnr = vim.fn.bufnr(bufname)
+    if existing_bufnr ~= -1 then
+        vim.api.nvim_win_set_buf(0, existing_bufnr)
+        return
+    end
+
+    vim.cmd('terminal')
+    local bufnr = vim.api.nvim_get_current_buf()
+    vim.api.nvim_buf_set_name(bufnr, bufname)
 end
 
 

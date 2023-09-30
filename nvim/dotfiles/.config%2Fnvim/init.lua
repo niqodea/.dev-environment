@@ -69,6 +69,9 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'1', '<cmd>lua lasso.open_marked_f
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'2', '<cmd>lua lasso.open_marked_file(2)<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'3', '<cmd>lua lasso.open_marked_file(3)<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'4', '<cmd>lua lasso.open_marked_file(4)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F1>', '<cmd>lua lasso.open_terminal(1)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F2>', '<cmd>lua lasso.open_terminal(2)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F3>', '<cmd>lua lasso.open_terminal(3)<cr>', {noremap = true})
 
 
 -- References:
