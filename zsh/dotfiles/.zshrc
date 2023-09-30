@@ -75,17 +75,17 @@ function() {
     bindkey -v '^?' backward-delete-char
 
 
-    # SESSION ROOT
-    # We can inject zsh with a session root
-    # Ideally, zsh should always operate inside the session root
+    # ROOT
+    # We can inject zsh with a root
+    # Ideally, zsh should always operate inside the root
     # Programs run from the shell can use this information to contextualize their operation,
     # allowing them to tailor their behavior based on the originating workspace
-    # NOTE: the session root is a first-class citizen, it is always set
-    if [ -z "$ZSH_SESSION_ROOT" ]; then
-        export ZSH_SESSION_ROOT=$HOME
+    # NOTE: the root is a first-class citizen, it is always set
+    if [ -z "$ZSH_ROOT" ]; then
+        export ZSH_ROOT=$HOME
     fi
 
-    alias cds='cd $ZSH_SESSION_ROOT'
+    alias cdr='cd $ZSH_ROOT'
 
 
     # EXTENSIONS
@@ -96,7 +96,7 @@ function() {
     fi
 
     # Source modules
-    local zsh_modules_env_path=$ZSH_SESSION_ROOT/.zsh-modules-env.zshrc
+    local zsh_modules_env_path=$ZSH_ROOT/.zsh-modules-env.zshrc
     if [ -f $zsh_modules_env_path ]; then
         source $zsh_modules_env_path
     fi
