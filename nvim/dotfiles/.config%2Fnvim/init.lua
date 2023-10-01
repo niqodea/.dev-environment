@@ -30,6 +30,7 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'W', ':wall<cr>', {noremap = true}
 
 -- Quick file explorer (we use '-' for consistency with netrw)
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'-', ':Explore<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'_', ':Explore .<cr>', {noremap = true})
 -- Remove instructions banner from netrw
 vim.g.netrw_banner = 0
 
