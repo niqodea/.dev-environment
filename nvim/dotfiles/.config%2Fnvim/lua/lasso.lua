@@ -105,19 +105,18 @@ end
 -- LASSO TERMINALS
 
 
+local terminal_bufnrs = {}
+
 function M.open_terminal(n)
+    local bufnr = terminal_bufnrs[n]
 
-    local bufname = 'term://lasso-' .. n
-
-    local existing_bufnr = vim.fn.bufnr(bufname)
-    if existing_bufnr ~= -1 then
-        vim.api.nvim_win_set_buf(0, existing_bufnr)
+    if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+        vim.api.nvim_win_set_buf(0, bufnr)
         return
     end
 
     vim.cmd('terminal')
-    local bufnr = vim.api.nvim_get_current_buf()
-    vim.api.nvim_buf_set_name(bufnr, bufname)
+    terminal_bufnrs[n] = vim.api.nvim_get_current_buf()
 end
 
 
