@@ -34,3 +34,6 @@
 [submodule "fzf/src"]
 	path = fzf/src
 	url = https://github.com/junegunn/fzf.git
+[submodule "nvim/dotfiles-submodules/copilot.vim"]
+	path = nvim/dotfiles-submodules/copilot.vim
+	url = https://github.com/github/copilot.vim.git

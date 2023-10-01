@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# TODO add installation of nodejs v16.x+ for copilot.vim
+# (the version of nodejs in the apt repository is too old)
+
 set -eux
 
 install_path=$1
