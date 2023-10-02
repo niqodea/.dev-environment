@@ -1,3 +1,5 @@
+utils = require('utils')
+
 -- Use space as leader
 -- Ref: https://stackoverflow.com/a/446293
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
@@ -24,9 +26,12 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'p', ':tabprevious<cr>', {noremap 
 
 -- Quick common actions
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'q', ':quit<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':write<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'Q', ':qall<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':write<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'W', ':wall<cr>', {noremap = true})
+-- These edits are effectively used to reload files
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'e', ':edit<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'E', ':lua utils.reload_buffers()<cr>', {noremap = true})
 
 -- Quick file explorer (we use '-' for consistency with netrw)
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'-', ':Explore<cr>', {noremap = true})
