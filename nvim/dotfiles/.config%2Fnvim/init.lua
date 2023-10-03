@@ -65,7 +65,7 @@ vim.o.relativenumber = true
 vim.cmd('colorscheme slate')
 
 -- Load plugin handling logic
-require("plugins.main")
+require("plugins")
 
 -- Load submodules
 lasso = require("lasso")
