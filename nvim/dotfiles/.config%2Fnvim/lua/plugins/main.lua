@@ -18,12 +18,10 @@ function load_bundle(bundle_name)
     end
 end
 
--- Commands to load a bundle of plugins along with the bundles it is based on
 vim.api.nvim_create_user_command("LoadCore", function()
     load_bundle("core")
 end, {})
 vim.api.nvim_create_user_command("LoadDev", function()
-    load_bundle("core")
     load_bundle("dev")
 end, {})
 
