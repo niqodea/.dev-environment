@@ -19,6 +19,7 @@ function load_bundle(bundle_name)
 end
 
 vim.api.nvim_create_user_command("LoadCore", function()
+    -- TODO: Find vim-surround / vim-comment that won't hardcode keybinds and put it here
     load_bundle("core")
 end, {})
 vim.api.nvim_create_user_command("LoadDev", function()
