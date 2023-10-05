@@ -1,5 +1,3 @@
-utils = require('utils')
-
 -- Use space as leader
 -- Ref: https://stackoverflow.com/a/446293
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
@@ -31,7 +29,7 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'w', ':write<cr>', {noremap = true
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'W', ':wall<cr>', {noremap = true})
 -- These edits are effectively used to reload files
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'e', ':edit<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'E', ':lua utils.reload_buffers()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'E', ':lua require("utils").reload_buffers()<cr>', {noremap = true})
 
 -- Quick file explorer (we use '-' for consistency with netrw)
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'-', ':Explore<cr>', {noremap = true})
@@ -64,22 +62,8 @@ vim.o.relativenumber = true
 -- Color scheme
 vim.cmd('colorscheme slate')
 
--- Load plugin handling logic
-require("plugins")
 
--- Load submodules
-lasso = require("lasso")
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'m', '<cmd>lua lasso.mark_file()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'M', '<cmd>lua lasso.open_index_file()<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'1', '<cmd>lua lasso.open_marked_file(1)<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'2', '<cmd>lua lasso.open_marked_file(2)<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'3', '<cmd>lua lasso.open_marked_file(3)<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'4', '<cmd>lua lasso.open_marked_file(4)<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F1>', '<cmd>lua lasso.open_terminal(1)<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F2>', '<cmd>lua lasso.open_terminal(2)<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F3>', '<cmd>lua lasso.open_terminal(3)<cr>', {noremap = true})
-
-
--- References:
--- * https://www.barbarianmeetscoding.com/boost-your-coding-fu-with-vscode-and-vim/elevating-your-worflow-with-custom-mappings
-
+-- Dev module
+vim.api.nvim_create_user_command('DevStart', function()
+    require('dev')
+end, {})

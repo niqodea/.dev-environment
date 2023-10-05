@@ -1,2 +1,3 @@
+# TODO: Maybe generate this file programmatically instead, like we do for nvim-dev
+# TODO: Maybe also make it a text file instead of a shell script
 # export ZSH_START_EXTRA_MODULES="git tmux venv conda"
-# export ZSH_DEFAULT_LANGUAGE="python"

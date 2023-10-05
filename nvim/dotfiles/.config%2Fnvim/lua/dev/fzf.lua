@@ -1,6 +1,7 @@
--- Set POSIX-compliant find command for MacOS
+vim.cmd('packadd fzf-lua')
 require('fzf-lua').setup({
-  files = { cmd = 'find . -type f' }
+    -- Set POSIX-compliant find command for MacOS
+    files = { cmd = 'find . -type f' }
 })
 
 vim.api.nvim_set_keymap(
@@ -53,4 +54,3 @@ vim.api.nvim_set_keymap(
     '<cmd>lua require("fzf-lua").grep_visual({ cmd = "git grep --line-number --column" })<CR>',
     {noremap = true}
 )
-

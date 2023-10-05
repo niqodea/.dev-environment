@@ -1,5 +1,23 @@
 function() {
 
+    # ROOT
+    # We can inject zsh with a root
+    # Ideally, zsh should always operate inside the root
+    if [ -z "$ZSH_ROOT" ]; then
+        export ZSH_ROOT=$HOME
+    fi
+
+    alias cdr='cd $ZSH_ROOT'
+
+
+    # WORKSPACE CONFIG
+    # We can create a workspace config directory inside a working directory
+    # Programs can use the workspace config to store state and contextualize their operation,
+    # allowing them to tailor their behavior based on the originating working directory
+    # NOTE: WORKSPACE_CONFIG_DIR is a first-class citizen in our dotfiles, many configs rely on it
+    alias mkw='mkdir $WORKSPACE_CONFIG_DIR'
+
+
     # SHELL VARIABLE
     # The zsh we use might be /bin/zsh or, if we manage to compile it, $HOME/.local/bin/zsh
     # Changing SHELL to refer to a locally installed one using chsh is risky, so we dynamically
@@ -73,19 +91,6 @@ function() {
     # Fix backspace only deleting inserted characters in insert mode
     # Ref: https://unix.stackexchange.com/a/290403
     bindkey -v '^?' backward-delete-char
-
-
-    # ROOT
-    # We can inject zsh with a root
-    # Ideally, zsh should always operate inside the root
-    # Programs run from the shell can use this information to contextualize their operation,
-    # allowing them to tailor their behavior based on the originating workspace
-    # NOTE: the root is a first-class citizen, it is always set
-    if [ -z "$ZSH_ROOT" ]; then
-        export ZSH_ROOT=$HOME
-    fi
-
-    alias cdr='cd $ZSH_ROOT'
 
 
     # EXTENSIONS
