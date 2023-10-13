@@ -6,7 +6,7 @@ if vim.fn.isdirectory(workspace_config_dir) == 0 then
 end
 
 local base_module_path = {}  -- Root module
-local modules = {'lsp', 'git', 'fzf', 'lasso', 'copilot'}
+local modules = {'lsp', 'treesitter', 'git', 'fzf', 'lasso', 'copilot'}
 
 vim.api.nvim_create_user_command('DevCreateStartup', function()
     local startup_path = utils.get_startup_path(base_module_path)
