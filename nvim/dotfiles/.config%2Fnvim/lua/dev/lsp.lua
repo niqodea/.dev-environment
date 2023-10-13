@@ -49,6 +49,19 @@ vim.cmd('packadd cmp-nvim-lsp')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 cmp_nvim_lsp.setup()
 
+
+vim.cmd('packadd aerial.nvim')
+require('aerial').setup({
+    backends = { 'lsp' },
+    -- We need to tell aerial we disabled LSP diagnostics to update on buffer change instead
+    -- Ref: https://github.com/stevearc/aerial.nvim/issues/54#issuecomment-1028611526
+    lsp = {
+        diagnostics_trigger_update = false,
+    },
+})
+vim.keymap.set('n', lsp_prefix..'s', '<cmd>AerialOpen<CR>')
+
+
 -- Modules
 local utils = require('dev.utils')
 
