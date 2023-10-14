@@ -1,8 +1,8 @@
-vim.cmd('packadd nvim-lspconfig')
-local lsp_config = require('lspconfig')
-
 -- Mnemonics: a staple symbol of many languages, also easy to type
 local lsp_prefix = vim.g.mapleader..';'
+
+vim.cmd('packadd nvim-lspconfig')
+local lsp_config = require('lspconfig')
 
 vim.keymap.set('n', lsp_prefix..'d', vim.lsp.buf.definition)
 vim.keymap.set('n', lsp_prefix..'D', vim.lsp.buf.declaration)
@@ -62,25 +62,11 @@ require('aerial').setup({
 vim.keymap.set('n', lsp_prefix..'s', '<cmd>AerialOpen<CR>')
 
 
--- Modules
-local utils = require('dev.utils')
+-- Language servers setup
+-- python
+require('lspconfig').pyright.setup{
+    capabilities = require('cmp_nvim_lsp').default_capabilities()
+}
 
-local base_module_path = {'lsp'}
-local modules = {'python'}
-
-vim.api.nvim_create_user_command('DevLspCreateStartup', function()
-    local startup_path = utils.get_startup_path(base_module_path)
-    utils.create_startup_file(startup_path, modules)
-    vim.cmd('edit ' .. startup_path)
-end, {})
-
--- Create start commands for modules
-local python_start_command = utils.get_start_command(
-    utils.get_module_path(base_module_path, 'python')
-)
-vim.api.nvim_create_user_command(python_start_command, function()
-    require('lspconfig').pyright.setup{
-        capabilities = require('cmp_nvim_lsp').default_capabilities()
-    }
-    vim.cmd('LspStart')
-end, {})
+-- Start LSP service
+vim.cmd('LspStart')
