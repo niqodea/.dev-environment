@@ -1,7 +1,8 @@
 -- Use space as leader
--- Ref: https://stackoverflow.com/a/446293
-vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
-vim.g.mapleader = " "
+vim.g.mapleader = '<Space>'
+vim.api.nvim_set_keymap('', '<Space>', '', {noremap = true})
+-- Enable comfy leader + ctrl commands
+vim.api.nvim_set_keymap('', '<C-Space>', '<Space>', {noremap = false})
 -- No leader timeout
 vim.o.timeout = false
 
@@ -19,8 +20,8 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'v', '<C-w>v', {noremap = true})
 
 -- Easier tab handling
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'t', ':tabnew<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'n', ':tabnext<cr>', {noremap = true})
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'p', ':tabprevious<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<C-n>', ':tabnext<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<C-p>', ':tabprevious<cr>', {noremap = true})
 
 -- Quick common actions
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'q', ':quit<cr>', {noremap = true})
