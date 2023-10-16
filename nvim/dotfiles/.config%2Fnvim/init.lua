@@ -32,6 +32,11 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'W', ':wall<cr>', {noremap = true}
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'e', ':edit<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'E', ':lua require("utils").reload_buffers()<cr>', {noremap = true})
 
+-- Quick yank to and put from plus register (system clipboard)
+vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
+vim.keymap.set('n', vim.g.mapleader..'Y', '"+Y')
+vim.keymap.set('n', vim.g.mapleader..'p', '"+p')
+
 -- Quick file explorer (we use '-' for consistency with netrw)
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'-', ':Explore<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'_', ':Explore .<cr>', {noremap = true})
