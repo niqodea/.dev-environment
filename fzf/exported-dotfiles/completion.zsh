@@ -1,1 +1,0 @@
-.fzf.bc/src/shell/completion.zsh
