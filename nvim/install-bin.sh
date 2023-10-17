@@ -19,11 +19,11 @@ make install
 
 
 # Compile and install tree-sitter parsers
-sudo apt install --yes --no-install-recommends gcc
+sudo apt install --yes --no-install-recommends libc6-dev gcc
 
 parsers_path=$root/parsers
 parsers_install_path=$HOME/.local/share/nvim/site/parser
-mkdir -p $parsers_path
+mkdir -p $parsers_install_path
 
 python_parser_path=$parsers_path/python
 python_parser_install_path=$parsers_install_path/python.so
