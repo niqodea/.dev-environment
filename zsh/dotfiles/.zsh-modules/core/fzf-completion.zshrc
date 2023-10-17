@@ -1,1 +1,1 @@
-../../../.gitroot/fzf/exported-dotfiles/completion.zsh
+../../../.modules.bc/fzf/exported-dotfiles/completion.zsh

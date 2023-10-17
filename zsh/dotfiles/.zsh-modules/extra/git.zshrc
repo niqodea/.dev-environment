@@ -1,1 +1,1 @@
-../../../.gitroot/git/exported-dotfiles/git.zshrc
+../../../.modules.bc/git/exported-dotfiles/git.zshrc

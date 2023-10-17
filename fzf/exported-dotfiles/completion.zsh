@@ -1,1 +1,1 @@
-.fzf-root/src/shell/completion.zsh
+.fzf.bc/src/shell/completion.zsh

@@ -1,1 +1,1 @@
-../../../.gitroot/nvim/exported-dotfiles/nvim.zshrc
+../../../.modules.bc/nvim/exported-dotfiles/nvim.zshrc

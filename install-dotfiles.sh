@@ -5,7 +5,8 @@ set -eu
 usage="Usage: $0 [-a] [-m] [-o] [module1,...,moduleN]"
 if [ $# -eq 0 ]; then >&2 echo "$usage"; exit 1; fi
 
-cd $(dirname $0)/.gitroot
+# Set modules directory as cwd using breadcrumbs
+cd $(dirname $0)/.modules.bc
 
 # Default option values
 install_all_modules=false

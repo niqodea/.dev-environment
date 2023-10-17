@@ -1,1 +1,1 @@
-../../../.gitroot/tmux/exported-dotfiles/tmux.zshrc
+../../../.modules.bc/tmux/exported-dotfiles/tmux.zshrc
