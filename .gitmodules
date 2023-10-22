@@ -41,7 +41,7 @@
 	path = nvim/dotfiles-submodules/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "nvim/parsers/tree-sitter-python"]
-	path = nvim/bin-submodules/tree-sitter-python
+	path = python/bin-submodules/tree-sitter-python
 	url = https://github.com/tree-sitter/tree-sitter-python.git
 [submodule "nvim/dotfiles-submodules/aerial.nvim"]
 	path = nvim/dotfiles-submodules/aerial.nvim
