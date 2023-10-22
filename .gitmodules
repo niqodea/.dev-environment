@@ -1,14 +1,14 @@
 [submodule "submodules/core/tmux"]
-	path = tmux/src
+	path = tmux/bin-submodules/tmux
 	url = https://github.com/tmux/tmux.git
 [submodule "submodules/core/zsh"]
-	path = zsh/src
+	path = zsh/bin-submodules/zsh
 	url = https://github.com/zsh-users/zsh.git
 [submodule "submodules/core/nvim"]
-	path = nvim/src
+	path = nvim/bin-submodules/neovim
 	url = https://github.com/neovim/neovim.git
 [submodule "submodules/core/git"]
-	path = git/src
+	path = git/bin-submodules/git
 	url = https://github.com/git/git.git
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary"]
 	path = nvim/dotfiles-submodules/vim-commentary
@@ -32,7 +32,7 @@
 	path = nvim/dotfiles-submodules/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
 [submodule "fzf/src"]
-	path = fzf/src
+	path = fzf/bin-submodules/fzf
 	url = https://github.com/junegunn/fzf.git
 [submodule "nvim/dotfiles-submodules/copilot.vim"]
 	path = nvim/dotfiles-submodules/copilot.vim
@@ -41,7 +41,7 @@
 	path = nvim/dotfiles-submodules/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "nvim/parsers/tree-sitter-python"]
-	path = nvim/parsers/python
+	path = nvim/bin-submodules/tree-sitter-python
 	url = https://github.com/tree-sitter/tree-sitter-python.git
 [submodule "nvim/dotfiles-submodules/aerial.nvim"]
 	path = nvim/dotfiles-submodules/aerial.nvim

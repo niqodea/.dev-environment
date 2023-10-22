@@ -1,1 +1,1 @@
-../../../.zsh.bc/dotfiles-submodules/fzf-src/shell/completion.zsh
+../../../.zsh.bc/dotfiles-submodules/fzf/shell/completion.zsh

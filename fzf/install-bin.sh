@@ -6,7 +6,7 @@ install_path=$1
 
 echo "Compiling and installing nvim..."
 
-src_path=$(dirname $0)/src
-$src_path/install --bin
-mv $src_path/bin/fzf $install_path/bin
-
+repo_path=$(dirname $0)/bin-submodules/fzf
+git submodule update --init $repo_path
+$repo_path/install --bin
+mv $repo_path/bin/fzf $install_path/bin
