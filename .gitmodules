@@ -46,3 +46,6 @@
 [submodule "nvim/dotfiles-submodules/copilot.lua"]
 	path = nvim/dotfiles-submodules/copilot.lua
 	url = https://github.com/zbirenbaum/copilot.lua.git
+[submodule "nvim/dotfiles-submodules/nvim-snippy"]
+	path = nvim/dotfiles-submodules/nvim-snippy
+	url = https://github.com/dcampos/nvim-snippy.git

@@ -22,11 +22,21 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underline = true, ctermfg =
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true, ctermfg = 'DarkYellow' })
 
 
-vim.cmd('packadd nvim-cmp')
-local cmp = require('cmp')
+vim.cmd('packadd nvim-snippy')
+local snippy = require('snippy')
+snippy.setup({
+    mappings = {
+        is = {
+            ['<C-s>'] = snippy.mapping.Expand,
+            ['<Tab>'] = snippy.mapping.Next,
+            ['<S-Tab>'] = snippy.mapping.Previous,
+        },
+    },
+})
 
 vim.o.omnifunc = 'v:lua.vim.lsp.omnifunc'
-
+vim.cmd('packadd nvim-cmp')
+local cmp = require('cmp')
 cmp.setup {
     sources = { { name = 'nvim_lsp' } },
     mapping = cmp.mapping.preset.insert(
@@ -44,6 +54,11 @@ cmp.setup {
             },
         }
     ),
+    snippet = {
+        expand = function(args)
+            snippy.expand_snippet(args.body)
+        end,
+    },
 }
 
 vim.cmd('packadd cmp-nvim-lsp')
