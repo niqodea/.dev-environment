@@ -5,6 +5,11 @@ if vim.fn.isdirectory(workspace_config_dir) == 0 then
     error('Workspace config directory does not exist: ' .. workspace_config_dir)
 end
 
+require('nvim_comment').setup{
+    operator_mapping = vim.g.mapleader .. 'c',
+    line_mapping = vim.g.mapleader .. 'C',
+}
+
 local modules = {'lsp', 'treesitter', 'git', 'fzf', 'lasso', 'copilot'}
 
 -- Create start commands for modules

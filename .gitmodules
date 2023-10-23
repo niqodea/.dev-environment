@@ -10,9 +10,6 @@
 [submodule "submodules/core/git"]
 	path = git/bin-submodules/git
 	url = https://github.com/git/git.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary"]
-	path = nvim/dotfiles-submodules/vim-commentary
-	url = https://github.com/tpope/vim-commentary.git
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/fzf-lua"]
 	path = nvim/dotfiles-submodules/fzf-lua
 	url = https://github.com/ibhagwan/fzf-lua.git
@@ -22,9 +19,6 @@
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-cmp"]
 	path = nvim/dotfiles-submodules/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-gitgutter"]
-	path = nvim/dotfiles-submodules/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/cmp-nvim-lsp"]
 	path = nvim/dotfiles-submodules/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
@@ -46,3 +40,9 @@
 [submodule "nvim/dotfiles-submodules/nvim-snippy"]
 	path = nvim/dotfiles-submodules/nvim-snippy
 	url = https://github.com/dcampos/nvim-snippy.git
+[submodule "nvim/dotfiles-submodules/nvim-comment"]
+	path = nvim/dotfiles-submodules/nvim-comment
+	url = https://github.com/terrortylor/nvim-comment.git
+[submodule "nvim/dotfiles-submodules/gitsigns.nvim"]
+	path = nvim/dotfiles-submodules/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
