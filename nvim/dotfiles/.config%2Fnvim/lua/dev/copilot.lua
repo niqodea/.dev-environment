@@ -1,7 +1,16 @@
--- TODO: Replace with a lua plugin
-vim.cmd('packadd copilot-vim')
+vim.cmd('packadd copilot.lua')
+
+require('copilot').setup({
+    suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        debounce = 100,
+        keymap = {
+            accept = "<C-l>",
+            next = "<C-j>",
+            prev = "<C-k>",
+        },
+    },
+})
 
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'?', '<cmd>Copilot panel<cr>', {noremap = true})
-
-vim.api.nvim_set_keymap('i', '<C-j>', '<Plug>(copilot-next)', {noremap = true})
-vim.api.nvim_set_keymap('i', '<C-k>', '<Plug>(copilot-previous)', {noremap = true})

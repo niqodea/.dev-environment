@@ -31,15 +31,16 @@ cmp.setup {
     sources = { { name = 'nvim_lsp' } },
     mapping = cmp.mapping.preset.insert(
         {
-            -- Trigger completion menu
-            ['<C-Space>'] = cmp.mapping.complete(),
+            -- Scroll through completion items (default keybindings)
+            ['<C-n'] = cmp.mapping.select_next_item(),
+            ['<C-p>'] = cmp.mapping.select_prev_item(),
             -- Scroll through completion item docs
             ['<C-u>'] = cmp.mapping.scroll_docs(-4),
             ['<C-d>'] = cmp.mapping.scroll_docs(4),
             -- Confirm selection item
             ['<CR>'] = cmp.mapping.confirm {
                 behavior = cmp.ConfirmBehavior.Replace,
-                select = true,
+                select = false,  -- Only select when explicitly chosen
             },
         }
     ),

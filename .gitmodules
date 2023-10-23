@@ -34,9 +34,6 @@
 [submodule "fzf/src"]
 	path = fzf/bin-submodules/fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule "nvim/dotfiles-submodules/copilot.vim"]
-	path = nvim/dotfiles-submodules/copilot.vim
-	url = https://github.com/github/copilot.vim.git
 [submodule "nvim/dotfiles-submodules/nvim-treesitter"]
 	path = nvim/dotfiles-submodules/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
@@ -46,3 +43,6 @@
 [submodule "nvim/dotfiles-submodules/aerial.nvim"]
 	path = nvim/dotfiles-submodules/aerial.nvim
 	url = https://github.com/stevearc/aerial.nvim.git
+[submodule "nvim/dotfiles-submodules/copilot.lua"]
+	path = nvim/dotfiles-submodules/copilot.lua
+	url = https://github.com/zbirenbaum/copilot.lua.git
