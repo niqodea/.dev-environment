@@ -13,9 +13,6 @@
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-commentary"]
 	path = nvim/dotfiles-submodules/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/vim-surround"]
-	path = nvim/dotfiles-submodules/vim-surround
-	url = https://github.com/tpope/vim-surround.git
 [submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/fzf-lua"]
 	path = nvim/dotfiles-submodules/fzf-lua
 	url = https://github.com/ibhagwan/fzf-lua.git
