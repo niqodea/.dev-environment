@@ -94,18 +94,18 @@ function() {
 
 
     # EXTENSIONS
-    # Source local zshrc, if it exists
-    local local_zshrc_path=~/.local.zshrc
-    if [[ -f $local_zshrc_path  ]]; then
-        source $local_zshrc_path
+    # Source local zsh config, if it exists
+    local local_zsh_path=~/.local.zsh
+    if [[ -f $local_zsh_path  ]]; then
+        source $local_zsh_path
     fi
 
     # Source modules
-    local zsh_modules_env_path=$ZSH_ROOT/.zsh-modules-env.zshrc
+    local zsh_modules_env_path=$ZSH_ROOT/.zsh-modules-env.zsh
     if [ -f $zsh_modules_env_path ]; then
         source $zsh_modules_env_path
     fi
-    source ~/.zsh-modules/main.zshrc
+    source ~/.zsh-modules/main.zsh
 
 }
 
