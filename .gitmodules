@@ -1,34 +1,34 @@
-[submodule "submodules/core/tmux"]
+[submodule "tmux/bin-submodules/tmux"]
 	path = tmux/bin-submodules/tmux
 	url = https://github.com/tmux/tmux.git
-[submodule "submodules/core/zsh"]
+[submodule "zsh/bin-submodules/zsh"]
 	path = zsh/bin-submodules/zsh
 	url = https://github.com/zsh-users/zsh.git
-[submodule "submodules/core/nvim"]
+[submodule "nvim/bin-submodules/neovim"]
 	path = nvim/bin-submodules/neovim
 	url = https://github.com/neovim/neovim.git
-[submodule "submodules/core/git"]
+[submodule "git/bin-submodules/git"]
 	path = git/bin-submodules/git
 	url = https://github.com/git/git.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/fzf-lua"]
+[submodule "nvim/dotfiles-submodules/fzf-lua"]
 	path = nvim/dotfiles-submodules/fzf-lua
 	url = https://github.com/ibhagwan/fzf-lua.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-lspconfig"]
+[submodule "nvim/dotfiles-submodules/nvim-lspconfig"]
 	path = nvim/dotfiles-submodules/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/nvim-cmp"]
+[submodule "nvim/dotfiles-submodules/nvim-cmp"]
 	path = nvim/dotfiles-submodules/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
-[submodule "nvim/dotfiles/.config%2Fnvim/pack/plugins/opt/cmp-nvim-lsp"]
+[submodule "nvim/dotfiles-submodules/cmp-nvim-lsp"]
 	path = nvim/dotfiles-submodules/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
-[submodule "fzf/src"]
+[submodule "fzf/bin-submodules/fzf"]
 	path = fzf/bin-submodules/fzf
 	url = https://github.com/junegunn/fzf.git
 [submodule "nvim/dotfiles-submodules/nvim-treesitter"]
 	path = nvim/dotfiles-submodules/nvim-treesitter
 	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/parsers/tree-sitter-python"]
+[submodule "python/bin-submodules/tree-sitter-python"]
 	path = python/bin-submodules/tree-sitter-python
 	url = https://github.com/tree-sitter/tree-sitter-python.git
 [submodule "nvim/dotfiles-submodules/aerial.nvim"]
