@@ -1,11 +1,70 @@
+local M = {}
 local utils = require('dev.utils')
 
-require('nvim_comment').setup{
+vim.cmd('packadd nvim-comment')
+M.nvim_comment = require('nvim_comment')
+M.nvim_comment.setup{
     operator_mapping = vim.g.mapleader .. 'c',
     line_mapping = vim.g.mapleader .. 'C',
 }
 
-local modules = {'lsp', 'treesitter', 'git', 'fzf', 'lasso', 'copilot'}
+vim.cmd('packadd nvim-snippy')
+M.snippy = require('snippy')
+M.snippy.setup{
+    mappings = {
+        is = {
+            ['<C-s>'] = M.snippy.mapping.Expand,
+            ['<Tab>'] = M.snippy.mapping.Next,
+            ['<S-Tab>'] = M.snippy.mapping.Previous,
+        },
+    },
+}
+
+vim.cmd('packadd fzf-lua')
+M.fzf_lua = require('fzf-lua')
+M.fzf_lua.setup{
+    -- Set POSIX-compliant find command for MacOS
+    files = { cmd = 'find . -type f' }
+}
+vim.api.nvim_set_keymap(
+    'n',
+    vim.g.mapleader..'f-',
+    '<cmd>lua require("dev").fzf_lua.files()<CR>',
+    {noremap = true}
+)
+vim.api.nvim_set_keymap(
+    'n',
+    vim.g.mapleader..'f/',
+    '<cmd>lua require("dev").fzf_lua.live_grep()<CR>',
+    {noremap = true}
+)
+vim.api.nvim_set_keymap(
+    'n',
+    vim.g.mapleader..'f*',
+    '<cmd>lua require("dev").fzf_lua.grep_cword()<CR>',
+    {noremap = true}
+)
+vim.api.nvim_set_keymap(
+    'v',
+    vim.g.mapleader..'f*',
+    '<cmd>lua require("dev").fzf_lua.grep_visual()<CR>',
+    {noremap = true}
+)
+
+vim.cmd('packadd lasso')
+M.lasso = require('lasso')
+M.lasso.setup{index_path = utils.get_workspace_config_dir() .. '/lasso-index'}
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'m', '<cmd>lua require("dev").lasso.mark_file()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'M', '<cmd>lua require("dev").lasso.open_index_file()<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'1', '<cmd>lua require("dev").lasso.open_marked_file(1)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'2', '<cmd>lua require("dev").lasso.open_marked_file(2)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'3', '<cmd>lua require("dev").lasso.open_marked_file(3)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'4', '<cmd>lua require("dev").lasso.open_marked_file(4)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F1>', '<cmd>lua require("dev").lasso.open_terminal(1)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F2>', '<cmd>lua require("dev").lasso.open_terminal(2)<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<F3>', '<cmd>lua require("dev").lasso.open_terminal(3)<cr>', {noremap = true})
+
+local modules = {'lsp', 'treesitter', 'git', 'copilot'}
 
 -- Create start commands for modules
 local function get_start_command(module)
@@ -46,3 +105,4 @@ vim.api.nvim_create_user_command('DevRunStartup', function()
     end
 end, {})
 
+return M

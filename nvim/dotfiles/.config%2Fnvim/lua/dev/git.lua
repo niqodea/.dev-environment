@@ -8,4 +8,30 @@ vim.api.nvim_set_hl(0, "GitSignsAdd", { ctermfg = 'DarkGreen' })
 vim.api.nvim_set_hl(0, "GitSignsChange", { ctermfg = 'DarkYellow' })
 vim.api.nvim_set_hl(0, "GitSignsDelete", { ctermfg = 'DarkRed' })
 
--- TODO: Add keybindings for hunks
+-- TODO: Add gitsigns keybindings for hunks
+
+-- Fuzzy find through git files
+vim.api.nvim_set_keymap(
+    'n',
+    vim.g.mapleader..'fg-',
+    '<cmd>lua require("dev").fzf_lua.git_files()<CR>',
+    {noremap = true}
+)
+vim.api.nvim_set_keymap(
+    'n',
+    vim.g.mapleader..'fg/',
+    '<cmd>lua require("dev").fzf_lua.live_grep({ cmd = "git grep --line-number --column" })<CR>',
+    {noremap = true}
+)
+vim.api.nvim_set_keymap(
+    'n',
+    vim.g.mapleader..'fg*',
+    '<cmd>lua require("dev").fzf_lua.grep_cword({ cmd = "git grep --line-number --column" })<CR>',
+    {noremap = true}
+)
+vim.api.nvim_set_keymap(
+    'v',
+    vim.g.mapleader..'fg*',
+    '<cmd>lua require("dev").fzf_lua.grep_visual({ cmd = "git grep --line-number --column" })<CR>',
+    {noremap = true}
+)

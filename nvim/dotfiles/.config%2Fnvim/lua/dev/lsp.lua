@@ -21,19 +21,6 @@ vim.diagnostic.config({virtual_text = false, signs = false})
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", { underline = true, ctermfg = 'DarkRed' })
 vim.api.nvim_set_hl(0, "DiagnosticUnderlineWarn", { underline = true, ctermfg = 'DarkYellow' })
 
-
-vim.cmd('packadd nvim-snippy')
-local snippy = require('snippy')
-snippy.setup({
-    mappings = {
-        is = {
-            ['<C-s>'] = snippy.mapping.Expand,
-            ['<Tab>'] = snippy.mapping.Next,
-            ['<S-Tab>'] = snippy.mapping.Previous,
-        },
-    },
-})
-
 vim.o.omnifunc = 'v:lua.vim.lsp.omnifunc'
 vim.cmd('packadd nvim-cmp')
 local cmp = require('cmp')
@@ -56,7 +43,7 @@ cmp.setup {
     ),
     snippet = {
         expand = function(args)
-            snippy.expand_snippet(args.body)
+            require('dev').snippy.expand_snippet(args.body)
         end,
     },
 }
