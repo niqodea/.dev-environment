@@ -1,5 +1,6 @@
 local M = {}
 
+M.command = require('dev.core.command')
 M.comment = require('dev.core.comment')
 M.fuzzy = require('dev.core.fuzzy')
 M.lasso = require('dev.core.lasso')
