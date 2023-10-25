@@ -39,5 +39,5 @@ vim.api.nvim_set_keymap(
 vim.api.nvim_create_user_command('GitStatus', function()
     local title = 'Git Status'
     local command = [[git diff --name-status HEAD | awk '{print $NF ":1:1:" $1}']]
-    require('dev.core').quickfix.populate(title, command)
+    require('dev.core').fix.set_loclist(title, command)
 end, {})
