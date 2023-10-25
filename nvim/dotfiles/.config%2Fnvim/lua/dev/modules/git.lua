@@ -14,24 +14,24 @@ vim.api.nvim_set_hl(0, "GitSignsDelete", { ctermfg = 'DarkRed' })
 vim.api.nvim_set_keymap(
     'n',
     vim.g.mapleader..'fg-',
-    '<cmd>lua require("dev").fzf_lua.git_files()<CR>',
+    '<cmd>lua require("dev.core").fuzzy.fzf_lua.git_files()<CR>',
     {noremap = true}
 )
 vim.api.nvim_set_keymap(
     'n',
     vim.g.mapleader..'fg/',
-    '<cmd>lua require("dev").fzf_lua.live_grep({ cmd = "git grep --line-number --column" })<CR>',
+    '<cmd>lua require("dev.core").fuzzy.fzf_lua.live_grep({ cmd = "git grep --line-number --column" })<CR>',
     {noremap = true}
 )
 vim.api.nvim_set_keymap(
     'n',
     vim.g.mapleader..'fg*',
-    '<cmd>lua require("dev").fzf_lua.grep_cword({ cmd = "git grep --line-number --column" })<CR>',
+    '<cmd>lua require("dev.core").fuzzy.fzf_lua.grep_cword({ cmd = "git grep --line-number --column" })<CR>',
     {noremap = true}
 )
 vim.api.nvim_set_keymap(
     'v',
     vim.g.mapleader..'fg*',
-    '<cmd>lua require("dev").fzf_lua.grep_visual({ cmd = "git grep --line-number --column" })<CR>',
+    '<cmd>lua require("dev.core").fuzzy.fzf_lua.grep_visual({ cmd = "git grep --line-number --column" })<CR>',
     {noremap = true}
 )

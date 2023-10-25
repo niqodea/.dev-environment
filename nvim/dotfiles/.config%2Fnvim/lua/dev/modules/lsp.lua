@@ -1,8 +1,19 @@
+-- Setup language servers for each language
+vim.cmd('packadd nvim-lspconfig')
+vim.cmd('packadd cmp-nvim-lsp')
+local lspconfig = require('lspconfig')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
+cmp_nvim_lsp.setup()
+local language_files = vim.api.nvim_get_runtime_file('lua/dev/modules/lsp-languages/*.lua', true)
+for _, language_file in ipairs(language_files) do
+    language = language_file:match(".+/([^/]+)%.lua")
+    require('dev.modules.lsp-languages.' .. language)(lspconfig, cmp_nvim_lsp)
+end
+-- Start LSP service
+vim.cmd('LspStart')
+
 -- Mnemonics: a staple symbol of many languages, also easy to type
 local lsp_prefix = vim.g.mapleader..';'
-
-vim.cmd('packadd nvim-lspconfig')
-local lsp_config = require('lspconfig')
 
 vim.keymap.set('n', lsp_prefix..'d', vim.lsp.buf.definition)
 vim.keymap.set('n', lsp_prefix..'D', vim.lsp.buf.declaration)
@@ -28,9 +39,6 @@ cmp.setup {
     sources = { { name = 'nvim_lsp' } },
     mapping = cmp.mapping.preset.insert(
         {
-            -- Scroll through completion items (default keybindings)
-            ['<C-n'] = cmp.mapping.select_next_item(),
-            ['<C-p>'] = cmp.mapping.select_prev_item(),
             -- Scroll through completion item docs
             ['<C-u>'] = cmp.mapping.scroll_docs(-4),
             ['<C-d>'] = cmp.mapping.scroll_docs(4),
@@ -43,15 +51,10 @@ cmp.setup {
     ),
     snippet = {
         expand = function(args)
-            require('dev').snippy.expand_snippet(args.body)
+            require('dev.core').snippet.snippy.expand_snippet(args.body)
         end,
     },
 }
-
-vim.cmd('packadd cmp-nvim-lsp')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
-cmp_nvim_lsp.setup()
-
 
 vim.cmd('packadd aerial.nvim')
 require('aerial').setup({
@@ -72,14 +75,3 @@ require('aerial').setup({
     }
 })
 vim.keymap.set('n', lsp_prefix..'s', '<cmd>AerialOpen float<CR>')
-
-
--- Setup language servers for each language
-local language_files = vim.api.nvim_get_runtime_file('lua/dev/lsp-languages/*.lua', true)
-for _, language_file in ipairs(language_files) do
-    language = language_file:match(".+/([^/]+)%.lua")
-    require('dev.lsp-languages.' .. language)
-end
-
--- Start LSP service
-vim.cmd('LspStart')
