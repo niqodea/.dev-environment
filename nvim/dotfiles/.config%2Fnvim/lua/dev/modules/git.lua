@@ -35,3 +35,9 @@ vim.api.nvim_set_keymap(
     '<cmd>lua require("dev.core").fuzzy.fzf_lua.grep_visual({ cmd = "git grep --line-number --column" })<CR>',
     {noremap = true}
 )
+
+vim.api.nvim_create_user_command('GitStatus', function()
+    local title = 'Git Status'
+    local command = [[git diff --name-status HEAD | awk '{print $NF ":1:1:" $1}']]
+    require('dev.core').quickfix.populate(title, command)
+end, {})
