@@ -37,7 +37,5 @@ vim.api.nvim_set_keymap(
 )
 
 vim.api.nvim_create_user_command('GitStatus', function()
-    local name = 'git-status'
-    local command = 'git status --short'
-    require('dev.core').command.open_buffer(name, command)
+    vim.cmd('terminal git status --short')
 end, {})
