@@ -26,6 +26,11 @@ conda create --prefix $jedi_venv_path --yes python=3.8
 $jedi_venv_path/bin/pip install jedi-language-server==0.41.1
 ln -s $jedi_venv_path/bin/jedi-language-server $install_path/bin
 
+ropify_venv_path=$HOME/.ropify-venv
+conda create --prefix $ropify_venv_path --yes python=3.10
+$ropify_venv_path/bin/pip install $root/bin-submodules/ropify
+ln -s $ropify_venv_path/bin/ropify $install_path/bin
+
 sudo apt install --yes --no-install-recommends libc6-dev gcc
 python_parser_path=$root/bin-submodules/tree-sitter-python
 # TODO: Find a way to centralize this definition, maybe .profile env?

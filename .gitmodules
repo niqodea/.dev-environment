@@ -46,3 +46,6 @@
 [submodule "nvim/dotfiles-submodules/gitsigns.nvim"]
 	path = nvim/dotfiles-submodules/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim.git
+[submodule "python/bin-submodules/ropify"]
+	path = python/bin-submodules/ropify
+	url = https://github.com/niqodea/ropify
