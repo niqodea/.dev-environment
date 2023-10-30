@@ -8,3 +8,4 @@
 - Add nvim git command to visualize unchanged file side-by-side with windiff
 - Add nvim git command to visualize merge conflicts with windiff
 - (maybe) move git lua files as exported git dotfiles
+- Create .local/bin before writing to .local/bin (perhaps use .local/bin/ to make it clear it is a dir)
