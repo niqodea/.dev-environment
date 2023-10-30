@@ -15,10 +15,17 @@ return function(lsp_config, cmp_nvim_lsp)
 
     local ropefolder = require('dev.core.utils').get_workspace_config_dir() .. '/ropeproject'
 
-    vim.api.nvim_create_user_command('PythonRopifyMove', function()
+    vim.api.nvim_create_user_command('PythonRopifyMoveModule', function()
+        local resource = vim.fn.expand('%')
+        local command = 'ropify move-module ' .. resource .. ' --ropefolder ' .. ropefolder
+        vim.cmd('split | terminal ' .. command)
+        vim.api.nvim_buf_set_option(0, 'buflisted', false)
+    end, {})
+
+    vim.api.nvim_create_user_command('PythonRopifyMoveSymbol', function()
         local resource = vim.fn.expand('%')
         local offset = vim.fn.line2byte(vim.fn.line('.')) + vim.fn.col('.') - 1
-        local command = 'ropify move ' .. resource .. ' ' .. offset .. ' --ropefolder ' .. ropefolder
+        local command = 'ropify move-symbol ' .. resource .. ' ' .. offset .. ' --ropefolder ' .. ropefolder
         vim.cmd('split | terminal ' .. command)
         vim.api.nvim_buf_set_option(0, 'buflisted', false)
     end, {})
