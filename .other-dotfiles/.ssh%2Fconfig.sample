@@ -3,6 +3,6 @@ Host abc
     hostname 0.0.0.0
 
     # Attach to tmux server if running, or start a new one with login environment
-    RemoteCommand tmux attach || sh -l -c "tmux new"
+    RemoteCommand sh -l -c "tmux ls &> /dev/null && tmux attach || tmux new"
     RequestTTY yes
 
