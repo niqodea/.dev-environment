@@ -17,7 +17,18 @@ function M.reload_buffers()
             table.insert(modified_bufnrs, bufnr)
             goto continue
         end
-        vim.api.nvim_buf_call(bufnr, function() vim.cmd('edit') end)
+        vim.api.nvim_buf_call(bufnr, function()
+            -- NOTE: editing a buffer with nvim_buf_call has the following issue:
+            -- https://github.com/neovim/neovim/issues/25877
+            -- For now, as a hack, we temporarily disable matchparen in the following way
+            local matchpairs = vim.o.matchpairs
+            vim.o.matchpairs = ""
+
+            vim.cmd('edit')
+
+            vim.o.matchpairs = matchpairs
+        end)
+
         ::continue::
     end
 
