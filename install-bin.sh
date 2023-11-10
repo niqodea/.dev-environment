@@ -29,6 +29,8 @@ else
     modules=${1+$1}  # empty string if unset
 fi
 
+mkdir -p $install_path/bin
+
 IFS=","
 for module in $modules; do
     echo "Installing binary for module $module"
