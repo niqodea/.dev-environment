@@ -9,3 +9,4 @@
 - Add nvim git command to visualize merge conflicts with windiff
 - (maybe) move git lua files as exported git dotfiles
 - Create .local/bin before writing to .local/bin (perhaps use .local/bin/ to make it clear it is a dir)
+- ssh mode with local nvim buffers: technically, it is possible with sshfs, but running some locally installed commands on remote files takes forever. another way is use ssh port forwarding to run remote commands and fetch their output locally, but this either assumes local and remote paths to be the same or path mapping support, which is not the case for many commands, including some lsp servers.
