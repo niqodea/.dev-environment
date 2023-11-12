@@ -9,3 +9,6 @@
 - ssh mode with local nvim buffers: technically, it is possible with sshfs, but running some locally installed commands on remote files takes forever. another way is use ssh port forwarding to run remote commands and fetch their output locally, but this either assumes local and remote paths to be the same or path mapping support, which is not the case for many commands, including some lsp servers.
 - write handy snippets (e.g. python)
 - Differentiate git alias (core) and prompt (extra) zsh modules
+- Make e.g. pass.zsh also sourceable by sh to leverage pass-short-show in tmux actions. This will probably require `ZSH_ROOT` to be renamed `SH_ROOT`. Probably best to have a conditional setup of the variable (if unset) in .profile.
+- Add Clipboard.ahk to windows-scripts
+- Explore whether setting a different default command can make the process of setting `ZSH_ROOT` cleaner (probably not ideal to break commands like split sh or split zsh though)
