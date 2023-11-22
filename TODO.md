@@ -12,3 +12,5 @@
 - Make e.g. pass.zsh also sourceable by sh to leverage pass-short-show in tmux actions. This will probably require `ZSH_ROOT` to be renamed `SH_ROOT`. Probably best to have a conditional setup of the variable (if unset) in .profile.
 - Add Clipboard.ahk to windows-scripts
 - Explore whether setting a different default command can make the process of setting `ZSH_ROOT` cleaner (probably not ideal to break commands like split sh or split zsh though)
+- Only pull repository info for the specific commit
+- Handle zsh histories and history merge in a session and pane-specific way
