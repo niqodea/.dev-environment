@@ -72,9 +72,6 @@ function() {
     # Enable autocompletion for . and ..
     # Ref: https://stackoverflow.com/a/716926
     zstyle ':completion:*' special-dirs true
-    # Enable lower-to-upper case matching
-    # Ref: https://stackoverflow.com/a/68794830
-    zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}'
     # Enable group names
     # Ref: https://stackoverflow.com/a/40869479
     zstyle ':completion:*' group-name ''
