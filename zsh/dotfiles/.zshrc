@@ -65,24 +65,32 @@ function() {
 
 
     # COMPLETION
-    # Ref: https://zsh.sourceforge.io/Doc/Release/Completion-System.html
-    autoload -Uz compinit
-    compinit
+    # Ref: https://thevaluable.dev/zsh-completion-guide-examples/
+    # Ref: https://github.com/Phantas0s/.dotfiles/blob/4c41b4865528714dbdeb18c8da42b4d1ca5a2182/zsh/completion.zsh
+    autoload -Uz compinit; compinit
 
-    # List possible autocompletions and highlight selected one
     zstyle ':completion:*' menu select
+    setopt MENU_COMPLETE  # Immediately jump into menu completion on tab
+    unsetopt LIST_BEEP  # Disable beep on tab completion
+    # Beep on exit (with ^C) can technically be disabled by wrapping the widget for
+    # autocomplete to set NO_BEEP when run, but it's not worth the effort, too brittle
 
-    # Use shift-TAB to go back to previous autocompletion
-    # Ref: https://unix.stackexchange.com/a/84869
+    zstyle ':completion:*' group-name ''  # Use group names as separators
+    zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+    zstyle ':completion:*:*:*:*:warnings' format '%F{red}no matches found%f'
+
+    # Vim-like keybindings for menu navigation
     zmodload -i zsh/complist
-    bindkey -M menuselect '^[[Z' reverse-menu-complete
+    bindkey -M menuselect '^h' vi-backward-char
+    bindkey -M menuselect '^k' vi-up-line-or-history
+    bindkey -M menuselect '^j' vi-down-line-or-history
+    bindkey -M menuselect '^l' vi-forward-char
+    bindkey -M menuselect '^d' vi-forward-word
+    bindkey -M menuselect '^u' vi-backward-word
+
     # Enable autocompletion for . and ..
     # Ref: https://stackoverflow.com/a/716926
     zstyle ':completion:*' special-dirs true
-    # Enable group names
-    # Ref: https://stackoverflow.com/a/40869479
-    zstyle ':completion:*' group-name ''
-    zstyle ':completion:*' format '%F{cyan}-- %d --%f'
 
 
     # MISCELLAENOUS
