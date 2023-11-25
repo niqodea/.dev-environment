@@ -57,6 +57,13 @@ function() {
     setopt INC_APPEND_HISTORY  # Append to history file immediately
 
 
+    # DIRECTORY STACK
+    # Ref: https://thevaluable.dev/zsh-install-configure-mouseless/
+    setopt AUTO_PUSHD
+    setopt PUSHD_IGNORE_DUPS
+    setopt PUSHD_SILENT
+
+
     # COMPLETION
     # Ref: https://zsh.sourceforge.io/Doc/Release/Completion-System.html
     autoload -Uz compinit
