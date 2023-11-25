@@ -1,7 +1,8 @@
 # Listing files
-alias ls="ls --color"  # Add colors to ls
-alias ll="ls -l -h"  # -h is for human-readable file size
-alias la="ls -a"
+alias l="ls --color"  # Add colors to ls
+alias la="l -a"
+alias ll="l -hl"  # -h is for human-readable file size
+alias lal="l -ahl"
 
 # Easier navigation in directories
 alias ..="cd .."
