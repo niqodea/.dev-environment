@@ -22,6 +22,9 @@ alias psg="ps -eo pid,user,etime,comm | grep"
 # Kill them
 alias k9="kill -9"  # SIGKILL
 
+# Load updated global history
+alias fcr="fc -R"
+
 # Activate venv
 function av () {
     if [ -n "${VIRTUAL_ENV+x}" ]; then

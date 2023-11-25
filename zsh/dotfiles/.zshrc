@@ -50,13 +50,11 @@ function() {
 
 
     # HISTORY
-    # Ref: https://www.soberkoder.com/better-zsh-history/
-    HISTFILE=~/.zsh_history
+    HISTFILE=$ZSH_ROOT/.zsh_history
     HISTSIZE=100000  # Num commands stored in the file
     SAVEHIST=100000  # Num commands loaded into memory from history file
-    # Ref: https://zsh.sourceforge.io/Doc/Release/Options.html#History
-    setopt histignorealldups
-    setopt sharehistory
+    setopt HIST_IGNORE_ALL_DUPS  # Don't store duplicate commands
+    setopt INC_APPEND_HISTORY  # Append to history file immediately
 
 
     # COMPLETION
