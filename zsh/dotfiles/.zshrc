@@ -70,7 +70,6 @@ function() {
     autoload -Uz compinit; compinit
 
     zstyle ':completion:*' menu select
-    setopt MENU_COMPLETE  # Immediately jump into menu completion on tab
     unsetopt LIST_BEEP  # Disable beep on tab completion
     # Beep on exit (with ^C) can technically be disabled by wrapping the widget for
     # autocomplete to set NO_BEEP when run, but it's not worth the effort, too brittle
