@@ -6,6 +6,7 @@ install_path=$1
 
 echo "Downloading and installing breadcrumbs..."
 repo_path=$(dirname $0)/bin-submodules/breadcrumbs
+git submodule update --init $repo_path
 cp $repo_path/breadcrumbs $install_path/bin/
 
 # Building from source requires go to be installed, not worth it for now
