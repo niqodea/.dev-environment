@@ -55,3 +55,6 @@
 [submodule "utils/bin-submodules/password-store"]
 	path = utils/bin-submodules/password-store
 	url = https://git.zx2c4.com/password-store
+[submodule "nvim/dotfiles-submodules/lasso.nvim"]
+	path = nvim/dotfiles-submodules/lasso.nvim
+	url = https://github.com/niqodea/lasso.nvim.git
