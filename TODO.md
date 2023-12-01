@@ -8,7 +8,6 @@
 - (maybe) move git lua files as exported git dotfiles
 - ssh mode with local nvim buffers: technically, it is possible with sshfs, but running some locally installed commands on remote files takes forever. another way is use ssh port forwarding to run remote commands and fetch their output locally, but this either assumes local and remote paths to be the same or path mapping support, which is not the case for many commands, including some lsp servers.
 - write handy snippets (e.g. python)
-- Differentiate git alias (core) and prompt (extra) zsh modules
 - Add Clipboard.ahk to windows-scripts
 - Only pull repository info for the specific commit
 - Set zsh as default command shell in tmux and use zshenv to set aliases and functions that need to be accessed for scripting, like pass-shortcut-show
