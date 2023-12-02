@@ -10,5 +10,5 @@
 - write handy snippets (e.g. python)
 - Add Clipboard.ahk to windows-scripts
 - Only pull repository info for the specific commit
-- Set zsh as default command shell in tmux and use zshenv to set aliases and functions that need to be accessed for scripting, like pass-shortcut-show
+- Set zsh as default command shell in tmux and use zshenv to set aliases and functions that need to be accessed for scripting, like pass-shortcut-show (or, alternatively, maybe it's better to create a script for pass-shortcut-show to put it in the PATH and have it defined in /bin/sh as well)
 - Extract tmux nest mode as a separate git submodule
