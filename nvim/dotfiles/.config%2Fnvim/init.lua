@@ -19,7 +19,7 @@ vim.api.nvim_set_keymap('n', vim.g.mapleader..'s', '<C-w>s', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'v', '<C-w>v', {noremap = true})
 
 -- Easier tab handling
-vim.api.nvim_set_keymap('n', vim.g.mapleader..'t', ':tabnew<cr>', {noremap = true})
+vim.api.nvim_set_keymap('n', vim.g.mapleader..'<C-t>', ':tabnew<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'<C-n>', ':tabnext<cr>', {noremap = true})
 vim.api.nvim_set_keymap('n', vim.g.mapleader..'<C-p>', ':tabprevious<cr>', {noremap = true})
 
