@@ -15,4 +15,3 @@ make configure
 ./configure --prefix=$install_path
 # Do not localize Git and do not install gitk/git-gui
 make install install-man NO_GETTEXT=YesPlease NO_TCLTK=YesPlease
-

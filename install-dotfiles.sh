@@ -2,6 +2,9 @@
 
 set -eu
 
+# Set modules directory as cwd using breadcrumbs
+cd $(dirname $0)/.modules.bc
+
 if [ $# -eq 0 ]; then
     # Install all modules
     modules=$(ls -d */ | tr -d "/" | xargs)
@@ -12,16 +15,16 @@ fi
 backup_path=$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)
 
 for module in $modules; do
-    source_dotfiles_path=$module/dotfiles
 
-    if [ ! -d $source_dotfiles_path ]; then
-        >&2 echo "Dotfiles directory not found for module $module"
+    if [ ! -d $module ]; then
+        >&2 echo "Module $module not found"
         continue
     fi
 
     echo "Installing dotfiles for module $module"
-
+    source_dotfiles_path=$module/dotfiles
     dotfiles_submodules_path=$module/dotfiles-submodules
+
     if [ -d $dotfiles_submodules_path ]; then
         echo "Pulling Git submodules for dotfiles of module $module"
         for submodule_path in $dotfiles_submodules_path/*; do
@@ -56,5 +59,7 @@ for module in $modules; do
 done
 
 if [ -e $backup_path ]; then
-    echo "Backed up overwritten files in $backup_path"
+    echo "Backed up overwritten dotfiles in $backup_path"
+else
+    echo "All dotfiles already up-to-date, no files overwritten"
 fi

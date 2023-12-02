@@ -18,4 +18,3 @@ sh autogen.sh
 ./configure --prefix=$install_path
 make
 make install
-

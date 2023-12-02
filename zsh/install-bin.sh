@@ -14,4 +14,3 @@ sudo apt install --yes --no-install-recommends autoconf gcc make ncurses-dev yod
 ./configure --prefix=$install_path
 make
 make install
-
