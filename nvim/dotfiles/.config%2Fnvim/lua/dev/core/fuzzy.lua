@@ -8,29 +8,9 @@ M.fzf_lua.setup{
     files = { cmd = 'find . -type f' }
 }
 
-vim.api.nvim_set_keymap(
-    'n',
-    vim.g.mapleader..'f-',
-    '<cmd>lua require("dev.core.fuzzy").fzf_lua.files()<CR>',
-    {noremap = true}
-)
-vim.api.nvim_set_keymap(
-    'n',
-    vim.g.mapleader..'f/',
-    '<cmd>lua require("dev.core.fuzzy").fzf_lua.live_grep()<CR>',
-    {noremap = true}
-)
-vim.api.nvim_set_keymap(
-    'n',
-    vim.g.mapleader..'f*',
-    '<cmd>lua require("dev.core.fuzzy").fzf_lua.grep_cword()<CR>',
-    {noremap = true}
-)
-vim.api.nvim_set_keymap(
-    'v',
-    vim.g.mapleader..'f*',
-    '<cmd>lua require("dev.core.fuzzy").fzf_lua.grep_visual()<CR>',
-    {noremap = true}
-)
+vim.keymap.set('n', vim.g.mapleader..'f-', function() M.fzf_lua.files() end)
+vim.keymap.set('n', vim.g.mapleader..'f/', function() M.fzf_lua.live_grep() end)
+vim.keymap.set('n', vim.g.mapleader..'f*', function() M.fzf_lua.grep_cword() end)
+vim.keymap.set('v', vim.g.mapleader..'f*', function() M.fzf_lua.grep_visual() end)
 
 return M
