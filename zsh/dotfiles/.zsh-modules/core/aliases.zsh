@@ -39,10 +39,10 @@ function av () {
         return 1
     fi
 
-    export VIRTUAL_ENV="$venv_path"
-    export PATH="$venv_path"/bin:"$PATH"
+    export VIRTUAL_ENV="$(realpath "$venv_path")"
+    export PATH="$VIRTUAL_ENV/bin:$PATH"
 
-    # Assign best effort id to the venv
-    local venv_id=$(echo "$venv_path" | md5sum | cut -c 1-4)
+    # Assign best effort id to the venv (probability of collision =~ 1/2^16)
+    local venv_id="$(echo "$VIRTUAL_ENV" | md5sum | cut -c 1-4)"
     setup_prompt_base "[venv-$venv_id]$PROMPT_BASE"
 }
