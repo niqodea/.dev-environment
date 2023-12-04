@@ -6,12 +6,12 @@
 
 set -eux
 
-root=$(dirname "$(realpath "$0")")
-install_path=$1
+root="$(dirname "$(realpath "$0")")"
+install_path="$1"
 
-echo "Compiling and installing tmux..."
+echo 'Compiling and installing tmux...'
 
-repo_path=$root/bin-submodules/tmux
+repo_path="$root/bin-submodules/tmux"
 git submodule update --init "$repo_path"
 cd "$repo_path"
 sudo apt install --yes --no-install-recommends autoconf automake bison libevent-dev libncurses5-dev pkg-config

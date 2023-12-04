@@ -4,7 +4,7 @@ function() {
     # We can inject zsh with a root
     # Ideally, zsh should always operate inside the root
     if [ -z "$ZSH_ROOT" ]; then
-        export ZSH_ROOT=$HOME
+        export ZSH_ROOT="$HOME"
     fi
 
     alias cdr='cd "$ZSH_ROOT"'
@@ -23,34 +23,34 @@ function() {
     # Changing SHELL to refer to a locally installed one using chsh is risky, so we dynamically
     # update it to refer to the currently running zsh instead
     # Ref: https://www.cyberciti.biz/tips/how-do-i-find-out-what-shell-im-using.html
-    export SHELL=$(readlink /proc/"$$"/exe)
+    export SHELL="$(readlink "/proc/$$/exe")"
 
 
     # PROMPT SETUP
     setopt PROMPT_SUBST
 
     function setup_prompt_base() {
-        export PROMPT_BASE=$1
+        export PROMPT_BASE="$1"
 
-        local COLOR_OFF="%f"
-        local SHELL_STATE="%#"
+        local COLOR_OFF='%f'
+        local SHELL_STATE='%#'
         export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
     }
 
     if [ -z "$PROMPT_BASE" ]; then
-        local COLOR_USERHOST="%F{099}"  # Purple
-        local COLOR_CWD="%F{220}"  # Yellow
+        local COLOR_USERHOST='%F{099}'  # Purple
+        local COLOR_CWD='%F{220}'  # Yellow
 
-        local USER="%n"
-        local HOST="%m"
-        local CWD="%~"
+        local USER='%n'
+        local HOST='%m'
+        local CWD='%~'
 
         setup_prompt_base "${COLOR_USERHOST}${USER}@${HOST}${COLOR_CWD}[${CWD}]"
     fi
 
 
     # HISTORY
-    HISTFILE=$ZSH_ROOT/.zsh_history
+    HISTFILE="$ZSH_ROOT/.zsh_history"
     HISTSIZE=100000  # Num commands stored in the file
     SAVEHIST=100000  # Num commands loaded into memory from history file
     setopt HIST_IGNORE_ALL_DUPS  # Don't store duplicate commands
@@ -69,7 +69,7 @@ function() {
     # Ref: https://github.com/Phantas0s/.dotfiles/blob/4c41b4865528714dbdeb18c8da42b4d1ca5a2182/zsh/completion.zsh
     autoload -Uz compinit; compinit
 
-    zstyle ':completion:*' menu select
+    zstyle ':completion:*' menu 'select'
     unsetopt LIST_BEEP  # Disable beep on tab completion
     # Beep on exit (with ^C) can technically be disabled by wrapping the widget for
     # autocomplete to set NO_BEEP when run, but it's not worth the effort, too brittle
@@ -80,16 +80,16 @@ function() {
 
     # Vim-like keybindings for menu navigation
     zmodload -i zsh/complist
-    bindkey -M menuselect '^h' vi-backward-char
-    bindkey -M menuselect '^k' vi-up-line-or-history
-    bindkey -M menuselect '^j' vi-down-line-or-history
-    bindkey -M menuselect '^l' vi-forward-char
-    bindkey -M menuselect '^d' vi-forward-word
-    bindkey -M menuselect '^u' vi-backward-word
+    bindkey -M menuselect '^h' 'vi-backward-char'
+    bindkey -M menuselect '^k' 'vi-up-line-or-history'
+    bindkey -M menuselect '^j' 'vi-down-line-or-history'
+    bindkey -M menuselect '^l' 'vi-forward-char'
+    bindkey -M menuselect '^d' 'vi-forward-word'
+    bindkey -M menuselect '^u' 'vi-backward-word'
 
     # Enable autocompletion for . and ..
     # Ref: https://stackoverflow.com/a/716926
-    zstyle ':completion:*' special-dirs true
+    zstyle ':completion:*' special-dirs 'true'
 
 
     # MISCELLAENOUS
@@ -104,17 +104,17 @@ function() {
 
     # EXTENSIONS
     # Source local zsh config, if it exists
-    local local_zsh_path=~/.local.zsh
+    local local_zsh_path="$HOME/.local.zsh"
     if [[ -f "$local_zsh_path"  ]]; then
         source "$local_zsh_path"
     fi
 
     # Source modules
-    local zsh_modules_env_path=$ZSH_ROOT/.zsh-modules-env.zsh
+    local zsh_modules_env_path="$ZSH_ROOT/.zsh-modules-env.zsh"
     if [ -f "$zsh_modules_env_path" ]; then
         source "$zsh_modules_env_path"
     fi
-    source ~/.zsh-modules/main.zsh
+    source "$HOME/.zsh-modules/main.zsh"
 
 }
 
