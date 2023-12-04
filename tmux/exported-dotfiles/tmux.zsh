@@ -15,10 +15,10 @@ function () {
     tmux select-pane -T ""
     function set_tmux_pane_title() {
         COMMAND=$1
-        tmux select-pane -t $TMUX_PANE -T $COMMAND
+        tmux select-pane -t "$TMUX_PANE" -T "$COMMAND"
     }
     function reset_tmux_pane_title() {
-        tmux select-pane -t $TMUX_PANE -T ""
+        tmux select-pane -t "$TMUX_PANE" -T ""
     }
     # Call these functions before and after a command
     preexec_functions+=(set_tmux_pane_title)

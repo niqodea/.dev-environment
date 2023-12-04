@@ -7,7 +7,7 @@ function() {
         export ZSH_ROOT=$HOME
     fi
 
-    alias cdr='cd $ZSH_ROOT'
+    alias cdr='cd "$ZSH_ROOT"'
 
 
     # WORKSPACE CONFIG
@@ -15,7 +15,7 @@ function() {
     # Programs can use the workspace config to store state and contextualize their operation,
     # allowing them to tailor their behavior based on the originating working directory
     # NOTE: WORKSPACE_CONFIG_DIR is a first-class citizen in our dotfiles, many configs rely on it
-    alias mkw='mkdir $WORKSPACE_CONFIG_DIR'
+    alias mkw='mkdir "$WORKSPACE_CONFIG_DIR"'
 
 
     # SHELL VARIABLE
@@ -23,7 +23,7 @@ function() {
     # Changing SHELL to refer to a locally installed one using chsh is risky, so we dynamically
     # update it to refer to the currently running zsh instead
     # Ref: https://www.cyberciti.biz/tips/how-do-i-find-out-what-shell-im-using.html
-    export SHELL=$(readlink /proc/$$/exe)
+    export SHELL=$(readlink /proc/"$$"/exe)
 
 
     # PROMPT SETUP
@@ -105,14 +105,14 @@ function() {
     # EXTENSIONS
     # Source local zsh config, if it exists
     local local_zsh_path=~/.local.zsh
-    if [[ -f $local_zsh_path  ]]; then
-        source $local_zsh_path
+    if [[ -f "$local_zsh_path"  ]]; then
+        source "$local_zsh_path"
     fi
 
     # Source modules
     local zsh_modules_env_path=$ZSH_ROOT/.zsh-modules-env.zsh
-    if [ -f $zsh_modules_env_path ]; then
-        source $zsh_modules_env_path
+    if [ -f "$zsh_modules_env_path" ]; then
+        source "$zsh_modules_env_path"
     fi
     source ~/.zsh-modules/main.zsh
 

@@ -34,15 +34,15 @@ function av () {
 
     local venv_path="$(pwd -P)/$WORKSPACE_CONFIG_DIR/venv"
 
-    if [ ! -d $venv_path ]; then
+    if [ ! -d "$venv_path" ]; then
         >&2 echo "No virtual environment found at $venv_path"
         return 1
     fi
 
-    export VIRTUAL_ENV=$venv_path
-    export PATH=$venv_path/bin:$PATH
+    export VIRTUAL_ENV="$venv_path"
+    export PATH="$venv_path"/bin:"$PATH"
 
     # Assign best effort id to the venv
-    local venv_id=$(echo $venv_path | md5sum | cut -c 1-4)
+    local venv_id=$(echo "$venv_path" | md5sum | cut -c 1-4)
     setup_prompt_base "[venv-$venv_id]$PROMPT_BASE"
 }
