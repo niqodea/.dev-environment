@@ -75,7 +75,7 @@ function() {
     # autocomplete to set NO_BEEP when run, but it's not worth the effort, too brittle
 
     zstyle ':completion:*' group-name ''  # Use group names as separators
-    zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+    zstyle ':completion:*:*:*:*:descriptions' format '%F{cyan}-- %d --%f'
     zstyle ':completion:*:*:*:*:warnings' format '%F{red}no matches found%f'
 
     # Vim-like keybindings for menu navigation
