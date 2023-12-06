@@ -1,0 +1,43 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -eq 0 ]; then
+    >&2 echo "Error: no command specified"
+    exit 1
+fi
+
+command="$1"
+shift
+
+if [ "$command" = 'setup' ]; then
+    shortcuts_path="$PASSWORD_STORE_DIR/shortcuts"
+    mkdir "$shortcuts_path"
+    # Set up breadcrumbs (ref: https://github.com/niqodea/breadcrumbs)
+    breadcrumbs -s "$PASSWORD_STORE_DIR" -t "$shortcuts_path" -n "password-store"
+
+elif [ "$command" = 'add' ]; then
+    item=$1
+
+    if [ ! -e "$PASSWORD_STORE_DIR/$item.gpg" ]; then
+        >&2 echo "Error: $item not in the password store."
+        return 1
+    fi
+
+    shortcuts_path="$PASSWORD_STORE_DIR/shortcuts"
+
+    shortcut_idx=1
+    while [ -e "$shortcuts_path/$shortcut_idx.gpg" ]; do
+        shortcut_idx="$((shortcut_idx + 1))"
+    done
+
+    ln -s ".password-store.bc/$item.gpg" "$shortcuts_path/$shortcut_idx.gpg"
+
+elif [ "$command" = 'show' ]; then
+    shortcut_idx="$1"
+    pass show "shortcuts/$shortcut_idx"
+
+else
+    >&2 echo "Error: unknown command $command"
+    exit 1
+fi
