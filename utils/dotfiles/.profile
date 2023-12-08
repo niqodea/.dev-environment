@@ -7,3 +7,5 @@ export WORKSPACE_CONFIG_DIR=".workspace-config"
 # NOTE: This TERM variable is not inherited by the tmux server when started from the shell
 #       Use default-terminal to set the default TERM for the tmux server
 export TERM="tmux-256color"
+
+export PASSWORD_STORE_DIR="$HOME/.password-store"

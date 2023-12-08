@@ -1,0 +1,40 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -eq 0 ]; then
+    >&2 echo "Error: no command specified"
+    exit 1
+fi
+
+command="$1"
+shift
+
+shortcuts_path="$ZSH_ROOT/.pass-shortcuts"
+
+if [ "$command" = 'add' ]; then
+    item="$1"
+
+    if [ ! -e "$PASSWORD_STORE_DIR/$item.gpg" ]; then
+        >&2 echo "Error: $item is not in the password store."
+        return 1
+    fi
+
+    echo "$item" >> "$shortcuts_path"
+
+elif [ "$command" = 'show' ]; then
+    shortcut_idx="$1"
+
+    item="$(sed -n "${shortcut_idx}p" "$shortcuts_path")"
+
+    if [ -z "$item" ]; then
+        >&2 echo "Error: password shortcut $shortcut_idx not found"
+        exit 1
+    fi
+
+    pass show "$item"
+
+else
+    >&2 echo "Error: unknown command $command"
+    exit 1
+fi
