@@ -11,4 +11,4 @@
 - Add Clipboard.ahk to windows-scripts
 - Only pull repository info for the specific commit
 - Extract tmux nest mode as a separate git submodule
-- Use .profile as the environment source of truth. It can be resourced by tmux, which will override the `??_ROOT` env variable before doing so. We can avoid to run self-referential updates like PATH twice by having a guardian env variable. We can also have various modules for profile.
+- If needed in the future, use a .??-root.env file sourced by .profile and resourced by tmux, which sets env variables that depend on `??_ROOT`.
