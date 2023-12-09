@@ -11,3 +11,4 @@
 - Add Clipboard.ahk to windows-scripts
 - Only pull repository info for the specific commit
 - If needed in the future, use a .??-root.env file sourced by .profile and resourced by tmux, which sets env variables that depend on `??_ROOT`.
+- create separate repo for corne keyboard file with related documentation
