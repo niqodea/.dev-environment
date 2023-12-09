@@ -1,51 +1,54 @@
-[submodule "tmux/bin-submodules/tmux"]
-	path = tmux/bin-submodules/tmux
-	url = https://github.com/tmux/tmux.git
-[submodule "zsh/bin-submodules/zsh"]
-	path = zsh/bin-submodules/zsh
-	url = https://github.com/zsh-users/zsh.git
-[submodule "nvim/bin-submodules/neovim"]
-	path = nvim/bin-submodules/neovim
-	url = https://github.com/neovim/neovim.git
 [submodule "git/bin-submodules/git"]
 	path = git/bin-submodules/git
 	url = https://github.com/git/git.git
-[submodule "nvim/dotfiles-submodules/fzf-lua"]
-	path = nvim/dotfiles-submodules/fzf-lua
-	url = https://github.com/ibhagwan/fzf-lua.git
-[submodule "nvim/dotfiles-submodules/nvim-lspconfig"]
-	path = nvim/dotfiles-submodules/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
-[submodule "nvim/dotfiles-submodules/nvim-cmp"]
-	path = nvim/dotfiles-submodules/nvim-cmp
-	url = https://github.com/hrsh7th/nvim-cmp.git
-[submodule "nvim/dotfiles-submodules/cmp-nvim-lsp"]
-	path = nvim/dotfiles-submodules/cmp-nvim-lsp
-	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
-[submodule "nvim/dotfiles-submodules/nvim-treesitter"]
-	path = nvim/dotfiles-submodules/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
-[submodule "python/bin-submodules/tree-sitter-python"]
-	path = python/bin-submodules/tree-sitter-python
-	url = https://github.com/tree-sitter/tree-sitter-python.git
+[submodule "nvim/bin-submodules/neovim"]
+	path = nvim/bin-submodules/neovim
+	url = https://github.com/neovim/neovim.git
 [submodule "nvim/dotfiles-submodules/aerial.nvim"]
 	path = nvim/dotfiles-submodules/aerial.nvim
 	url = https://github.com/stevearc/aerial.nvim.git
+[submodule "nvim/dotfiles-submodules/cmp-nvim-lsp"]
+	path = nvim/dotfiles-submodules/cmp-nvim-lsp
+	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
 [submodule "nvim/dotfiles-submodules/copilot.lua"]
 	path = nvim/dotfiles-submodules/copilot.lua
 	url = https://github.com/zbirenbaum/copilot.lua.git
-[submodule "nvim/dotfiles-submodules/nvim-snippy"]
-	path = nvim/dotfiles-submodules/nvim-snippy
-	url = https://github.com/dcampos/nvim-snippy.git
-[submodule "nvim/dotfiles-submodules/nvim-comment"]
-	path = nvim/dotfiles-submodules/nvim-comment
-	url = https://github.com/terrortylor/nvim-comment.git
+[submodule "nvim/dotfiles-submodules/fzf-lua"]
+	path = nvim/dotfiles-submodules/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
 [submodule "nvim/dotfiles-submodules/gitsigns.nvim"]
 	path = nvim/dotfiles-submodules/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim.git
+[submodule "nvim/dotfiles-submodules/lasso.nvim"]
+	path = nvim/dotfiles-submodules/lasso.nvim
+	url = https://github.com/niqodea/lasso.nvim.git
+[submodule "nvim/dotfiles-submodules/nvim-cmp"]
+	path = nvim/dotfiles-submodules/nvim-cmp
+	url = https://github.com/hrsh7th/nvim-cmp.git
+[submodule "nvim/dotfiles-submodules/nvim-comment"]
+	path = nvim/dotfiles-submodules/nvim-comment
+	url = https://github.com/terrortylor/nvim-comment.git
+[submodule "nvim/dotfiles-submodules/nvim-lspconfig"]
+	path = nvim/dotfiles-submodules/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim/dotfiles-submodules/nvim-snippy"]
+	path = nvim/dotfiles-submodules/nvim-snippy
+	url = https://github.com/dcampos/nvim-snippy.git
+[submodule "nvim/dotfiles-submodules/nvim-treesitter"]
+	path = nvim/dotfiles-submodules/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "python/bin-submodules/ropify"]
 	path = python/bin-submodules/ropify
 	url = https://github.com/niqodea/ropify
+[submodule "python/bin-submodules/tree-sitter-python"]
+	path = python/bin-submodules/tree-sitter-python
+	url = https://github.com/tree-sitter/tree-sitter-python.git
+[submodule "tmux/bin-submodules/tmux"]
+	path = tmux/bin-submodules/tmux
+	url = https://github.com/tmux/tmux.git
+[submodule "tmux/dotfiles-submodules/tmux-nested"]
+	path = tmux/dotfiles-submodules/tmux-nested
+	url = https://github.com/niqodea/tmux-nested.git
 [submodule "utils/bin-submodules/breadcrumbs"]
 	path = utils/bin-submodules/breadcrumbs
 	url = https://github.com/niqodea/breadcrumbs.git
@@ -55,9 +58,6 @@
 [submodule "utils/bin-submodules/password-store"]
 	path = utils/bin-submodules/password-store
 	url = https://git.zx2c4.com/password-store
-[submodule "nvim/dotfiles-submodules/lasso.nvim"]
-	path = nvim/dotfiles-submodules/lasso.nvim
-	url = https://github.com/niqodea/lasso.nvim.git
-[submodule "tmux/dotfiles-submodules/tmux-nested"]
-	path = tmux/dotfiles-submodules/tmux-nested
-	url = https://github.com/niqodea/tmux-nested.git
+[submodule "zsh/bin-submodules/zsh"]
+	path = zsh/bin-submodules/zsh
+	url = https://github.com/zsh-users/zsh.git
