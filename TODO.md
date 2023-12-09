@@ -10,5 +10,4 @@
 - write handy snippets (e.g. python)
 - Add Clipboard.ahk to windows-scripts
 - Only pull repository info for the specific commit
-- Extract tmux nest mode as a separate git submodule
 - If needed in the future, use a .??-root.env file sourced by .profile and resourced by tmux, which sets env variables that depend on `??_ROOT`.

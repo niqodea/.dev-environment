@@ -58,3 +58,6 @@
 [submodule "nvim/dotfiles-submodules/lasso.nvim"]
 	path = nvim/dotfiles-submodules/lasso.nvim
 	url = https://github.com/niqodea/lasso.nvim.git
+[submodule "tmux/dotfiles-submodules/tmux-nested"]
+	path = tmux/dotfiles-submodules/tmux-nested
+	url = https://github.com/niqodea/tmux-nested.git
