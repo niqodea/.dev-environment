@@ -19,3 +19,4 @@
 - Consider a solution to easily reorder panes in a window in tmux
 - Consider a solution that saves content of tmux panes in a backup directory, so that you can have an idea of what you were working on after a reboot. Potentially, we could keep track of the state of the shells with hooks, so that we can reinflate the state automatically afterwards!
 - Add tmux keybind to kill sessions without detaching (must be properly safeguarded)
+- Move all dotfiles to separate git submodule
