@@ -21,6 +21,14 @@ for _, module in ipairs(modules) do
     end, {})
 end
 
+-- Create start command for all modules
+vim.api.nvim_create_user_command('DevAllStart', function()
+    for _, module in ipairs(modules) do
+        local module_path = 'dev.modules.' .. module
+        require(module_path)
+    end
+end, {})
+
 -- Create startup commands for automatic loading of modules
 local workspace_config_dir = require('dev.core.utils').get_workspace_config_dir()
 local startup_path = workspace_config_dir .. '/startup.nvim-dev'
