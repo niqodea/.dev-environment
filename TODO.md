@@ -8,7 +8,6 @@
 - (maybe) move git lua files as exported git dotfiles
 - ssh mode with local nvim buffers: technically, it is possible with sshfs, but running some locally installed commands on remote files takes forever. another way is use ssh port forwarding to run remote commands and fetch their output locally, but this either assumes local and remote paths to be the same or path mapping support, which is not the case for many commands, including some lsp servers.
 - write handy snippets (e.g. python)
-- Add Clipboard.ahk to windows-scripts
 - Only pull repository info for the specific commit
 - If needed in the future, use a .??-root.env file sourced by .profile and resourced by tmux, which sets env variables that depend on `??_ROOT`.
 - Find a way to automatically name tmux windows with useful information. Try to ask suggestions to chatGPT for this.
