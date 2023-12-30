@@ -31,7 +31,7 @@ vim.keymap.set('n', vim.g.mapleader..'w', ':write<cr>')
 vim.keymap.set('n', vim.g.mapleader..'W', ':wall<cr>')
 -- These edits are effectively used to reload files
 vim.keymap.set('n', vim.g.mapleader..'e', ':edit<cr>')
-vim.keymap.set('n', vim.g.mapleader..'E', ':lua require("utils").reload_buffers()<cr>')
+vim.keymap.set('n', vim.g.mapleader..'E', require('utils').reload_buffers)
 
 -- Quick yank to and put from plus register (system clipboard)
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
