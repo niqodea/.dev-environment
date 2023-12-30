@@ -38,11 +38,15 @@ vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
 vim.keymap.set('n', vim.g.mapleader..'Y', '"+Y')
 vim.keymap.set('n', vim.g.mapleader..'p', '"+p')
 
--- Quick file explorer (we use '-' for consistency with netrw)
-vim.keymap.set('n', vim.g.mapleader..'-', ':Explore<cr>')
-vim.keymap.set('n', vim.g.mapleader..'_', ':Explore .<cr>')
 -- Remove instructions banner from netrw
 vim.g.netrw_banner = 0
+-- Quick file explorer (we use '-' for consistency with netrw)
+vim.keymap.set('n', vim.g.mapleader..'-', ':Explore<cr>')
+vim.keymap.set('n', vim.g.mapleader..'_', function()
+    -- `Explore .` won't work when already in netrw for some reason
+    local cwd = vim.fn.getcwd()
+    vim.cmd('Explore ' .. cwd)
+end)
 
 -- Quick exit from terminal mode
 vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>')
