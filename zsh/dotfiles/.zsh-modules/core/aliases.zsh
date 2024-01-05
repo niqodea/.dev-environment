@@ -32,17 +32,28 @@ function av () {
         return 1
     fi
 
-    local venv_path="$(pwd -P)/$WORKSPACE_CONFIG_DIR/venv"
+    local cwd="$(pwd -P)"
+    local venv_path="$cwd/$WORKSPACE_CONFIG_DIR/venv"
 
     if [ ! -d "$venv_path" ]; then
         >&2 echo "No virtual environment found at $venv_path"
         return 1
     fi
 
+    export VIRTUAL_ENV_PROJECT="$cwd"
     export VIRTUAL_ENV="$(realpath "$venv_path")"
     export PATH="$VIRTUAL_ENV/bin:$PATH"
 
     # Assign best effort id to the venv (probability of collision =~ 1/2^16)
     local venv_id="$(echo "$VIRTUAL_ENV" | md5sum | cut -c 1-4)"
     setup_prompt_base "[venv-$venv_id]$PROMPT_BASE"
+}
+
+function cdv () {
+    if [ -z "${VIRTUAL_ENV_PROJECT+x}" ]; then
+        >&2 echo "No active virtual environment with corresponding project found"
+        return 1
+    fi
+
+    cd "$VIRTUAL_ENV_PROJECT"
 }
