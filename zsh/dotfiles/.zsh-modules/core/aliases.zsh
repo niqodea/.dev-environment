@@ -32,7 +32,7 @@ function av () {
         return 1
     fi
 
-    local cwd="$(pwd -P)"
+    local cwd="$(pwd)"
     local venv_path="$cwd/$WORKSPACE_CONFIG_DIR/venv"
 
     if [ ! -d "$venv_path" ]; then
@@ -41,11 +41,11 @@ function av () {
     fi
 
     export VIRTUAL_ENV_PROJECT="$cwd"
-    export VIRTUAL_ENV="$(realpath "$venv_path")"
-    export PATH="$VIRTUAL_ENV/bin:$PATH"
+    export VIRTUAL_ENV="$venv_path"
+    export PATH="$venv_path/bin:$PATH"
 
     # Assign best effort id to the venv (probability of collision =~ 1/2^16)
-    local venv_id="$(echo "$VIRTUAL_ENV" | md5sum | cut -c 1-4)"
+    local venv_id="$(echo "$venv_path" | md5sum | cut -c 1-4)"
     setup_prompt_base "[venv-$venv_id]$PROMPT_BASE"
 }
 
