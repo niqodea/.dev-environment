@@ -15,3 +15,5 @@
 - Add tmux keybind to kill sessions without detaching (must be properly safeguarded)
 - Move all dotfiles to separate git submodule
 - Implement two different breadcrumbs command: `trail` (current) and `scatter` (recursively trail all directories, optionally with a max depth)
+- Implement shift version of tmux and nvim splits to create new one on the opposite side
+- Fix ropify bug when autoimporting
