@@ -15,7 +15,6 @@
 - Add tmux keybind to kill sessions without detaching (must be properly safeguarded)
 - Move all dotfiles to separate git submodule
 - Implement two different breadcrumbs command: `trail` (current) and `scatter` (recursively trail all directories, optionally with a max depth)
-- Fix ropify bug when autoimporting
 - Write READMEs for modules (tmux, nvim, ...)
 - Add configuration for optimized Xournal++ use (one hand for keyboard, other for pen)
 - Write README for new corne keyboard layout
