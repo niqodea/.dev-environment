@@ -1,6 +1,6 @@
-# Dotfiles
+# Dev Environment
 
-Monorepo for configuration files and programs I use in my day-to-day.
+Monorepo containing dotfiles and programs for my development environment.
 
 ## Module Structure
 
