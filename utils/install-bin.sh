@@ -27,3 +27,15 @@ repo_path="$root/bin-submodules/password-store"
 git submodule update --init "$repo_path"
 cd "$repo_path"
 make install PREFIX="$install_path"
+
+sudo apt install --yes --no-install-recommends python3.11 python3.11-venv
+
+gdown_venv_path="$HOME/.gdown-venv"
+python3.11 -m venv "$gdown_venv_path"
+"$gdown_venv_path/bin/pip" install gdown==4.7.1
+ln -s "$gdown_venv_path/bin/gdown" "$install_path/bin/"
+
+ytdlp_venv_path="$HOME/.ytdlp-venv"
+python3.11 -m venv "$ytdlp_venv_path"
+"$ytdlp_venv_path/bin/pip" install yt-dlp==2023.12.30
+ln -s "$ytdlp_venv_path/bin/yt-dlp" "$install_path/bin/"
