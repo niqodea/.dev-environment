@@ -19,13 +19,13 @@ sudo apt install --yes --no-install-recommends python3.11 python3.11-venv
 # Ref: https://python-poetry.org/docs/#installing-manually
 poetry_venv_path="$HOME/.poetry-venv"
 python3.11 -m venv "$poetry_venv_path"
-"$poetry_venv_path/bin/pip" install poetry==1.6.1
+"$poetry_venv_path/bin/pip" install poetry==1.7.1
 ln -s "$poetry_venv_path/bin/poetry" "$install_path/bin/"
 
 # Ref: https://github.com/pappasam/jedi-language-server#installation
 jedi_venv_path="$HOME/.jedi-venv"
 python3.11 -m venv "$jedi_venv_path"
-"$jedi_venv_path/bin/pip" install jedi-language-server==0.41.1
+"$jedi_venv_path/bin/pip" install jedi-language-server==0.41.2
 ln -s "$jedi_venv_path/bin/jedi-language-server" "$install_path/bin/"
 
 ropify_path="$root/bin-submodules/ropify"
