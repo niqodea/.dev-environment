@@ -20,4 +20,4 @@
 - Write README for new corne keyboard layout
 - Compile ffmpeg and imagemagick
 - Write aliases for ffmpeg and imagemagick
-- Add linting
+- Add automatic linting

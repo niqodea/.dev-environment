@@ -19,9 +19,9 @@ modules_path="$root/.modules.bc"
 
 if [ "$#" -eq 0 ]; then
     # Install all modules
-    modules=$(ls -d "$modules_path/"*"/" | xargs -n 1 basename)
+    modules=$(find "$modules_path/"* -maxdepth 0 -type d -exec basename {} \;)
 else
-    modules="$@"
+    modules="$*"
 fi
 
 for module in $modules; do

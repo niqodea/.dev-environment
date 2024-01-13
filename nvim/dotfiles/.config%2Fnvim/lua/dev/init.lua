@@ -4,7 +4,7 @@ require('dev.core')
 local module_files = vim.api.nvim_get_runtime_file('lua/dev/modules/*.lua', true)
 local modules = {}
 for _, module_file in ipairs(module_files) do
-    module = module_file:match(".+/([^/]+)%.lua")
+    local module = module_file:match(".+/([^/]+)%.lua")
     table.insert(modules, module)
 end
 

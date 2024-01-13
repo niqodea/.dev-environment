@@ -6,7 +6,7 @@ local cmp_nvim_lsp = require('cmp_nvim_lsp')
 cmp_nvim_lsp.setup()
 local language_files = vim.api.nvim_get_runtime_file('lua/dev/modules/lsp-languages/*.lua', true)
 for _, language_file in ipairs(language_files) do
-    language = language_file:match(".+/([^/]+)%.lua")
+    local language = language_file:match(".+/([^/]+)%.lua")
     require('dev.modules.lsp-languages.' .. language)(lspconfig, cmp_nvim_lsp)
 end
 -- Start LSP service

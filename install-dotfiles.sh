@@ -8,9 +8,9 @@ modules_path="$root/.modules.bc"
 
 if [ "$#" -eq 0 ]; then
     # Install all modules
-    modules="$(ls -d "$modules_path"/*/ | xargs -n 1 basename)"
+    modules=$(find "$modules_path/"* -maxdepth 0 -type d -exec basename {} \;)
 else
-    modules="$@"
+    modules="$*"
 fi
 
 backup_path="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
@@ -46,7 +46,7 @@ for module in $modules; do
         else
             backup_dir="$backup_path/$(dirname "$target_dotfile_relpath")"
 
-            if [ "${backup_dir#${backup_dir%/.}}" = "/." ]; then
+            if [ "${backup_dir#"${backup_dir%/.}"}" = "/." ]; then
                 # Remove the trailing /. as rsync will break otherwise
                 backup_dir="${backup_dir%/.}"
             fi
