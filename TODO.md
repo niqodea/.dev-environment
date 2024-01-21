@@ -17,7 +17,6 @@
 - Implement two different breadcrumbs command: `trail` (current) and `scatter` (recursively trail all directories, optionally with a max depth)
 - Write READMEs for all modules
 - Add configuration for optimized Xournal++ use (one hand for keyboard, other for pen)
-- Write README for new corne keyboard layout
 - Compile ffmpeg and imagemagick
 - Write aliases for ffmpeg and imagemagick
 - Add automatic linting
