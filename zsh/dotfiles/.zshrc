@@ -67,7 +67,9 @@ function() {
     # COMPLETION
     # Ref: https://thevaluable.dev/zsh-completion-guide-examples/
     # Ref: https://github.com/Phantas0s/.dotfiles/blob/4c41b4865528714dbdeb18c8da42b4d1ca5a2182/zsh/completion.zsh
-    autoload -Uz compinit; compinit
+    autoload -Uz compinit; compinit -C  # Use cache to reduce startup time by ~0.1s
+    # Have another thread refresh the cache in the background (subshell to hide output)
+    (autoload -Uz compinit; compinit &)
 
     zstyle ':completion:*' menu 'select'
     unsetopt LIST_BEEP  # Disable beep on tab completion
