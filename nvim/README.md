@@ -12,9 +12,9 @@ We map prefixed keybinds to actions that are similar to their non-prefixed count
 In environments with default Vim settings, we can simply ignore the original non-prefixed shortcuts.
 This strategy is straightforward and requires minimal cognitive load.
 
-We remap the `leader` key to <key>space</key>, as it is easier to use as a prefix compared to <key>\</key>.
-Another advantage of <key>space</key> is its invariance with respect to <key>shift</key>, making it easy to use as prefix for both lowercase and uppercase keybinds.
-In fact, we extend this property by also remapping <key>ctrl</key> + <key>space</key> to simply <key>space</key>, so that custom keybinds containing <key>ctrl</key> are also easy to type.
+We remap the `leader` key to <kbd>Space</kbd>, as it is easier to use as a prefix compared to <kbd>\</kbd>.
+Another advantage of <kbd>Space</kbd> is its invariance with respect to <kbd>shift</kbd>, making it easy to use as prefix for both lowercase and uppercase keybinds.
+In fact, we extend this property by also remapping <kbd>ctrl</kbd> + <kbd>Space</kbd> to simply <kbd>Space</kbd>, so that custom keybinds containing <kbd>ctrl</kbd> are also easy to type.
 
 Since the `leader` key becomes quite central to our workflow, we also disable its timeout for ease of mind.
 

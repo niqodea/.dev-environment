@@ -6,8 +6,8 @@ Module for [tmux](https://github.com/tmux/tmux), a terminal multiplexer.
 
 ### Meta keybinds
 
-We use the <key>meta</key> modifier key to define most custom keybinds in tmux.
-Since other programs in our workflow do not leverage <key>meta</key>, we can omit the tmux prefix in custom keybinds and achieve a much smoother experience.
+We use the <kbd>Meta</kbd> modifier key to define most custom keybinds in tmux.
+Since other programs in our workflow do not leverage <kbd>Meta</kbd>, we can omit the tmux prefix in custom keybinds and achieve a much smoother experience.
 
 ### Session management
 
