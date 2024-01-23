@@ -1,1 +1,1 @@
-../../../.modules.bc/git/exported-dotfiles/git-aliases.zsh
+../../../.dev-environment.bc/git/exported-dotfiles/git-aliases.zsh

@@ -1,1 +1,1 @@
-../../../.modules.bc/utils/exported-dotfiles/pass.zsh
+../../../.dev-environment.bc/utils/exported-dotfiles/pass.zsh

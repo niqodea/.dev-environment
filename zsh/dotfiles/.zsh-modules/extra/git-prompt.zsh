@@ -1,1 +1,1 @@
-../../../.modules.bc/git/exported-dotfiles/git-prompt.zsh
+../../../.dev-environment.bc/git/exported-dotfiles/git-prompt.zsh

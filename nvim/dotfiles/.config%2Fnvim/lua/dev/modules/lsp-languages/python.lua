@@ -1,1 +1,1 @@
-../../../../../../.modules.bc/python/exported-dotfiles/lsp.lua
+../../../../../../.dev-environment.bc/python/exported-dotfiles/lsp.lua

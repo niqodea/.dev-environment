@@ -1,1 +1,1 @@
-../../../.modules.bc/tmux/exported-dotfiles/tmux.zsh
+../../../.dev-environment.bc/tmux/exported-dotfiles/tmux.zsh

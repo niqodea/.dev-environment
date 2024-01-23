@@ -4,11 +4,9 @@ set -eu
 
 root="$(dirname "$(realpath "$0")")"
 
-modules_path="$root/.modules.bc"
-
 if [ "$#" -eq 0 ]; then
     # Install all modules
-    modules=$(find "$modules_path/"* -maxdepth 0 -type d -exec basename {} \;)
+    modules=$(find "$root/"* -maxdepth 0 -type d -exec basename {} \;)
 else
     modules="$*"
 fi
@@ -16,7 +14,7 @@ fi
 backup_path="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
 
 for module in $modules; do
-    module_path="$modules_path/$module"
+    module_path="$root/$module"
 
     if [ ! -d "$module_path" ]; then
         >&2 echo "Module $module not found"

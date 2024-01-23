@@ -1,1 +1,1 @@
-../../../.modules.bc/python/exported-dotfiles/conda.zsh
+../../../.dev-environment.bc/python/exported-dotfiles/conda.zsh
