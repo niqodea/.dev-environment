@@ -20,3 +20,4 @@
 - Compile ffmpeg and imagemagick
 - Write aliases for ffmpeg and imagemagick
 - Add automatic linting
+- Add docker (utils or module)
