@@ -21,3 +21,5 @@
 - Write aliases for ffmpeg and imagemagick
 - Add automatic linting
 - Add docker (utils or module)
+- Always wrap lua functions with commands to make it clear we are running those with keybindings in nvim
+- (test) use hashes also for the other three parts of the shell prompt and create quick aliases to display the full information. Perhaps we could even color the CWD in a different way when we are outside the `ZSH_ROOT` / venv root. We could also best-effort parse the git branch and display information such as feat/, chore/, ... in a compressed way.
