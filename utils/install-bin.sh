@@ -39,3 +39,11 @@ ytdlp_venv_path="$HOME/.ytdlp-venv"
 python3.11 -m venv "$ytdlp_venv_path"
 "$ytdlp_venv_path/bin/pip" install yt-dlp==2023.12.30
 ln -s "$ytdlp_venv_path/bin/yt-dlp" "$install_path/bin/"
+
+echo 'Downloading and installing ffmpeg...'
+repo_path="$root/bin-submodules/ffmpeg"
+git submodule update --init "$repo_path"
+cd "$repo_path"
+sudo apt install --yes --no-install-recommends yasm
+# Go for a static build to avoid dependency issues
+./configure --prefix="$install_path" --enable-static --disable-shared

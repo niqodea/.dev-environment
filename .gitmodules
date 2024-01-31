@@ -61,3 +61,6 @@
 [submodule "zsh/bin-submodules/zsh"]
 	path = zsh/bin-submodules/zsh
 	url = https://github.com/zsh-users/zsh.git
+[submodule "utils/bin-submodules/ffmpeg"]
+	path = utils/bin-submodules/ffmpeg
+	url = https://git.ffmpeg.org/ffmpeg.git
