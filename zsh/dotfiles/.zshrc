@@ -26,29 +26,6 @@ function() {
     export SHELL="$(readlink "/proc/$$/exe")"
 
 
-    # PROMPT SETUP
-    setopt PROMPT_SUBST
-
-    function setup_prompt_base() {
-        export PROMPT_BASE="$1"
-
-        local COLOR_OFF='%f'
-        local SHELL_STATE='%#'
-        export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
-    }
-
-    if [ -z "$PROMPT_BASE" ]; then
-        local COLOR_USERHOST='%F{099}'  # Purple
-        local COLOR_CWD='%F{220}'  # Yellow
-
-        local USER='%n'
-        local HOST='%m'
-        local CWD='%~'
-
-        setup_prompt_base "${COLOR_USERHOST}${USER}@${HOST}${COLOR_CWD}[${CWD}]"
-    fi
-
-
     # HISTORY
     HISTFILE="$ZSH_ROOT/.zsh_history"
     HISTSIZE=100000  # Num commands stored in the file
