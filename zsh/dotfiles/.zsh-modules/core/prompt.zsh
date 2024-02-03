@@ -68,9 +68,13 @@ function prompt_cwd() {
     printf "/$burger_dir_1/$burger_dir_2/..../$burger_dir_3/$burger_dir_4"
 }
 
-if [ -z "${PROMPT_BASE:+x}" ]; then
-    local COLOR_USERHOST='%F{099}'  # Purple
-    local COLOR_CWD='%F{220}'  # Yellow
+function() {
+    if [ -n "${PROMPT_BASE:+x}" ]; then
+        return
+    fi
 
-    setup_prompt_base "${COLOR_USERHOST}"'$(prompt_userhost)'"${COLOR_CWD}"'[$(prompt_cwd)]'
-fi
+    local color_userhost='%F{099}'  # Purple
+    local color_cwd='%F{220}'  # Yellow
+
+    setup_prompt_base "${color_userhost}"'$(prompt_userhost)'"${color_cwd}"'[$(prompt_cwd)]'
+}
