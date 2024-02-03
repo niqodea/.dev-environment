@@ -8,20 +8,21 @@ function setup_prompt_base() {
     export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
 }
 
-function burger_encode() {
+function burger_hash() {
     local input="$1"
+    local hash_patty_length="$2"
 
     local left_bun="${input:0:1}"
     local right_bun="${input: -1}"
     local patty="${input:1: -1}"
-    local hash_patty=$(printf "%s" "$patty" | md5sum | head -c 2)
+    local hash_patty=$(printf "%s" "$patty" | md5sum | head -c "$hash_patty_length")
 
     echo "${left_bun}${hash_patty}${right_bun}"
 }
 
 function prompt_userhost() {
-    local burger_user=$(burger_encode "$USER")
-    local burger_host=$(burger_encode "$HOST")
+    local burger_user=$(burger_hash "$USER" 2)
+    local burger_host=$(burger_hash "$HOST" 2)
     echo "$burger_user@$burger_host"
 }
 
@@ -43,29 +44,33 @@ function prompt_cwd() {
 
     dirs=(${(s:/:)relcwd})
 
+    local hash_patty_length=2
+    local hash_burger_length=$((hash_patty_length + 2))
+
     if [[ $#dirs -le 5 ]]; then
 
         for dir in $dirs; do
-            burger_dir=$(burger_encode "$dir")
+            burger_dir=$(burger_hash "$dir" "$hash_patty_length")
             printf "/$burger_dir"
         done
         
         # Pad to keep the prompt length consistent
         for idx in $(seq 1 $((5 - $#dirs))); do
-            printf '-----'  # 1 + length of burger encode
+            printf '%.s-' {1..$hash_burger_length}
         done
 
         return
     fi
 
     # Put the first and last two directories in the prompt
-    burger_dir_1=$(burger_encode "$dirs[1]")
-    burger_dir_2=$(burger_encode "$dirs[2]")
-    burger_dir_3=$(burger_encode "$dirs[-2]")
-    burger_dir_4=$(burger_encode "$dirs[-1]")
+    burger_dir_1=$(burger_hash "$dirs[1]" "$hash_patty_length")
+    burger_dir_2=$(burger_hash "$dirs[2]" "$hash_patty_length")
+    omitted_dirs=$(printf '%.s.' {1..$hash_burger_length})
+    burger_dir_3=$(burger_hash "$dirs[-2]" "$hash_patty_length")
+    burger_dir_4=$(burger_hash "$dirs[-1]" "$hash_patty_length")
 
     # Signal omitted directories with ellipses
-    printf "/$burger_dir_1/$burger_dir_2/..../$burger_dir_3/$burger_dir_4"
+    printf "/$burger_dir_1/$burger_dir_2/$omitted_dirs/$burger_dir_3/$burger_dir_4"
 }
 
 function() {
