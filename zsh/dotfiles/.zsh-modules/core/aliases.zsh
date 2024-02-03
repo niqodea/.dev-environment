@@ -25,6 +25,9 @@ alias k9='kill -9'  # SIGKILL
 # Load updated global history
 alias fcr='fc -R'
 
+# Print current working directory
+alias p='pwd'
+
 # Activate venv
 function av () {
     if [ -n "${VIRTUAL_ENV+x}" ]; then
