@@ -30,13 +30,11 @@ alias p='pwd'
 
 # TODO: Extract this as a separate module
 
-# TODO: Maybe use compress_path with small params in the future, will need to be refactored though
 function prompt_venv() {
-    local venv_project="$VIRTUAL_ENV_PROJECT"
-    local venv_project_basename="$(basename "$venv_project")"
-    local venv_project_burger="$(burger_hash "$venv_project_basename" 4 2 2 " ")"
-    local venv_project_path_id="$(dirname "$venv_project" | md5sum | cut -c 1-2)"
-    printf '%s' "$venv_project_burger|$venv_project_path_id"
+    local venv_workspace="$VIRTUAL_ENV_WORKSPACE"
+    local venv_workspace_formatted_path="$(format_path "$venv_workspace" 1 1)"
+    local escaped_venv_workspace_formatted_path="${venv_workspace_formatted_path//\%/%%/}"
+    printf '%s' "$escaped_venv_workspace_formatted_path"
 }
 
 # Activate venv
@@ -53,7 +51,7 @@ function av () {
         return 1
     fi
 
-    export VIRTUAL_ENV_PROJECT="$PWD"
+    export VIRTUAL_ENV_WORKSPACE="$PWD"
     export VIRTUAL_ENV="$venv_path"
     export PATH="$venv_path/bin:$PATH"
 
@@ -62,12 +60,12 @@ function av () {
 }
 
 function cdv () {
-    if [ -z "${VIRTUAL_ENV_PROJECT+x}" ]; then
-        >&2 echo "No active virtual environment with corresponding project found"
+    if [ -z "${VIRTUAL_ENV_WORKSPACE+x}" ]; then
+        >&2 echo "No active virtual environment with corresponding workspace found"
         return 1
     fi
 
-    cd "$VIRTUAL_ENV_PROJECT"
+    cd "$VIRTUAL_ENV_WORKSPACE"
 }
 
-alias pv='echo "$VIRTUAL_ENV_PROJECT"'
+alias pv='echo "$VIRTUAL_ENV_WORKSPACE"'

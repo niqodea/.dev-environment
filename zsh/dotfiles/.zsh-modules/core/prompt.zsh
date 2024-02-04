@@ -22,7 +22,7 @@ function burger_hash() {
     fi
     if [[ "$burger_length" -gt "${#input}" ]]; then
         printf '%s' "$input"
-        printf "%.s$padding_char" {1..$((burger_length - ${#input}))}
+        printf "%.s$padding_char" {1..$((burger_length - $#input))}
         return
     fi
 
@@ -37,13 +37,14 @@ function burger_hash() {
 # TODO: Rename this function (does not necessarily compress)
 # TODO: This will probably need to be refactored/implemented in a different language
 #       if we want to support injectable burger parameters
-function compress_path() {
+function format_path() {
     # TODO: Maybe build string instead of printing as we go
 
     local input="$1"
-    local compression_radius="$2"
+    local num_top_components="$2"
+    local num_bottom_components="$3"
 
-    local max_components=$((2 * $compression_radius + 1))
+    local max_components=$((num_top_components + num_bottom_components))
 
     if [[ "$input" == "$ZSH_ROOT" || "$input" == "$ZSH_ROOT/"* ]]; then
         printf "."
@@ -76,28 +77,29 @@ function compress_path() {
     if [[ $#components -le "$max_components" ]]; then
 
         for component in $components; do
-            component_burger=$(get_component_burger "$component")
+            component_burger="$(get_component_burger "$component")"
             printf '%s' "/$component_burger"
         done
         
         # Pad to keep the compression length consistent
-        for _ in $(seq 1 $(($max_components - $#components))); do
+        for _ in $(seq 1 $((max_components - $#components))); do
             printf "%.s$padding_char" {1..$((burger_length + 1))}
         done
 
         return
     fi
 
-    for i in $(seq 1 $compression_radius); do
-        component_burger=$(get_component_burger "$components[$i]")
+    for i in $(seq 1 $num_top_components); do
+        component_burger="$(get_component_burger "$components[$i]")"
         printf '%s' "/$component_burger"
     done
 
-    # Marker for omitted directoriesc
-    printf '%.s.' {1..$((1 + burger_length))}
+    # Separate the top and bottom components with special character
+    component_burger="$(get_component_burger "$components[-$num_bottom_components]")"
+    printf '%s' ":$component_burger"
 
-    for i in $(seq $compression_radius -1 1); do
-        component_burger=$(get_component_burger "$components[-$i]")
+    for i in $(seq $((num_bottom_components - 1)) -1 1); do
+        component_burger="$(get_component_burger "$components[-$i]")"
         printf '%s' "/$component_burger"
     done
 }
@@ -110,8 +112,9 @@ function prompt_userhost() {
 
 function prompt_cwd() {
     local cwd="$PWD"
-    local compressed_cwd="$(compress_path "$cwd" 1)"
-    printf "$compressed_cwd"
+    local formatted_cwd="$(format_path "$cwd" 1 2)"
+    local escaped_formatted_cwd="${formatted_cwd//\%/%%}"
+    printf '%s' "$escaped_formatted_cwd"
 }
 
 function() {
