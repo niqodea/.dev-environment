@@ -5,72 +5,87 @@ function setup_prompt_base() {
 
     local COLOR_OFF='%f'
     local SHELL_STATE='%#'
-    export PROMPT="${PROMPT_BASE}${COLOR_OFF}${SHELL_STATE} "
+    export PROMPT="$PROMPT_BASE$COLOR_OFF$SHELL_STATE "
 }
 
 function burger_hash() {
     local input="$1"
-    local hash_patty_length="$2"
+    local patty_hash_length="$2"
 
     local left_bun="${input:0:1}"
     local right_bun="${input: -1}"
     local patty="${input:1: -1}"
-    local hash_patty=$(printf "%s" "$patty" | md5sum | head -c "$hash_patty_length")
+    local patty_hash=$(printf "%s" "$patty" | md5sum | head -c "$patty_hash_length")
 
-    echo "${left_bun}${hash_patty}${right_bun}"
+    echo "$left_bun$patty_hash$right_bun"
 }
 
-function prompt_userhost() {
-    local burger_user=$(burger_hash "$USER" 2)
-    local burger_host=$(burger_hash "$HOST" 2)
-    echo "$burger_user@$burger_host"
-}
+function compress_path() {
+    # TODO: Maybe build string instead of printing as we go
 
-function prompt_cwd() {
-    local cwd="${PWD}"
+    local input="$1"
+    local compression_radius="$2"
 
-    if [[ "$cwd" == "$ZSH_ROOT"* ]]; then
-        local leader="."
-        local relcwd="${cwd#$ZSH_ROOT}"
-    elif [[ "$cwd" == "$HOME"* ]]; then
-        local leader="~"
-        local relcwd="${cwd#$HOME}"
+    local max_components=$((2 * $compression_radius + 1))
+
+    if [[ "$input" == "$ZSH_ROOT" || "$input" == "$ZSH_ROOT/"* ]]; then
+        printf "."
+        local relpath="${input#$ZSH_ROOT}"
+    elif [[ "$input" == "$HOME" || "$input" == "$HOME/"* ]]; then
+        printf "~"
+        local relpath="${input#$HOME}"
     else
-        local leader=" "
-        local relcwd="${cwd}"
+        printf "/"
+        local relpath="$input"
     fi
 
     printf "$leader"
 
-    dirs=(${(s:/:)relcwd})
+    components=(${(s:/:)relpath})
 
-    local hash_patty_length=2
-    local hash_burger_length=$((hash_patty_length + 2))
+    local patty_hash_length=2
+    local burger_hash_length=$((patty_hash_length + 2))
 
-    if [[ $#dirs -le 5 ]]; then
+    if [[ $#components -le "$max_components" ]]; then
 
-        for dir in $dirs; do
-            burger_dir=$(burger_hash "$dir" "$hash_patty_length")
-            printf "/$burger_dir"
+        for component in $components; do
+            burger_component=$(burger_hash "$component" "$patty_hash_length")
+            printf "/$burger_component"
         done
         
-        # Pad to keep the prompt length consistent
-        for idx in $(seq 1 $((5 - $#dirs))); do
-            printf '%.s-' {1..$hash_burger_length}
+        # Pad to keep the compression length consistent
+        for _ in $(seq 1 $(($max_components - $#components))); do
+            printf '%.s-' {1..$((burger_hash_length + 1))}
         done
 
         return
     fi
 
-    # Put the first and last two directories in the prompt
-    burger_dir_1=$(burger_hash "$dirs[1]" "$hash_patty_length")
-    burger_dir_2=$(burger_hash "$dirs[2]" "$hash_patty_length")
-    omitted_dirs=$(printf '%.s.' {1..$hash_burger_length})
-    burger_dir_3=$(burger_hash "$dirs[-2]" "$hash_patty_length")
-    burger_dir_4=$(burger_hash "$dirs[-1]" "$hash_patty_length")
+    for i in $(seq 1 $compression_radius); do
+        burger_component=$(burger_hash "$components[$i]" "$patty_hash_length")
+        printf "/$burger_component"
+    done
 
     # Signal omitted directories with ellipses
-    printf "/$burger_dir_1/$burger_dir_2/$omitted_dirs/$burger_dir_3/$burger_dir_4"
+    printf '/'
+    printf '%.s.' {1..$((burger_hash_length + 1))}
+
+    for i in $(seq $compression_radius -1 1); do
+        burger_component=$(burger_hash "$components[-$i]" "$patty_hash_length")
+        printf "/$burger_component"
+    done
+}
+
+function prompt_userhost() {
+    local burger_user="$(burger_hash "$USER" 2)"
+    local burger_host="$(burger_hash "$HOST" 2)"
+    printf "$burger_user@$burger_host"
+}
+
+function prompt_cwd() {
+    local cwd="$PWD"
+    local compressed_cwd="$(compress_path "$cwd" 2)"
+    printf "$compressed_cwd"
 }
 
 function() {
@@ -81,5 +96,5 @@ function() {
     local color_userhost='%F{099}'  # Purple
     local color_cwd='%F{220}'  # Yellow
 
-    setup_prompt_base "${color_userhost}"'$(prompt_userhost)'"${color_cwd}"'[$(prompt_cwd)]'
+    setup_prompt_base "$color_userhost"'$(prompt_userhost)'"$color_cwd"'[$(prompt_cwd)]'
 }
