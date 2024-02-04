@@ -28,6 +28,14 @@ alias fcr='fc -R'
 # Print current working directory
 alias p='pwd'
 
+# TODO: Extract this as a separate module
+
+function prompt_venv() {
+    local venv="$VIRTUAL_ENV_PROJECT"
+    local compressed_venv="$(compress_path "$venv" 1)"
+    printf '%s' "$compressed_venv"
+}
+
 # Activate venv
 function av () {
     if [ -n "${VIRTUAL_ENV+x}" ]; then
@@ -35,21 +43,19 @@ function av () {
         return 1
     fi
 
-    local cwd="$(pwd)"
-    local venv_path="$cwd/$WORKSPACE_CONFIG_DIR/venv"
+    local venv_path="$PWD/$WORKSPACE_CONFIG_DIR/venv"
 
     if [ ! -d "$venv_path" ]; then
         >&2 echo "No virtual environment found at $venv_path"
         return 1
     fi
 
-    export VIRTUAL_ENV_PROJECT="$cwd"
+    export VIRTUAL_ENV_PROJECT="$PWD"
     export VIRTUAL_ENV="$venv_path"
     export PATH="$venv_path/bin:$PATH"
 
-    # Assign best effort id to the venv (probability of collision =~ 1/2^16)
-    local venv_id="$(echo "$venv_path" | md5sum | cut -c 1-4)"
-    setup_prompt_base "[venv-$venv_id]$PROMPT_BASE"
+    local color_venv='%F{208}'  # Orange
+    setup_prompt_base "$PROMPT_BASE$color_venv"'{$(prompt_venv)}'
 }
 
 function cdv () {
@@ -60,3 +66,5 @@ function cdv () {
 
     cd "$VIRTUAL_ENV_PROJECT"
 }
+
+alias pv='echo "$VIRTUAL_ENV_PROJECT"'
