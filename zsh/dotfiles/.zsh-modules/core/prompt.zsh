@@ -80,11 +80,6 @@ function format_path() {
             component_burger="$(get_component_burger "$component")"
             printf '%s' "/$component_burger"
         done
-        
-        # Pad to keep the compression length consistent
-        for _ in $(seq 1 $((max_components - $#components))); do
-            printf "%.s$padding_char" {1..$((burger_length + 1))}
-        done
 
         return
     fi
