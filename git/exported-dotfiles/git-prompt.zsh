@@ -6,7 +6,8 @@ function prompt_git_info() {
 
     local git_dir=$(git rev-parse --git-dir 2> /dev/null)
     if [ -z "$git_dir" ]; then
-        printf '%.s-' {1..$((hash_burger_length + 2))}
+        printf 'X'  # Not a git repo
+        printf '%.s ' {1..$((hash_burger_length + 1))}
         return
     fi
 
@@ -33,7 +34,7 @@ function prompt_git_info() {
         # HEAD points to branch, print branch's name burger hash
         printf '>'  # Attached
         local current_branch="$current_ref"
-        printf '%s' "$(burger_hash "$current_branch" "$patty_hash_length")"
+        printf '%s' "$(burger_hash "$current_branch" 3 2 2 " ")"
     fi
 }
 

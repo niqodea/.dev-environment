@@ -30,10 +30,13 @@ alias p='pwd'
 
 # TODO: Extract this as a separate module
 
+# TODO: Maybe use compress_path with small params in the future, will need to be refactored though
 function prompt_venv() {
-    local venv="$VIRTUAL_ENV_PROJECT"
-    local compressed_venv="$(compress_path "$venv" 1)"
-    printf '%s' "$compressed_venv"
+    local venv_project="$VIRTUAL_ENV_PROJECT"
+    local venv_project_basename="$(basename "$venv_project")"
+    local venv_project_burger="$(burger_hash "$venv_project_basename" 4 2 2 " ")"
+    local venv_project_path_id="$(dirname "$venv_project" | md5sum | cut -c 1-2)"
+    printf '%s' "$venv_project_burger|$venv_project_path_id"
 }
 
 # Activate venv
