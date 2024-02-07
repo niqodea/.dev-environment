@@ -15,7 +15,8 @@ function () {
     tmux select-pane -T ''
     function set_tmux_pane_title() {
         COMMAND="$1"
-        tmux select-pane -t "$TMUX_PANE" -T "$COMMAND"
+        # Escape newlines, otherwise tmux will not display the title
+        tmux select-pane -t "$TMUX_PANE" -T "${COMMAND//$'\n'/\\n}"
     }
     function reset_tmux_pane_title() {
         tmux select-pane -t "$TMUX_PANE" -T ''
