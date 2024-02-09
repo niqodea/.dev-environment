@@ -24,3 +24,4 @@
 - Always wrap lua functions with commands to make it clear we are running those with keybindings in nvim
 - Explore frecency solutions (zsh, nvim, tmux, ...)
 - Think of burger hash functions alternatives that might be more readable (e.g. rely on letters from the source word, perhaps reshuffling them?)
+- Look for/implement neovim command that restores all swap files as buffers (useful in case of crashes)
