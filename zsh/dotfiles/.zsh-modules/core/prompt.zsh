@@ -29,7 +29,8 @@ function burger_hash() {
     local left_bun="${input:0:$left_bun_length}"
     local right_bun="${input: -$right_bun_length}"
     local patty="${input:$left_bun_length: -$right_bun_length}"
-    local patty_hash=$(printf '%s' "$patty" | md5sum | head -c "$patty_hash_length")
+    # Use integer as patty hash as it is more readable than hex
+    local patty_hash=$(printf "%0${patty_hash_length}d" $((0x$(printf '%s' "$patty" | md5sum | cut -c1-8) % 10 ** $patty_hash_length)))
 
     printf '%s' "$left_bun$patty_hash$right_bun"
 }
