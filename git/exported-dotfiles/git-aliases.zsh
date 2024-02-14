@@ -1,3 +1,5 @@
+alias cdg='cd $(git rev-parse --show-toplevel)'  # Go to the root of the current git repository
+
 alias g='git'
 alias ga='git add'
 alias gap='git add --patch'
