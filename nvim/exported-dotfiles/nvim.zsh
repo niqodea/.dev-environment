@@ -1,3 +1,4 @@
 alias v='nvim'
 alias vd='v -c DevStart'
-alias vds='vd -c DevRunStartup'
+alias vdcs='vd -c DevCreateStartup'
+alias vdrs='vd -c DevRunStartup'
