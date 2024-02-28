@@ -9,12 +9,9 @@ for _, module_file in ipairs(module_files) do
 end
 
 -- Create start commands for modules
-local function get_start_command(module)
-    local capitalized_module = module:gsub('^%l', string.upper)
-    return 'Dev' .. capitalized_module .. 'Start'
-end
 for _, module in ipairs(modules) do
-    local start_command = get_start_command(module)
+    local capitalized_module = module:gsub('^%l', string.upper)
+    local start_command = 'DevStart' .. capitalized_module
     local module_path = 'dev.modules.' .. module
     vim.api.nvim_create_user_command(start_command, function()
         require(module_path)
@@ -22,7 +19,7 @@ for _, module in ipairs(modules) do
 end
 
 -- Create start command for all modules
-vim.api.nvim_create_user_command('DevAllStart', function()
+vim.api.nvim_create_user_command('DevAssemble', function()
     for _, module in ipairs(modules) do
         local module_path = 'dev.modules.' .. module
         require(module_path)
@@ -50,8 +47,8 @@ vim.api.nvim_create_user_command('DevRunStartup', function()
             goto continue
         end
         local module = line:match('^%s*(%S+)')
-        local start_command = get_start_command(module)
-        vim.cmd(start_command)
+        local module_path = 'dev.modules.' .. module
+        require(module_path)
         ::continue::
     end
 end, {})
