@@ -1,0 +1,28 @@
+#!/bin/sh
+
+origin_head=$(git rev-parse origin/HEAD)
+active_file_paths=$(git diff --name-only $origin_head...)
+
+current_path=$(git rev-parse --show-prefix)  # empty if in root of git repo
+
+for active_file_path in $active_file_paths; do
+    # NOTE: This assumes paths do not contain .. or . components
+    # This is the case for git paths returned by the above git commands
+
+    diverging_current_path="$current_path"
+    diverging_active_file_path="$active_file_path"
+
+    while [ "${diverging_current_path%%/*}" = "${diverging_active_file_path%%/*}" ]; do
+        diverging_current_path="${diverging_current_path#*/}"
+        diverging_active_file_path="${diverging_active_file_path#*/}"
+    done
+
+    remaining_upwards_path_components="$diverging_current_path"
+    upwards_path=""
+    while [ -n "$remaining_upwards_path_components" ]; do
+        remaining_upwards_path_components="${remaining_upwards_path_components#*/}"
+        upwards_path="../$upwards_path"
+    done
+
+    echo "$upwards_path$diverging_active_file_path"
+done

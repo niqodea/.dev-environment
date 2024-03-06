@@ -23,6 +23,5 @@ vim.keymap.set('v', vim.g.mapleader..'fg*', function()
     fzf_lua.grep_visual({ cmd = "git grep --line-number --column" })
 end)
 
-vim.api.nvim_create_user_command('GitStatus', function()
-    vim.cmd('terminal git status --short')
-end, {})
+-- Add git commands to the command palette
+require('dev.modules.git-commands')

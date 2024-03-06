@@ -14,6 +14,7 @@ alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias gd='git diff'
+alias gdn='git diff --name-only'
 alias gi='git init'
 alias gl='git log --graph --pretty=format:"%C(auto)%h -%d %s %Cgreen(%cr) %C(bold blue)<%an>%Creset"'  # Compress log, add branches graph, show relative date and author
 alias gm='git merge'

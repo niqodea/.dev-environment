@@ -26,4 +26,4 @@
 - Think of burger hash functions alternatives that might be more readable (e.g. rely on letters from the source word, perhaps reshuffling them?)
 - Look for/implement neovim command that restores all swap files as buffers (useful in case of crashes)
 - Look for possible injection vulnerabilities, especially when it comes to using arbitrary paths to build command strings
-- Add git alias (shell or neovim) printing all recently changed files (last 3 to 4 commits? maybe exclude main commits?)
+- Refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
