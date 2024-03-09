@@ -8,7 +8,8 @@ install_path="$1"
 # Ref: https://docs.conda.io/projects/miniconda/en/latest/
 conda_install_path="$HOME/.miniconda3"
 conda_tmp_path='/tmp/miniconda.sh'
-conda_url='https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh'
+arch=$(uname -m)
+conda_url="'https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-$arch.sh'"
 wget "$conda_url" -O "$conda_tmp_path"
 sh "$conda_tmp_path" -b -p "$conda_install_path"
 rm "$conda_tmp_path"
