@@ -14,7 +14,7 @@ echo 'Compiling and installing tmux...'
 repo_path="$root/bin-submodules/tmux"
 git submodule update --init "$repo_path"
 cd "$repo_path"
-sudo apt install --yes --no-install-recommends autoconf automake bison libevent-dev libncurses5-dev pkg-config
+sudo apt install --yes --no-install-recommends autoconf automake bison libevent-dev libncurses5-dev make pkg-config
 sh autogen.sh
 ./configure --prefix="$install_path"
 make

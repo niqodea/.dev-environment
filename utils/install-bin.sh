@@ -26,6 +26,7 @@ echo 'Compiling and installing pass...'
 repo_path="$root/bin-submodules/password-store"
 git submodule update --init "$repo_path"
 cd "$repo_path"
+sudo apt install --yes --no-install-recommends make
 make install PREFIX="$install_path"
 
 sudo apt install --yes --no-install-recommends python3.11 python3.11-venv
