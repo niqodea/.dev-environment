@@ -28,3 +28,4 @@
 - Look for possible injection vulnerabilities, especially when it comes to using arbitrary paths to build command strings
 - Refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
 - Create alias to deal with processes more easily (exposed ports with `lsof`, better `psg`, etc.)
+- Look into tmux automatic-rename (can it be used to do what we currently do in a built-in way? can it be turned off if it's an annoyance?)
