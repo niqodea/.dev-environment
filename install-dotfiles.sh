@@ -11,7 +11,7 @@ else
     modules="$*"
 fi
 
-backup_path="$HOME/dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+backup_path="$HOME/.dotfiles-backup/$(date +%Y%m%d_%H%M%S)"
 
 for module in $modules; do
     module_path="$root/$module"
