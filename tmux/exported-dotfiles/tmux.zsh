@@ -10,19 +10,20 @@ function () {
 
     export ZSH_TMUX_HOOKS_SETUP='true'
 
-    # Set pane title to running command
-    # Initially set the pane title to empty string
-    tmux select-pane -T ''
-    function set_tmux_pane_title() {
+    function set_tmux_pane_idle() {
+        tmux select-pane -t "$TMUX_PANE" -T ''
+        tmux set-option -t "$TMUX_PANE" -p @status idle
+    }
+    function set_tmux_pane_running() {
+        # Set pane title to running command
         COMMAND="$1"
         # Escape newlines, otherwise tmux will not display the title
         tmux select-pane -t "$TMUX_PANE" -T "${COMMAND//$'\n'/\\n}"
+        tmux set-option -t "$TMUX_PANE" -p @status running
     }
-    function reset_tmux_pane_title() {
-        tmux select-pane -t "$TMUX_PANE" -T ''
-    }
+    # Initially set the pane to idle
+    set_tmux_pane_idle
     # Call these functions before and after a command
-    preexec_functions+=(set_tmux_pane_title)
-    precmd_functions+=(reset_tmux_pane_title)
+    preexec_functions+=(set_tmux_pane_running)
+    precmd_functions+=(set_tmux_pane_idle)
 }
-
