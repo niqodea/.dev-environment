@@ -29,4 +29,3 @@
 - Refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
 - Create alias to deal with processes more easily (exposed ports with `lsof`, better `psg`, etc.)
 - Look into tmux automatic-rename (can it be used to do what we currently do in a built-in way? can it be turned off if it's an annoyance?)
-- Create a manager for tmux sessions you can only access in session 0. The manager will have you visualize all sessions and decide which to kill, perhaps with a multiselection. Killed sections have their tmux panes shut down, unless a command is running in the pane. If it is, no pane in the session is killed.

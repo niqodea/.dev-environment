@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -eu
+
+SESSION="$1"
+
+for pane_id in $(tmux list-panes -s -t "$SESSION" -F '#{pane_id}'); do
+    status="$(tmux show-options -pv -t $pane_id @status)"
+    if [ "$status" = 'running' ]; then
+        >&2 echo "Pane $pane_id is running a command"
+        exit 1
+    fi
+done
+
+tmux kill-session -t "$SESSION"
