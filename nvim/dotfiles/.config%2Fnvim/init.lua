@@ -16,10 +16,10 @@ vim.keymap.set('n', vim.g.mapleader..'v', '<C-w>v')
 vim.keymap.set('n', vim.g.mapleader..'S', ':below split<cr>')
 vim.keymap.set('n', vim.g.mapleader..'V', ':below vsplit<cr>')
 -- Easier resizing of splits
-vim.keymap.set('n', '<C-j>', '2<C-w>+')
-vim.keymap.set('n', '<C-k>', '2<C-w>-')
-vim.keymap.set('n', '<C-l>', '2<C-w>>')
-vim.keymap.set('n', '<C-h>', '2<C-w><')
+vim.keymap.set('n', '<C-left>', '2<C-w><')
+vim.keymap.set('n', '<C-down>', '2<C-w>+')
+vim.keymap.set('n', '<C-up>', '2<C-w>-')
+vim.keymap.set('n', '<C-right>', '2<C-w>>')
 
 -- Easier tab handling
 vim.keymap.set('n', vim.g.mapleader..'<C-t>', ':tabnew<cr>')
