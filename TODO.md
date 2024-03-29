@@ -11,7 +11,6 @@
 - Check out https://github.com/abhinav/tmux-fastcopy
 - Consider using a mini-modal solution to pane resizing, both in tmux and nvim, to make it unnecessary for alt and ctrl to be pressed together (inspiration: https://github.com/whame/tmux-modal)
 - Consider a solution that saves content of tmux panes in a backup directory, so that you can have an idea of what you were working on after a reboot. Potentially, we could keep track of the state of the shells with hooks, so that we can reinflate the state automatically afterwards!
-- Add tmux keybind to kill sessions without detaching (must be properly safeguarded)
 - Move all dotfiles to separate git submodule
 - Implement two different breadcrumbs command: `trail` (current) and `scatter` (recursively trail all directories, optionally with a max depth)
 - Write READMEs for all modules
@@ -22,9 +21,12 @@
 - Add docker (utils or module)
 - Always wrap lua functions with commands to make it clear we are running those with keybindings in nvim
 - Explore frecency solutions (zsh, nvim, tmux, ...)
-- Think of burger hash functions alternatives that might be more readable (e.g. rely on letters from the source word, perhaps reshuffling them?)
 - Look for/implement neovim command that restores all swap files as buffers (useful in case of crashes)
 - Look for possible injection vulnerabilities, especially when it comes to using arbitrary paths to build command strings
 - Refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
 - Create alias to deal with processes more easily (exposed ports with `lsof`, better `psg`, etc.)
-- Look into tmux automatic-rename (can it be used to do what we currently do in a built-in way? can it be turned off if it's an annoyance?)
+- Implement zsh module tracking and cwd via tmux pane options, so that M-S and M-V will split into a pane with same modules and cwd of previous pane
+- Find nvim window reordering solution (can be less complete than tmux's since closing a pane won't close the underlying buffer)
+- Look into other tools for a richer, semantic diff
+- Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
+- Implement burger hash in rust
