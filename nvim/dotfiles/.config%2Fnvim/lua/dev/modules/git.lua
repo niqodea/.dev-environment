@@ -12,7 +12,10 @@ vim.api.nvim_set_hl(0, "GitSignsDelete", { ctermfg = 'DarkRed' })
 
 -- Fuzzy find through git files
 local fzf_lua = require('dev.core').fuzzy.fzf_lua
-vim.keymap.set('n', vim.g.mapleader..'fg-', function() fzf_lua.git_files() end)
+
+vim.keymap.set('n', vim.g.mapleader..'fg-', function()
+    fzf_lua.git_files()
+end)
 vim.keymap.set('n', vim.g.mapleader..'fg/', function()
     fzf_lua.live_grep({ cmd = "git grep --line-number --column" })
 end)
@@ -21,6 +24,19 @@ vim.keymap.set('n', vim.g.mapleader..'fg*', function()
 end)
 vim.keymap.set('v', vim.g.mapleader..'fg*', function()
     fzf_lua.grep_visual({ cmd = "git grep --line-number --column" })
+end)
+
+-- Fuzzy find through git files in the current directory
+vim.keymap.set('n', vim.g.mapleader..'Fg-', function()
+    fzf_lua.git_files({ cwd = vim.fn.expand('%:p:h') }) end)
+vim.keymap.set('n', vim.g.mapleader..'Fg/', function()
+    fzf_lua.live_grep({ cwd = vim.fn.expand('%:p:h'), cmd = "git grep --line-number --column" })
+end)
+vim.keymap.set('n', vim.g.mapleader..'Fg*', function()
+    fzf_lua.grep_cword({ cwd = vim.fn.expand('%:p:h'), cmd = "git grep --line-number --column" })
+end)
+vim.keymap.set('v', vim.g.mapleader..'Fg*', function()
+    fzf_lua.grep_visual({ cwd = vim.fn.expand('%:p:h'), cmd = "git grep --line-number --column" })
 end)
 
 -- Add git commands to the command palette
