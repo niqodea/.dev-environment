@@ -82,18 +82,18 @@ function() {
 
 
     # EXTENSIONS
-    # Source local zsh config, if it exists
-    local local_zsh_path="$HOME/.local.zsh"
-    if [[ -f "$local_zsh_path"  ]]; then
-        source "$local_zsh_path"
-    fi
-
     # Source modules
     local zsh_modules_env_path="$ZSH_ROOT/.zsh-modules-env.zsh"
     if [ -f "$zsh_modules_env_path" ]; then
         source "$zsh_modules_env_path"
     fi
     source "$HOME/.zsh-modules/main.zsh"
+
+    # Source local zsh config, if it exists
+    local local_zsh_path="$HOME/.local.zsh"
+    if [[ -f "$local_zsh_path"  ]]; then
+        source "$local_zsh_path"
+    fi
 
 }
 
