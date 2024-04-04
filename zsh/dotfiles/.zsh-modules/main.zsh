@@ -10,12 +10,6 @@ function() {
         source "$core_module_path"
     done
 
-    if [ -n "$ZSH_START_EXTRA_MODULES" ]; then
-        for extra_module in ${(z)ZSH_START_EXTRA_MODULES}; do
-            source "$extra_modules_path/$extra_module.zsh"
-        done
-    fi
-
     if [ -n "$ZSH_REQUESTED_EXTRA_MODULES" ]; then
         for extra_module in ${(z)ZSH_REQUESTED_EXTRA_MODULES}; do
             source "$extra_modules_path/$extra_module.zsh"
