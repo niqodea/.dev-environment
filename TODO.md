@@ -30,3 +30,4 @@
 - Look into other tools for a richer, semantic diff
 - Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
 - Implement burger hash in rust
+- Integrate venv logic as a zsh module with one argument (something like venv[arg]), making it possible to inherit through tmux pane splitting
