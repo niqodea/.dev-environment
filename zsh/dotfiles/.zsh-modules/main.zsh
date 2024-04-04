@@ -10,8 +10,8 @@ function() {
         source "$core_module_path"
     done
 
-    if [ -n "$ZSH_REQUESTED_EXTRA_MODULES" ]; then
-        for extra_module in ${(z)ZSH_REQUESTED_EXTRA_MODULES}; do
+    if [ -n "$ZSH_EXTRA_MODULES" ]; then
+        for extra_module in ${(z)ZSH_EXTRA_MODULES}; do
             source "$extra_modules_path/$extra_module.zsh"
         done
     fi
@@ -27,11 +27,11 @@ function() {
             return 1
         fi
 
-        if [[ " $ZSH_REQUESTED_EXTRA_MODULES " == *" $extra_module "* ]]; then
+        if [[ " $ZSH_EXTRA_MODULES " == *" $extra_module "* ]]; then
             return  # extra_module already sourced
         fi
 
-        export ZSH_REQUESTED_EXTRA_MODULES="${ZSH_REQUESTED_EXTRA_MODULES+$ZSH_REQUESTED_EXTRA_MODULES }$extra_module"
+        export ZSH_EXTRA_MODULES="${ZSH_EXTRA_MODULES+$ZSH_EXTRA_MODULES }$extra_module"
 
         source "$extra_module_path"
     }
