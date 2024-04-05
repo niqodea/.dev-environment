@@ -37,8 +37,9 @@ vim.keymap.set('n', vim.g.mapleader..'E', require('utils').reload_buffers)
 
 -- Quick yank to and put from plus register (system clipboard)
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
-vim.keymap.set('n', vim.g.mapleader..'Y', '"+Y')
-vim.keymap.set('n', vim.g.mapleader..'p', '"+p')
+vim.keymap.set({'n', 'v'}, vim.g.mapleader..'Y', '"+Y')
+vim.keymap.set({'n', 'v'}, vim.g.mapleader..'p', '"+p')
+vim.keymap.set({'n', 'v'}, vim.g.mapleader..'P', '"+P')
 
 -- Remove instructions banner from netrw
 vim.g.netrw_banner = 0
