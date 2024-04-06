@@ -57,34 +57,43 @@ function prompt_venv() {
 }
 
 # Activate venv
-function av () {
-    if [ -n "${VIRTUAL_ENV+x}" ]; then
-        >&2 echo "A virtual environment is already activated: $VIRTUAL_ENV"
-        return 1
-    fi
-
-    local venv_path="$PWD/$WORKSPACE_CONFIG_DIR/venv"
+function _activate_venv () {
+    local venv_path="$1"
 
     if [ ! -d "$venv_path" ]; then
         >&2 echo "No virtual environment found at $venv_path"
         return 1
     fi
 
-    export VIRTUAL_ENV_WORKSPACE="$PWD"
-    export VIRTUAL_ENV="$venv_path"
-    export PATH="$venv_path/bin:$PATH"
-
-    local color_venv='%F{208}'  # Orange
-    setup_prompt_base "$PROMPT_BASE$color_venv"'{$(prompt_venv)}'
+    if [ -n "$VIRTUAL_ENV" ]; then
+        local previous_venv_path="$VIRTUAL_ENV"
+        export VIRTUAL_ENV="$venv_path"
+        export PATH="$venv_path/bin:${PATH//$previous_venv_path\/bin\:}"
+    else
+        export VIRTUAL_ENV="$venv_path"
+        export PATH="$venv_path/bin:$PATH"
+    fi
 }
+alias av='_activate_venv "$PWD/$WORKSPACE_CONFIG_DIR/venv"'
+alias avv='_activate_venv "$PWD/.venv"'
 
 function cdv () {
-    if [ -z "${VIRTUAL_ENV_WORKSPACE+x}" ]; then
-        >&2 echo "No active virtual environment with corresponding workspace found"
+    local venv_path="$VIRTUAL_ENV"
+
+    if [ -z "${venv_path+x}" ]; then
+        >&2 echo "No active virtual environment found"
         return 1
     fi
 
-    cd "$VIRTUAL_ENV_WORKSPACE"
+    if [[ "$venv_path" == *"$WORKSPACE_CONFIG_DIR/venv" ]]; then
+        local base_path="${venv_path%$WORKSPACE_CONFIG_DIR/venv}"
+    elif [[ "$venv_path" == *"/.venv"  ]]; then
+        local base_path="${venv_path%/.venv}"
+    else
+        local base_path="$venv_path"
+    fi
+
+    cd "$base_path"
 }
 
-alias pv='echo "$VIRTUAL_ENV_WORKSPACE"'
+alias pv='echo "$VIRTUAL_ENV"'

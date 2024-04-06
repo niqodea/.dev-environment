@@ -33,16 +33,22 @@ function () {
     set_tmux_pane_cwd
     chpwd_functions+=(set_tmux_pane_cwd)
 
-    function set_tmux_pane_extra_modules() {
-        tmux set-option -t "$TMUX_PANE" -p @extra_modules "$ZSH_EXTRA_MODULES"
+    function set_tmux_pane_path() {
+        tmux set-option -t "$TMUX_PANE" -p @path "$PATH"
     }
-    set_tmux_pane_extra_modules
-    precmd_functions+=(set_tmux_pane_extra_modules)
+    set_tmux_pane_path
+    precmd_functions+=(set_tmux_pane_path)
 
     function set_tmux_pane_virtual_env() {
         tmux set-option -t "$TMUX_PANE" -p @virtual_env "$VIRTUAL_ENV"
     }
     set_tmux_pane_virtual_env
     precmd_functions+=(set_tmux_pane_virtual_env)
+
+    function set_tmux_pane_zsh_extra_modules() {
+        tmux set-option -t "$TMUX_PANE" -p @zsh_extra_modules "$ZSH_EXTRA_MODULES"
+    }
+    set_tmux_pane_zsh_extra_modules
+    precmd_functions+=(set_tmux_pane_zsh_extra_modules)
 
 }
