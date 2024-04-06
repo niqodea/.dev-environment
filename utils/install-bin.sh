@@ -48,3 +48,6 @@ cd "$repo_path"
 sudo apt install --yes --no-install-recommends yasm
 # Go for a static build to avoid dependency issues
 ./configure --prefix="$install_path" --enable-static --disable-shared
+
+echo 'Installing jq...'
+sudo apt install --yes --no-install-recommends jq
