@@ -39,4 +39,10 @@ function () {
     set_tmux_pane_extra_modules
     precmd_functions+=(set_tmux_pane_extra_modules)
 
+    function set_tmux_pane_virtual_env() {
+        tmux set-option -t "$TMUX_PANE" -p @virtual_env "$VIRTUAL_ENV"
+    }
+    set_tmux_pane_virtual_env
+    precmd_functions+=(set_tmux_pane_virtual_env)
+
 }
