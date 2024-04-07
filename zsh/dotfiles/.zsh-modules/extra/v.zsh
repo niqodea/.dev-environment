@@ -2,11 +2,6 @@ function format_venv_path() {
 
     local venv_path="$1"
 
-    if [ -z "$venv_path" ]; then
-        printf '%s' "X/ "  # matches structure generated below
-        return
-    fi
-
     if [[ "$venv_path" == *"$WORKSPACE_CONFIG_DIR/venv" ]]; then
         local base_path="${venv_path%$WORKSPACE_CONFIG_DIR/venv}"
         local postfix="."
@@ -34,6 +29,11 @@ function prompt_venv() {
 
 
 function () {
+    if [ -z "$VIRTUAL_ENV" ]; then
+        >&2 echo 'Error: not in a virtual environment'
+        return 1
+    fi
+
     if [ "$ZSH_VIRTUAL_ENV_PROMPT_SETUP" = 'true' ]; then
         return
     fi
