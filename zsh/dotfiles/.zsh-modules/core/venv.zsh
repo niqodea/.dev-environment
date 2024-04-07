@@ -13,8 +13,8 @@ function _activate_venv () {
     export VIRTUAL_ENV="$venv_path"
     export PATH="$venv_path/bin:$PATH"
 }
-alias av='_activate_venv "$PWD/$WORKSPACE_CONFIG_DIR/venv"; sm v'
-alias avv='_activate_venv "$PWD/.venv"; sm v'
+alias av='_activate_venv "$PWD/$WORKSPACE_CONFIG_DIR/venv" && sm v'
+alias avv='_activate_venv "$PWD/.venv" && sm v'
 
 function cdv () {
     local venv_path="$VIRTUAL_ENV"
