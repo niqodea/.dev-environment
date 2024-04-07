@@ -26,4 +26,10 @@ function () {
     # Call these functions before and after a command
     preexec_functions+=(set_tmux_pane_running)
     precmd_functions+=(set_tmux_pane_idle)
+
+    function set_tmux_pane_cwd() {
+        tmux set-option -t "$TMUX_PANE" -p @cwd "$PWD"
+    }
+    set_tmux_pane_cwd
+    chpwd_functions+=(set_tmux_pane_cwd)
 }
