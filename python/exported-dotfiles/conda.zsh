@@ -1,3 +1,6 @@
 alias coc='conda create -p "$WORKSPACE_CONFIG_DIR/venv"'
 alias cor='conda env remove -p "$WORKSPACE_CONFIG_DIR/venv"'
 alias coi='conda install -p "$WORKSPACE_CONFIG_DIR/venv"'
+alias cocv='conda create -p .venv'
+alias corv='conda env remove -p .venv'
+alias coiv='conda install -p .venv'
