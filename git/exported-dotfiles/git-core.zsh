@@ -1,5 +1,3 @@
-alias cdg='cd $(git rev-parse --show-toplevel)'  # Go to the root of the current git repository
-
 alias g='git'
 alias ga='git add'
 alias gap='git add --patch'
@@ -35,3 +33,6 @@ alias gshp='git stash pop'
 alias gsw='git switch'
 alias gswc='git switch --create'
 alias gswd='git switch --detach'
+
+alias amg='_activate_extra_module git'
+alias cdg='cd $(git rev-parse --show-toplevel)'  # Go to the root of the current git repository

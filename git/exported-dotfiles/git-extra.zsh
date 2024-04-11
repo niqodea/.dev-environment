@@ -1,4 +1,4 @@
-function prompt_git_info() {
+function prompt_git() {
     # TODO: Maybe build string instead of printing as we go
 
     local hash_burger_length=7  # Same as git default for short SHA
@@ -38,13 +38,12 @@ function prompt_git_info() {
     fi
 }
 
-
 function () {
-    if [ "$ZSH_GIT_PROMPT_SETUP" = 'true' ]; then
+    if [ "$ZSH_GIT_SETUP" = 'true' ]; then
         return
     fi
-    export ZSH_GIT_PROMPT_SETUP='true'
+    export ZSH_GIT_SETUP='true'
 
     local color_git='%F{034}'  # Green
-    setup_prompt_base "$PROMPT_BASE$color_git"'($(prompt_git_info))'
+    setup_prompt_base "$PROMPT_BASE$color_git"'($(prompt_git))'
 }

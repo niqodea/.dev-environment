@@ -1,21 +1,3 @@
-function _activate_venv () {
-    local venv_path="$1"
-
-    if [ -n "$VIRTUAL_ENV" ]; then
-        >&2 echo 'Error: a virtual environment is already active'
-        return 1
-    fi
-    if [ ! -d "$venv_path" ]; then
-        >&2 echo "No virtual environment found at $venv_path"
-        return 1
-    fi
-
-    export VIRTUAL_ENV="$venv_path"
-    export PATH="$venv_path/bin:$PATH"
-}
-alias av='_activate_venv "$PWD/$WORKSPACE_CONFIG_DIR/venv" && sm v'
-alias avv='_activate_venv "$PWD/.venv" && sm v'
-
 function cdv () {
     local venv_path="$VIRTUAL_ENV"
 
@@ -36,3 +18,18 @@ function cdv () {
 }
 
 alias pv='echo "$VIRTUAL_ENV"'
+
+function _activate_venv() {
+    local venv_relative_path="$1"
+
+    local venv_path="$PWD/$venv_relative_path"
+
+    if [ ! -d "$venv_path" ]; then
+        >&2 echo "No virtual environment found at $venv_path"
+        return 1
+    fi
+
+    _activate_extra_module venv "{\"path\": \"$venv_path\"}"
+}
+alias amv='_activate_venv .venv'
+alias amvw='_activate_venv $WORKSPACE_CONFIG_DIR/venv'
