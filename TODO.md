@@ -31,4 +31,4 @@
 - Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
 - Implement burger hash in rust
 - Look into autossh to keep tunnels open: https://www.harding.motd.ca/autossh/
-- Think of a way to handle port forwarding and localhost browser navigation in an easier way
+- Think of a way to handle port forwarding and localhost browser navigation in an easier way (consider having a range of ports always open, like ~20 of them)
