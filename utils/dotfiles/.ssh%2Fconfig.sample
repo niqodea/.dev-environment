@@ -7,7 +7,3 @@ Host *
     ControlPath ~/.ssh/controlmasters/%C
     ControlMaster auto
     ControlPersist 10m
-
-Host *-tmux
-    RequestTTY yes
-    RemoteCommand sh -l -c "tmux ls &> /dev/null && tmux attach || tmux new"
