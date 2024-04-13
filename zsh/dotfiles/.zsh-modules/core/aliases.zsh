@@ -46,3 +46,17 @@ function bkp () {
 
     mv -- "$file_path" "$backup_file_path"
 }
+
+function sshw () {
+    local workstation="$1"
+
+    local ssh_command="ssh $workstation"
+    # Options for sturdier connections
+    ssh_command="$ssh_command -o ServerAliveInterval=60 -o ServerAliveCountMax=3"
+
+    for port in {50000..50019}; do
+        ssh_command="$ssh_command -L 0.0.0.0\:$port\:localhost\:$port"
+    done
+
+    sh -c "$ssh_command"
+}
