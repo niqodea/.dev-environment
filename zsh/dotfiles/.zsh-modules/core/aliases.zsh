@@ -46,12 +46,3 @@ function bkp () {
 
     mv -- "$file_path" "$backup_file_path"
 }
-
-# TODO: Extract this as a separate module
-
-function prompt_venv() {
-    local venv_workspace="$VIRTUAL_ENV_WORKSPACE"
-    local venv_workspace_formatted_path="$(format_path "$venv_workspace" 1 1)"
-    local escaped_venv_workspace_formatted_path="${venv_workspace_formatted_path//\%/%%/}"
-    printf '%s' "$escaped_venv_workspace_formatted_path"
-}
