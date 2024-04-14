@@ -50,15 +50,17 @@ function bkp () {
 function sshw () {
     local workstation="$1"
 
-    local ssh_command="ssh $workstation"
+    local ssh_command="ssh -t"  # -t to specify a command to run at the end
     # Options for sturdier connections
     ssh_command="$ssh_command -o ServerAliveInterval=60 -o ServerAliveCountMax=3"
-    # Options for connecting to tmux, launching the server if necessary
-    ssh_command="$ssh_command -o RequestTTY=yes -t 'tmux ls &> /dev/null && tmux attach || tmux new'"
 
     for port in {50000..50019}; do
         ssh_command="$ssh_command -L 0.0.0.0\:$port\:localhost\:$port"
     done
+
+    ssh_command="$ssh_command $workstation"
+    # Connect to tmux, launching the server if necessary
+    ssh_command="$ssh_command 'tmux ls &> /dev/null && tmux attach || tmux new'"
 
     sh -c "$ssh_command"
 }
