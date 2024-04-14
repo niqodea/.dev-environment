@@ -13,6 +13,12 @@ wsl -u root sudo ip addr add %wsl_ip%/%static_wsl_ipnet_mask_length% broadcast %
 :: Ref: https://github.com/microsoft/WSL/issues/4150#issuecomment-504209723
 set ports=443,50000,50001,50002,50003,50004,50005,50006,50007,50008,50009
 
+:: Upsert firewall allow rules
+set firewall_rule_name=Allow WSL
+netsh advfirewall firewall delete rule name="%firewall_rule_name%"
+netsh advfirewall firewall add rule name="%firewall_rule_name%" dir=in action=allow protocol=TCP localport=%ports%
+netsh advfirewall firewall add rule name="%firewall_rule_name%" dir=out action=allow protocol=TCP localport=%ports%
+
 PowerShell -Command "New-NetFireWallRule -DisplayName 'WSL 2 Firewall Unlock' -Direction Outbound -LocalPort %ports% -Action Allow -Protocol TCP"
 PowerShell -Command "New-NetFireWallRule -DisplayName 'WSL 2 Firewall Unlock' -Direction Inbound -LocalPort %ports% -Action Allow -Protocol TCP"
 
