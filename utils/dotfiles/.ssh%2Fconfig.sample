@@ -6,4 +6,3 @@ Host *
     # Use a ControlMaster to speed up subsequent connections
     ControlPath ~/.ssh/controlmasters/%C
     ControlMaster auto
-    ControlPersist 10m
