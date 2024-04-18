@@ -27,6 +27,7 @@ alias fcr='fc -R'
 
 # Print current working directory
 alias p='pwd'
+alias pp='pwd -P'
 
 function bkp () {
     local file_path="$1"
