@@ -48,7 +48,7 @@ function bkp () {
     mv -- "$file_path" "$backup_file_path"
 }
 
-function sshw () {
+function sw () {
     local workstation="$1"
 
     local ssh_command="ssh -t"  # -t to specify a command to run at the end
