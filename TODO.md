@@ -31,4 +31,3 @@
 - Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
 - Implement burger hash in rust
 - Implement a quick way to run shell commands in the same directory of the current nvim buffer
-- Implement display of non-zero exit status code of zsh commands
