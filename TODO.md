@@ -32,4 +32,3 @@
 - Implement burger hash in rust
 - Implement a quick way to run shell commands in the same directory of the current nvim buffer
 - Implement display of non-zero exit status code of zsh commands
-- Implement tmux pane command to show information about currently running process (pid, time, memory consumption, ...)

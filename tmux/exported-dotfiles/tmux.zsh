@@ -30,6 +30,8 @@ function () {
         return 1
     fi
 
+    tmux set-option -t "$TMUX_PANE" -p @shell_pid "$$"
+
     # Initially set the pane to idle
     set_tmux_pane_idle
     # Call these functions before and after a command
