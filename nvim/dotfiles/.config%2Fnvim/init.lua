@@ -28,12 +28,14 @@ vim.keymap.set('n', vim.g.mapleader..'<C-p>', ':tabprevious<cr>')
 
 -- Quick common actions
 vim.keymap.set('n', vim.g.mapleader..'q', ':quit<cr>')
-vim.keymap.set('n', vim.g.mapleader..'Q', ':qall<cr>')
+vim.keymap.set('n', vim.g.mapleader..'Q', ':quitall<cr>')
 vim.keymap.set('n', vim.g.mapleader..'w', ':write<cr>')
 vim.keymap.set('n', vim.g.mapleader..'W', ':wall<cr>')
--- These edits are effectively used to reload files
 vim.keymap.set('n', vim.g.mapleader..'e', ':edit<cr>')
-vim.keymap.set('n', vim.g.mapleader..'E', require('utils').reload_buffers)
+
+-- Reload all buffers (basically the missing :eall)
+vim.api.nvim_create_user_command('EditAll', require('utils').reload_buffers, {})
+vim.keymap.set('n', vim.g.mapleader..'E', ':EditAll<cr>')
 
 -- Quick yank to and put from plus register (system clipboard)
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
@@ -45,11 +47,12 @@ vim.keymap.set({'n', 'v'}, vim.g.mapleader..'P', '"+P')
 vim.g.netrw_banner = 0
 -- Quick file explorer (we use '-' for consistency with netrw)
 vim.keymap.set('n', vim.g.mapleader..'-', ':Explore<cr>')
-vim.keymap.set('n', vim.g.mapleader..'_', function()
-    -- `Explore .` won't work when already in netrw for some reason
-    local cwd = vim.fn.getcwd()
-    vim.cmd('Explore ' .. cwd)
-end)
+vim.api.nvim_create_user_command('ExploreCwd', require('utils').explore_cwd, {})
+vim.api.nvim_create_user_command('ExploreGitRoot', require('utils').explore_git_root, {})
+vim.api.nvim_create_user_command('ExploreVenv', require('utils').explore_venv, {})
+vim.keymap.set('n', vim.g.mapleader..'__', ':ExploreCwd<cr>')
+vim.keymap.set('n', vim.g.mapleader..'_g', ':ExploreGitRoot<cr>')
+vim.keymap.set('n', vim.g.mapleader..'_v', ':ExploreVenv<cr>')
 
 -- Quick exit from terminal mode
 vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>')

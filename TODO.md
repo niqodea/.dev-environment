@@ -19,7 +19,6 @@
 - Write aliases for ffmpeg and imagemagick
 - Add automatic linting
 - Add docker (utils or module)
-- Always wrap lua functions with commands to make it clear we are running those with keybindings in nvim
 - Explore frecency solutions (zsh, nvim, tmux, ...)
 - Look for/implement neovim command that restores all swap files as buffers (useful in case of crashes)
 - Look for possible injection vulnerabilities, especially when it comes to using arbitrary paths to build command strings

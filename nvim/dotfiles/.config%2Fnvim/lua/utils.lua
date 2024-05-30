@@ -53,4 +53,35 @@ function M.reload_buffers()
 end
 
 
+function M.explore_cwd()
+    -- `Explore .` won't work when already in netrw for some reason
+    local cwd = vim.fn.getcwd()
+    vim.cmd('Explore ' .. cwd)
+end
+
+
+function M.explore_git_root()
+    local handle = io.popen('git rev-parse --show-toplevel 2> /dev/null')
+    local git_root = handle:read('*line')
+    handle:close()
+
+    if git_root == nil then
+        error('Not in a git repository')
+    end
+
+    vim.cmd('Explore ' .. git_root)
+end
+
+
+function M.explore_venv()
+    local venv_path = vim.fn.getenv('VIRTUAL_ENV')
+
+    if venv_path == nil then
+        error('No VIRTUAL_ENV environment variable found')
+    end
+
+    vim.cmd('Explore ' .. venv_path)
+end
+
+
 return M
