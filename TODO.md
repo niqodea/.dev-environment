@@ -24,9 +24,8 @@
 - Look for possible injection vulnerabilities, especially when it comes to using arbitrary paths to build command strings
 - Refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
 - Create alias to deal with processes more easily (exposed ports with `lsof`, better `psg`, etc.)
-- Implement zsh module tracking and cwd via tmux pane options, so that M-S and M-V will split into a pane with same modules and cwd of previous pane
 - Find nvim window reordering solution (can be less complete than tmux's since closing a pane won't close the underlying buffer)
 - Look into other tools for a richer, semantic diff
 - Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
 - Implement burger hash in rust
-- Implement a quick way to run shell commands in the same directory of the current nvim buffer
+- Implement git ls-files by modification date both as a command and in nvim
