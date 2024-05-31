@@ -42,6 +42,8 @@ vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'Y', '"+Y')
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'p', '"+p')
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'P', '"+P')
+vim.api.nvim_create_user_command('YankPath', require('utils').yank_path, {})
+vim.keymap.set('n', vim.g.mapleader..'<C-y>', ':YankPath<cr>')
 
 -- Remove instructions banner from netrw
 vim.g.netrw_banner = 0

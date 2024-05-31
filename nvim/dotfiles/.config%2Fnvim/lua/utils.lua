@@ -84,4 +84,10 @@ function M.explore_venv()
 end
 
 
+function M.yank_path()
+    local path = vim.fn.expand('%:.')
+    vim.fn.setreg('+', path)
+end
+
+
 return M
