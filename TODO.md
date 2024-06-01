@@ -6,7 +6,6 @@
 - (maybe) move nvim lua files dealing with git as exported git dotfiles
 - write handy snippets (e.g. python)
 - Only pull repository info for the specific commit
-- Find a way to automatically name tmux windows with useful information. Try to ask suggestions to chatGPT for this.
 - Update tmux, nvim, git versions and check for new functionalities
 - Check out https://github.com/abhinav/tmux-fastcopy
 - Consider using a mini-modal solution to pane resizing, both in tmux and nvim, to make it unnecessary for alt and ctrl to be pressed together (inspiration: https://github.com/whame/tmux-modal)
