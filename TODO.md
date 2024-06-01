@@ -6,7 +6,7 @@
 - (maybe) move nvim lua files dealing with git as exported git dotfiles
 - write handy snippets (e.g. python)
 - Only pull repository info for the specific commit
-- Update tmux, nvim, git versions and check for new functionalities
+- Update nvim, git versions and check for new functionalities
 - Check out https://github.com/abhinav/tmux-fastcopy
 - Consider using a mini-modal solution to pane resizing, both in tmux and nvim, to make it unnecessary for alt and ctrl to be pressed together (inspiration: https://github.com/whame/tmux-modal)
 - Consider a solution that saves content of tmux panes in a backup directory, so that you can have an idea of what you were working on after a reboot. Potentially, we could keep track of the state of the shells with hooks, so that we can reinflate the state automatically afterwards!
