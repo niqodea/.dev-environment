@@ -6,9 +6,10 @@ PANE_ID="$1"
 
 status="$(tmux show-options -pv -t $PANE_ID @status)"
 
-if [ "$status" = 'running' ]; then
-    >&2 echo "Pane $PANE_ID is running a command"
-    exit 1
+if [ "$status" != 'idle' ]; then
+    # Prefix pane id with % to escape the leading % character
+    tmux display-message "Pane %$PANE_ID is not idle"
+    exit
 fi
 
 tmux kill-pane -t "$PANE_ID"

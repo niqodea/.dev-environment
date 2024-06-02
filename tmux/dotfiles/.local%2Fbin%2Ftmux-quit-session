@@ -6,9 +6,10 @@ SESSION="$1"
 
 for pane_id in $(tmux list-panes -s -t "$SESSION" -F '#{pane_id}'); do
     status="$(tmux show-options -pv -t $pane_id @status)"
-    if [ "$status" = 'running' ]; then
-        >&2 echo "Pane $pane_id is running a command"
-        exit 1
+    if [ "$status" != 'idle' ]; then
+        # Prefix pane id with % to escape the leading % character
+        tmux display-message "Pane %$pane_id is not idle"
+        exit
     fi
 done
 
