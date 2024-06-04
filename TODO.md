@@ -28,3 +28,8 @@
 - Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
 - Implement burger hash in rust
 - Implement git ls-files by modification date both as a command and in nvim
+- Implement nvim string/lines diff solution (search the web, an idea could be to compare yank register and visual selection)
+- Address unintuitive nvim matchit parentheses highlight
+- Implement non-intrusive monitoring of key metrics like MEM usage, GPU usage, Disk usage (they should only be visually noticeable if above a critical threshold)
+- Have nvim's `:Explore` point to the current buffer line upon entering netrw
+- Add alias to print short commit git sha
