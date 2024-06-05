@@ -32,4 +32,3 @@
 - Address unintuitive nvim matchit parentheses highlight
 - Implement non-intrusive monitoring of key metrics like MEM usage, GPU usage, Disk usage (they should only be visually noticeable if above a critical threshold)
 - Have nvim's `:Explore` point to the current buffer line upon entering netrw
-- Add alias to print short commit git sha
