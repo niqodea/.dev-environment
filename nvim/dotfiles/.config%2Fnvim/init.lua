@@ -48,10 +48,11 @@ vim.keymap.set('n', vim.g.mapleader..'<C-y>', ':YankPath<cr>')
 -- Remove instructions banner from netrw
 vim.g.netrw_banner = 0
 -- Quick file explorer (we use '-' for consistency with netrw)
-vim.keymap.set('n', vim.g.mapleader..'-', ':Explore<cr>')
+vim.api.nvim_create_user_command('ExploreDirectory', require('utils').explore_directory, {})
 vim.api.nvim_create_user_command('ExploreCwd', require('utils').explore_cwd, {})
 vim.api.nvim_create_user_command('ExploreGitRoot', require('utils').explore_git_root, {})
 vim.api.nvim_create_user_command('ExploreVenv', require('utils').explore_venv, {})
+vim.keymap.set('n', vim.g.mapleader..'-', ':ExploreDirectory<cr>')
 vim.keymap.set('n', vim.g.mapleader..'__', ':ExploreCwd<cr>')
 vim.keymap.set('n', vim.g.mapleader..'_g', ':ExploreGitRoot<cr>')
 vim.keymap.set('n', vim.g.mapleader..'_v', ':ExploreVenv<cr>')

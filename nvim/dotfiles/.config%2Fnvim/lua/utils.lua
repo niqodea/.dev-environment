@@ -53,6 +53,40 @@ function M.reload_buffers()
 end
 
 
+function M.explore_directory()
+    -- Note: This is a hacky, which is inevitable considering we are dealing with netrw
+    -- Sometimes, the buffer content stored in lines does not reflect the contents of
+    -- netrw, perhaps due to a race condition
+
+    local before_buffer = vim.api.nvim_get_current_buf()
+    local before_bufname = vim.fn.expand('%:t')
+    vim.cmd('Explore')
+
+    if vim.api.nvim_get_current_buf() == before_buffer then
+        return
+    end
+
+    -- Position cursor on the previous buffer's file
+    local lines = vim.fn.getbufline(0, 1, '$')
+    for i, line in ipairs(lines) do
+
+        if (
+            line == before_bufname or  -- normal file
+            line == before_bufname .. '*' or  -- executable
+            line:match('^.*@\t') == before_bufname .. '@\t'  -- symlink
+        ) then
+            vim.api.nvim_win_set_cursor(0, {i, 0})
+            return
+        end
+
+        ::continue::
+    end
+
+    error('Could not find bufname: ' .. before_bufname)
+
+end
+
+
 function M.explore_cwd()
     -- `Explore .` won't work when already in netrw for some reason
     local cwd = vim.fn.getcwd()
