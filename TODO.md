@@ -32,3 +32,5 @@
 - Address unintuitive nvim matchit parentheses highlight
 - Implement non-intrusive monitoring of key metrics like MEM usage, GPU usage, Disk usage (they should only be visually noticeable if above a critical threshold)
 - Have nvim's `:Explore` point to the current buffer line upon entering netrw
+- Find a way to effortlessly move to edited parts of a Git-tracked file in neovim (not necessarily next/previous hunk from the git nvim plugin)
+- Implement a standardized solution for logging of errors that are hard to reproduce
