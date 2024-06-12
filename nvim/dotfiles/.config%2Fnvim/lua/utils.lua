@@ -63,6 +63,7 @@ function M.explore_directory()
     vim.cmd('Explore')
 
     if vim.api.nvim_get_current_buf() == before_buffer then
+        error('Already in a directory explorer')
         return
     end
 
@@ -104,17 +105,6 @@ function M.explore_git_root()
     end
 
     vim.cmd('Explore ' .. git_root)
-end
-
-
-function M.explore_venv()
-    local venv_path = vim.fn.getenv('VIRTUAL_ENV')
-
-    if venv_path == nil then
-        error('No VIRTUAL_ENV environment variable found')
-    end
-
-    vim.cmd('Explore ' .. venv_path)
 end
 
 

@@ -51,11 +51,12 @@ vim.g.netrw_banner = 0
 vim.api.nvim_create_user_command('ExploreDirectory', require('utils').explore_directory, {})
 vim.api.nvim_create_user_command('ExploreCwd', require('utils').explore_cwd, {})
 vim.api.nvim_create_user_command('ExploreGitRoot', require('utils').explore_git_root, {})
-vim.api.nvim_create_user_command('ExploreVenv', require('utils').explore_venv, {})
 vim.keymap.set('n', vim.g.mapleader..'-', ':ExploreDirectory<cr>')
 vim.keymap.set('n', vim.g.mapleader..'__', ':ExploreCwd<cr>')
 vim.keymap.set('n', vim.g.mapleader..'_g', ':ExploreGitRoot<cr>')
-vim.keymap.set('n', vim.g.mapleader..'_v', ':ExploreVenv<cr>')
+vim.keymap.set('n', vim.g.mapleader..'_v', ':Explore $VIRTUAL_ENV<cr>')
+vim.keymap.set('n', vim.g.mapleader..'_~', ':Explore $HOME<cr>')
+vim.keymap.set('n', vim.g.mapleader..'_/', ':Explore /<cr>')
 
 -- Quick exit from terminal mode
 vim.keymap.set('t', '<C-\\><C-\\>', '<C-\\><C-n>')
