@@ -63,12 +63,20 @@ function M.explore_directory()
     vim.cmd('Explore')
 
     if vim.api.nvim_get_current_buf() == before_buffer then
-        error('Already in a directory explorer')
+        return  -- netrw already open in a directory
+    end
+
+    local lines = vim.fn.getbufline(0, 1, '$')
+    if #lines < 2 or lines[1] ~= '../' or lines[2] ~= './' then
+        -- Two main reasons why this could happen:
+        -- 1) netrw is still loading
+        -- 2) netrw liststyle is not set to 'thin'
         return
     end
 
+    -- We are now reasonably sure `lines` contains netrw contents with liststyle 'thin'
+
     -- Position cursor on the previous buffer's file
-    local lines = vim.fn.getbufline(0, 1, '$')
     for i, line in ipairs(lines) do
 
         if (
@@ -83,8 +91,7 @@ function M.explore_directory()
         ::continue::
     end
 
-    error('Could not find bufname: ' .. before_bufname)
-
+    -- If we reach here, the file associated to the buffer does not exist
 end
 
 
