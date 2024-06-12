@@ -39,7 +39,7 @@ vim.keymap.set('n', vim.g.mapleader..'E', ':EditAll<cr>')
 
 -- Quick yank to and put from plus register (system clipboard)
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'y', '"+y')
-vim.keymap.set({'n', 'v'}, vim.g.mapleader..'Y', '"+Y')
+vim.keymap.set({'n', 'v'}, vim.g.mapleader..'Y', '"+y$')  -- Y is yy without recursive mappings
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'p', '"+p')
 vim.keymap.set({'n', 'v'}, vim.g.mapleader..'P', '"+P')
 vim.api.nvim_create_user_command('YankPath', require('utils').yank_path, {})
