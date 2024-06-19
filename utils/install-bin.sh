@@ -10,6 +10,14 @@ repo_path="$root/bin-submodules/breadcrumbs"
 git submodule update --init "$repo_path"
 cp "$repo_path/breadcrumbs" "$install_path/bin/"
 
+echo 'Downloading and installing hburger...'
+repo_path="$root/bin-submodules/hburger"
+git submodule update --init "$repo_path"
+cd "$repo_path"
+# TODO: Wrap this behind a Makefile
+cargo build --release
+cp "$repo_path/target/release/hburger" "$install_path/bin/"
+
 # Building from source requires go to be installed, not worth it for now
 echo 'Downloading and installing fzf...'
 repo_path="$root/bin-submodules/fzf"

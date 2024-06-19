@@ -64,3 +64,6 @@
 [submodule "utils/bin-submodules/ffmpeg"]
 	path = utils/bin-submodules/ffmpeg
 	url = https://git.ffmpeg.org/ffmpeg.git
+[submodule "utils/bin-submodules/hburger"]
+	path = utils/bin-submodules/hburger
+	url = https://github.com/niqodea/hburger.git

@@ -26,7 +26,6 @@
 - Find nvim window reordering solution (can be less complete than tmux's since closing a pane won't close the underlying buffer)
 - Look into other tools for a richer, semantic diff
 - Find a better way to manage zsh history (right now it starts from scratch each time we create a new session, not ideal)
-- Implement burger hash in rust
 - Implement git ls-files by modification date both as a command and in nvim
 - Implement nvim string/lines diff solution (search the web, an idea could be to compare yank register and visual selection)
 - Address unintuitive nvim matchit parentheses highlight

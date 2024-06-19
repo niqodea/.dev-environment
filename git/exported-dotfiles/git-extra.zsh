@@ -2,7 +2,6 @@ function prompt_git() {
     # TODO: Maybe build string instead of printing as we go
 
     local hash_burger_length=7  # Same as git default for short SHA
-    local patty_hash_length=$((hash_burger_length - 2))
 
     local git_dir=$(git rev-parse --git-dir 2> /dev/null)
     if [ -z "$git_dir" ]; then
@@ -34,7 +33,7 @@ function prompt_git() {
         # HEAD points to branch, print branch's name burger hash
         printf '>'  # Attached
         local current_branch="$current_ref"
-        printf '%s' "$(burger_hash "$current_branch" 3 2 2 " ")"
+        printf '%s' "$(hburger hash "$current_branch" -l 3 -c 2 -r 2 -p " ")"
     fi
 }
 
