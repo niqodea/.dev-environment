@@ -18,8 +18,6 @@ function format_path() {
     local num_start_components="$2"
     local num_end_components="$3"
 
-    local max_components=$((num_top_components + num_bottom_components))
-
     if [[ "$input" == "$ZSH_ROOT" || "$input" == "$ZSH_ROOT/"* ]]; then
         printf "."
         local relpath="${input#$ZSH_ROOT}"
@@ -27,11 +25,12 @@ function format_path() {
         printf "~"
         local relpath="${input#$HOME}"
     else
-        printf "/"
-        local relpath="${input#/}"
+        printf " "
+        local relpath="$input"
     fi
 
     if [ -z "$relpath" ]; then
+        printf "/"
         return
     fi
 
