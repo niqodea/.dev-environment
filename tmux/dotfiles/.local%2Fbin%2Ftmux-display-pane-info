@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -eu
+
+PANE_ID="$1"
+
+pane_options="$(tmux show-options -p -t "$PANE_ID")"
+echo "$pane_options"
+
+status="$(echo "$pane_options" | awk '$1 == "@status" {print $2}')"
+if [ "$status" = 'idle' ]; then
+    # No command information to show
+    exit
+fi
+
+shell_pid=$(echo "$pane_options" | awk '$1 == "@shell_pid" {print $2}')
+
+echo
+ps --ppid "$shell_pid" -o %cpu,%mem,stat,etime,cmd --sort start_time
