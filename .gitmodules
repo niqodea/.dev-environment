@@ -52,18 +52,18 @@
 [submodule "utils/bin-submodules/breadcrumbs"]
 	path = utils/bin-submodules/breadcrumbs
 	url = https://github.com/niqodea/breadcrumbs.git
+[submodule "utils/bin-submodules/ffmpeg"]
+	path = utils/bin-submodules/ffmpeg
+	url = https://git.ffmpeg.org/ffmpeg.git
 [submodule "utils/bin-submodules/fzf"]
 	path = utils/bin-submodules/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "utils/bin-submodules/hburger"]
+	path = utils/bin-submodules/hburger
+	url = https://github.com/niqodea/hburger.git
 [submodule "utils/bin-submodules/password-store"]
 	path = utils/bin-submodules/password-store
 	url = https://git.zx2c4.com/password-store
 [submodule "zsh/bin-submodules/zsh"]
 	path = zsh/bin-submodules/zsh
 	url = https://github.com/zsh-users/zsh.git
-[submodule "utils/bin-submodules/ffmpeg"]
-	path = utils/bin-submodules/ffmpeg
-	url = https://git.ffmpeg.org/ffmpeg.git
-[submodule "utils/bin-submodules/hburger"]
-	path = utils/bin-submodules/hburger
-	url = https://github.com/niqodea/hburger.git
