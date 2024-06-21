@@ -33,7 +33,7 @@ function prompt_git() {
         # HEAD points to branch, print branch's name burger hash
         printf '>'  # Attached
         local current_branch="$current_ref"
-        printf '%s' "$(hburger hash "$current_branch" -l 3 -c 2 -r 2 -p " ")"
+        printf '%s' "$(hburger hash -l 3 -c 2 -r 2 -p " " -- "$current_branch")"
     fi
 }
 

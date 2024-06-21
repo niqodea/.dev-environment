@@ -34,13 +34,13 @@ function format_path() {
         return
     fi
 
-    local burgerized_relpath="$(hburger hash-path "$relpath" -s "$num_start_components" -e "$num_end_components" -p " ")"
+    local burgerized_relpath="$(hburger hash-path -s "$num_start_components" -e "$num_end_components" -p " " -- "$relpath")"
     printf '%s' "$burgerized_relpath"
 }
 
 function prompt_userhost() {
-    local burger_user="$(hburger hash "$USER" -l 1 -c 1 -r 1 -p " ")"
-    local burger_host="$(hburger hash "$HOST" -l 1 -c 1 -r 1 -p " ")"
+    local burger_user="$(hburger hash -l 1 -c 1 -r 1 -p " " -- "$USER")"
+    local burger_host="$(hburger hash -l 1 -c 1 -r 1 -p " " -- "$HOST")"
     printf "$burger_user@$burger_host"
 }
 
