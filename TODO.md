@@ -33,3 +33,4 @@
 - Implement a standardized solution for logging of errors that are hard to reproduce
 - Check for new functionalities of nvim, git versions
 - Update nvim to past v0.10. This version keeps consuming stdin while closing, at least when compiled manually. For now we reverted back to 0.9.1 (the latest version we can easily compile and does not have this problem). Possibly related: https://github.com/neovim/neovim/issues/18670#issuecomment-1133496341
+- Update nvim-treesitter to v0.9.2 or above (currently breaks with nvim 0.9.2 due to incompatibility with builtin lua parser, ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/5536#issuecomment-1826400562)
