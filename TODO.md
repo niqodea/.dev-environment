@@ -31,5 +31,6 @@
 - Find a way to effortlessly move to edited parts of a Git-tracked file in neovim (not necessarily next/previous hunk from the git nvim plugin)
 - Implement a standardized solution for logging of errors that are hard to reproduce
 - Check for new functionalities of nvim, git versions
-- Update nvim to past v0.10. This version keeps consuming stdin while closing, at least when compiled manually. For now we reverted back to 0.9.1 (the latest version we can easily compile and does not have this problem). Possibly related: https://github.com/neovim/neovim/issues/18670#issuecomment-1133496341
-- Update nvim-treesitter to v0.9.2 or above (currently breaks with nvim 0.9.2 due to incompatibility with builtin lua parser, ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/5536#issuecomment-1826400562)
+- Update nvim to past v0.9.5. This version takes a while to close while keeps consuming stdin, at least when compiled manually. For now we reverted back to 0.9.4. Possibly related: https://github.com/neovim/neovim/issues/18670#issuecomment-1133496341
+- Update nvim-treesitter to v0.9.2 or above (currently breaks with nvim 0.9.2 due to incompatibility with builtin lua parser, ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/3970)
+- Look into not relying on Makefile to build nvim, since it seems to be broken from 0.9.2 onwards (ref: https://github.com/neovim/neovim/issues/27475#issuecomment-1948174057)
