@@ -81,7 +81,15 @@ vim.o.number = true
 vim.o.relativenumber = true
 
 -- Color scheme
-vim.cmd('colorscheme slate')
+vim.api.nvim_create_user_command('LoadColorScheme', function()
+    vim.cmd('colorscheme slate')
+    -- Originally matchit highlight group is visually disrupting
+    -- When combined with reverse coloring, the cursor becomes blue (reversing yellow), which is
+    -- much different from the default color white and makes you lose track of it
+    -- To fix this, we set background to dark blue (the reverse, yellow, is similar to white)
+    vim.cmd('highlight MatchParen ctermfg=White ctermbg=DarkBlue')
+end, {})
+vim.cmd('LoadColorScheme')
 
 
 -- Dev module
