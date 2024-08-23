@@ -13,9 +13,8 @@ cp "$repo_path/breadcrumbs" "$install_path/bin/"
 echo 'Downloading and installing hburger...'
 repo_path="$root/bin-submodules/hburger"
 git submodule update --init "$repo_path"
-cd "$repo_path"
 # TODO: Wrap this behind a Makefile
-cargo build --release
+cargo build --manifest-path="$repo_path/Cargo.toml" --release
 cp "$repo_path/target/release/hburger" "$install_path/bin/"
 
 # Building from source requires go to be installed, not worth it for now
@@ -33,29 +32,29 @@ mv "$repo_path/bin/fzf" "$install_path/bin/"
 echo 'Compiling and installing pass...'
 repo_path="$root/bin-submodules/password-store"
 git submodule update --init "$repo_path"
-cd "$repo_path"
 sudo apt install --yes --no-install-recommends make
-make install PREFIX="$install_path"
+make -C "$repo_path" install PREFIX="$install_path"
 
 sudo apt install --yes --no-install-recommends python3.11 python3.11-venv
 
 gdown_venv_path="$HOME/.gdown-venv"
 python3.11 -m venv "$gdown_venv_path"
 "$gdown_venv_path/bin/pip" install gdown==4.7.1
-ln -s "$gdown_venv_path/bin/gdown" "$install_path/bin/"
+ln -fs "$gdown_venv_path/bin/gdown" "$install_path/bin/"
 
 ytdlp_venv_path="$HOME/.ytdlp-venv"
 python3.11 -m venv "$ytdlp_venv_path"
 "$ytdlp_venv_path/bin/pip" install yt-dlp==2023.12.30
-ln -s "$ytdlp_venv_path/bin/yt-dlp" "$install_path/bin/"
+ln -fs "$ytdlp_venv_path/bin/yt-dlp" "$install_path/bin/"
 
 echo 'Downloading and installing ffmpeg...'
 repo_path="$root/bin-submodules/ffmpeg"
 git submodule update --init "$repo_path"
-cd "$repo_path"
 sudo apt install --yes --no-install-recommends yasm
 # Go for a static build to avoid dependency issues
-./configure --prefix="$install_path" --enable-static --disable-shared
+cd "$repo_path" && "./configure" --prefix="$install_path" --enable-static --disable-shared
+cd "$repo_path" && make
+cd "$repo_path" && make install
 
 echo 'Installing jq...'
 sudo apt install --yes --no-install-recommends jq
