@@ -30,7 +30,8 @@ function sw () {
 
     ssh_command="$ssh_command $workstation"
     # Connect to tmux, launching the server if necessary
-    ssh_command="$ssh_command 'tmux ls &> /dev/null && tmux attach || tmux new'"
+    # Source ~/.profile as otherwise ~/.local/bin is not included in the path
+    ssh_command="$ssh_command 'source ~/.profile && tmux ls &> /dev/null && tmux attach || tmux new'"
 
     sh -c "$ssh_command"
 }
