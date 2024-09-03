@@ -6,7 +6,7 @@ Monorepo containing dotfiles and programs for my development environment.
 
 Each directory at the root of the repository is a module with the following standardized structure:
 
-- `install-bin.sh`: a script to install programs on the machine
+- `install-bin`: a script to install programs on the machine
 - `dotfiles/`: the dotfiles to install
 - `exported-dotfiles/`: dotfiles installed by other modules
 - `bin-submodules/`: git submodules containing programs to install
@@ -58,7 +58,7 @@ Breadcrumbs are special symlinks named `.*.bc` and are used all over our project
 To install programs, run this from the root of the repository:
 
 ```sh
-./install-bin.sh [module1] [module2] [...]
+./install-bin [module1] [module2] [...]
 ```
 
 You can also specify the installation path with `-p` (default is `~/.local`).
@@ -66,7 +66,7 @@ You can also specify the installation path with `-p` (default is `~/.local`).
 To install dotfiles, run:
 
 ```sh
-./install-dotfiles.sh [module1] [module2] [...]
+./install-dotfiles [module1] [module2] [...]
 ```
 
 The script will move existing, conflicting dotfiles in a backup directory.
