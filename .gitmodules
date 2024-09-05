@@ -46,9 +46,9 @@
 [submodule "tmux/bin-submodules/tmux"]
 	path = tmux/bin-submodules/tmux
 	url = https://github.com/tmux/tmux.git
-[submodule "tmux/dotfiles-submodules/tmux-nested"]
-	path = tmux/dotfiles-submodules/tmux-nested
-	url = https://github.com/niqodea/tmux-nested.git
+[submodule "tmux/dotfiles-submodules/tmux-matryoshka"]
+	path = tmux/dotfiles-submodules/tmux-matryoshka
+	url = https://github.com/niqodea/tmux-matryoshka
 [submodule "utils/bin-submodules/breadcrumbs"]
 	path = utils/bin-submodules/breadcrumbs
 	url = https://github.com/niqodea/breadcrumbs.git
