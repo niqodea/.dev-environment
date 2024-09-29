@@ -1,0 +1,25 @@
+#!/bin/sh
+
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    >&2 echo "Error: Not in a git repository"
+    return 1
+fi
+
+if [ -n "$(git rev-list -n 1 --all)" ]; then
+    >&2 echo "Error: Repository already has commits"
+    return 1
+fi
+
+if ! git diff --staged --quiet; then
+    >&2 echo "Error: There are staged changes"
+    return 1
+fi
+
+# Perform the empty commit
+GIT_AUTHOR_NAME="_" \
+GIT_AUTHOR_EMAIL="_" \
+GIT_AUTHOR_DATE="1970-01-01T00:00:00Z" \
+GIT_COMMITTER_NAME="_" \
+GIT_COMMITTER_EMAIL="_" \
+GIT_COMMITTER_DATE="1970-01-01T00:00:00Z" \
+git commit --allow-empty-message -m "" --allow-empty
