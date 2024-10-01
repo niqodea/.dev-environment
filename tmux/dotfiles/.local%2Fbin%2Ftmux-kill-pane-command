@@ -2,15 +2,13 @@
 
 set -eu
 
-PANE_ID="$1"
-
-if [ $(tmux show-options -t $PANE_ID -pv @status) = 'idle' ]; then
+if [ $(tmux show-options -pv @status) = 'idle' ]; then
     # Prefix pane id with % to escape the leading % character
-    tmux display-message "Pane %$PANE_ID is idle"
+    tmux display-message 'Pane is idle'
     exit
 fi
 
-shell_pid=$(tmux display-message -p -t "$PANE_ID" '#{@shell_pid}')
+shell_pid=$(tmux display-message -p '#{@shell_pid}')
 # Heuristic: get the oldest child process of the shell
 command_pid=$(ps h --ppid "$shell_pid" -o pid --sort start_time | head -n 1)
 
@@ -21,10 +19,14 @@ fi
 
 # Use send-keys "" for no-op, true operation is the code below the if statement
 # Prefix pane id with % to escape the leading % character
-if ! tmux confirm-before -p "Kill process $command_pid in pane %$PANE_ID?" 'send-keys ""'; then
+if ! tmux confirm-before -p "Kill process $command_pid in pane?" 'send-keys ""'; then
     exit
 fi
 
-kill -9 "$command_pid"
+
+kill -9 "$command_pid" || {
+    tmux display-message "Failed to send SIGKILL to process $command_pid"
+    exit
+}
 
 tmux display-message "Sent SIGKILL to process $command_pid"

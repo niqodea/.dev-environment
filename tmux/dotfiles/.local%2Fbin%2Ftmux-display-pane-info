@@ -2,9 +2,7 @@
 
 set -eu
 
-PANE_ID="$1"
-
-pane_options="$(tmux show-options -p -t "$PANE_ID")"
+pane_options="$(tmux show-options -p)"
 echo "$pane_options"
 
 status="$(echo "$pane_options" | awk '$1 == "@status" {print $2}')"

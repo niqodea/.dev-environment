@@ -2,8 +2,7 @@
 
 set -eu
 
-client_name="$1"
-index="$2"
+index="$1"
 
 tracker_file="$HOME/.tmux-lasso-tracker"
 
@@ -24,4 +23,4 @@ if ! tmux has-session -t "$session" 2>/dev/null; then
     exit
 fi
 
-tmux switch-client -c "$client_name" -t "$session"
+tmux switch-client -t "$session"
