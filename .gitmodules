@@ -10,9 +10,9 @@
 [submodule "nvim/dotfiles-submodules/cmp-nvim-lsp"]
 	path = nvim/dotfiles-submodules/cmp-nvim-lsp
 	url = https://github.com/hrsh7th/cmp-nvim-lsp.git
-[submodule "nvim/dotfiles-submodules/copilot.lua"]
-	path = nvim/dotfiles-submodules/copilot.lua
-	url = https://github.com/zbirenbaum/copilot.lua.git
+[submodule "nvim/dotfiles-submodules/codeium.vim"]
+	path = nvim/dotfiles-submodules/codeium.vim
+	url = https://github.com/Exafunction/codeium.vim
 [submodule "nvim/dotfiles-submodules/fzf-lua"]
 	path = nvim/dotfiles-submodules/fzf-lua
 	url = https://github.com/ibhagwan/fzf-lua.git
