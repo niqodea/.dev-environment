@@ -1,4 +1,3 @@
-export PATH="$HOME/.local/bin:$PATH"
 export WORKSPACE_CONFIG_DIR=".workspace-config"
 
 # Prevent tmux from asking the terminal emulator for capabilities, as this can cause the terminal
@@ -9,3 +8,5 @@ export WORKSPACE_CONFIG_DIR=".workspace-config"
 export TERM="tmux-256color"
 
 export PASSWORD_STORE_DIR="$HOME/.password-store"
+
+export PATH="$HOME/.local/bin:$PATH"
