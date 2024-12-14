@@ -1,3 +1,5 @@
 [user]
 	email = "someemail@somedomain.com"
 
+; [includeIf "gitdir:~/session/"]
+;     path = ~/session/.gitconfig
