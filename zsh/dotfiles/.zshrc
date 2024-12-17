@@ -72,7 +72,6 @@ function() {
 
 
     # MISCELLAENOUS
-
     # Enable vi mode
     # Ref: https://stackoverflow.com/a/58188295
     bindkey -v
@@ -81,15 +80,17 @@ function() {
     bindkey -v '^?' backward-delete-char
 
 
-    # EXTENSIONS
-    # Source modules
-    source "$HOME/.zsh-modules/main.zsh"
-
+    # LOCAL
     # Source local zsh config, if it exists
     local local_zsh_path="$HOME/.local.zsh"
     if [[ -f "$local_zsh_path"  ]]; then
         source "$local_zsh_path"
     fi
+
+
+    # EXTENSIONS
+    # Source modules
+    source "$HOME/.zsh-modules/main.zsh"
 
 }
 
