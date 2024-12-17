@@ -1,5 +1,6 @@
 setopt PROMPT_SUBST
 
+# TODO: Change to prepend/append to prompt base
 function setup_prompt_base() {
     export PROMPT_BASE="$1"
 
@@ -60,4 +61,14 @@ function() {
     local color_cwd='%F{220}'  # Yellow
 
     setup_prompt_base "$color_userhost"'$(prompt_userhost)'"$color_cwd"'[$(prompt_cwd)]'
+}
+
+function() {
+    if [ -z "${PROMPT_BASE:+x}" ]; then
+        local color_userhost='%F{099}'  # Purple
+        local color_cwd='%F{220}'  # Yellow
+        export PROMPT_BASE="$color_userhost"'$(prompt_userhost)'"$color_cwd"'[$(prompt_cwd)]'
+    fi
+
+    setup_prompt_base "$PROMPT_BASE"
 }
