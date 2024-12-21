@@ -1,0 +1,60 @@
+{
+  "Key Mappings": {
+    "0xf702-0x240000-0x7b": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;5D",
+      "Escaping": 2
+    },
+    "0xf703-0x2c0000-0x7c": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;7C",
+      "Escaping": 2
+    },
+    "0xf701-0x2c0000-0x7d": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;7B",
+      "Escaping": 2
+    },
+    "0xf700-0x2c0000-0x7e": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;7A",
+      "Escaping": 2
+    },
+    "0xf703-0x240000-0x7c": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;5C",
+      "Escaping": 2
+    },
+    "0xf701-0x240000-0x7d": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;5B",
+      "Escaping": 2
+    },
+    "0xf700-0x240000-0x7e": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;5A",
+      "Escaping": 2
+    },
+    "0xf702-0x2c0000-0x7b": {
+      "Version": 2,
+      "Apply Mode": 1,
+      "Action": 10,
+      "Text": "[1;7D",
+      "Escaping": 2
+    }
+  }
+}
