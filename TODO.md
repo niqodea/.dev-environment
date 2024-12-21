@@ -35,7 +35,6 @@
 - Update nvim-treesitter to v0.9.2 or above (currently breaks with nvim 0.9.2 due to incompatibility with builtin lua parser, ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/3970)
 - Look into not relying on Makefile to build nvim, since it seems to be broken from 0.9.2 onwards (ref: https://github.com/neovim/neovim/issues/27475#issuecomment-1948174057)
 - Look into whether we can replace separate python envs with just one, and/or, perhaps simplier, just use pip install --user
-- Remove tab completion for codeium
 - Add git-active-files to https://github.com/ahmetsait/toolgit
 - Update git configuration with work-specific .gitconfig
 - Look into using a session-bound SSH agent to use work key only for shells in the work session
