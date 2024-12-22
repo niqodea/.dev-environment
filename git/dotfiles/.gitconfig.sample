@@ -1,5 +1,6 @@
 [user]
     name = Nicola De Angeli
+	# email = "someemail@somedomain.com"
 [core]
     editor = nvim
     excludesfile = ~/.gitignore  # Global gitignore
