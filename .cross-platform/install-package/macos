@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -eq 0 ]; then
+    >&2 echo "Error: no package specified"
+    exit 1
+fi
+
+brew install "$@"
