@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case "$(uname -s)" in
+    'Darwin')
+        echo 'macos'; exit
+        ;;
+    'Linux')
+        if [ -f /etc/debian_version ]; then
+            echo 'debian'; exit
+        fi
+        ;;
+esac

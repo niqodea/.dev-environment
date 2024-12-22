@@ -22,8 +22,6 @@ else
     modules="$*"
 fi
 
-mkdir -p "$install_path/bin"
-
 for module in $modules; do
     module_path="$root/$module"
 
