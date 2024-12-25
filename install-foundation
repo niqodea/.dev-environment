@@ -19,13 +19,15 @@ done
 
 source_profile_path="$root/.profile"
 target_profile_path="$HOME/.profile"
-if ! diff "$source_profile_path" "$target_profile_path" > /dev/null; then
+
+if [ -e "target_profile_path" ]; then
     profile_backups_path="$HOME/.profile-backups"
     mkdir -p "$profile_backups_path"
 
     profile_backup_path="$profile_backups_path/$(date '+%Y_%m_%d-%H_%M_%S')"
     mv "$target_profile_path" "$profile_backup_path"
 
-    cp "$source_profile_path" "$target_profile_path"
     echo "Backed up overwritten .profile in $profile_backup_path"
 fi
+
+cp "$source_profile_path" "$target_profile_path"
