@@ -43,6 +43,7 @@
 [submodule "python/bin-submodules/tree-sitter-python"]
 	path = python/bin-submodules/tree-sitter-python
 	url = https://github.com/tree-sitter/tree-sitter-python.git
+    ignore = dirty
 [submodule "tmux/bin-submodules/tmux"]
 	path = tmux/bin-submodules/tmux
 	url = https://github.com/tmux/tmux.git
@@ -58,6 +59,7 @@
 [submodule "utils/bin-submodules/fzf"]
 	path = utils/bin-submodules/fzf
 	url = https://github.com/junegunn/fzf.git
+    ignore = untracked
 [submodule "utils/bin-submodules/hburger"]
 	path = utils/bin-submodules/hburger
 	url = https://github.com/niqodea/hburger.git
