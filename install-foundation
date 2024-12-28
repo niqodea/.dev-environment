@@ -4,7 +4,9 @@ set -eu
 
 root="$(dirname "$(realpath "$0")")"
 
-os=$("$root/.cross-platform/.identify")
+cross_platform_path="$root/.cross-platform"
+
+os=$("$cross_platform_path/identify")
 if [ -z "$os" ]; then
     >&2 echo "Error: unknown operating system"
     exit 1
@@ -12,7 +14,7 @@ fi
 
 bin_path="$HOME/.local/bin"
 mkdir -p "$bin_path"
-for command in "$root/.cross-platform/"*; do
+for command in "$cross_platform_path/bin/"*; do
     command_name=$(basename "$command")
     cp "$command/$os" "$bin_path/$command_name"
 done
@@ -33,4 +35,4 @@ cp "$source_profile_path" "$target_profile_path"
 
 profiled_path="$HOME/.profile.d"
 mkdir -p "$profiled_path"
-cp "$root/.cross-platform/.profiled-path/$os" "$profiled_path/path"
+cp "$cross_platform_path/profiled-path/$os" "$profiled_path/path"
