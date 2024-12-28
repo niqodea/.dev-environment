@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -eq 0 ]; then
+    >&2 echo "Error: no command specified"
+    exit 1
+fi
+
+command="$1"
+shift
+
+if [ "$command" = 'read' ]; then
+    tmux save-buffer -
+elif [ "$command" = 'write' ]; then
+    tmux load-buffer
+else
+    >&2 echo "Error: unknown command $command"
+    exit 1
+fi
