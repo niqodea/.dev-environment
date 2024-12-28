@@ -29,5 +29,8 @@ if [ -e "target_profile_path" ]; then
 
     echo "Backed up overwritten .profile in $profile_backup_path"
 fi
-
 cp "$source_profile_path" "$target_profile_path"
+
+profiled_path="$HOME/.profile.d"
+mkdir -p "$profiled_path"
+cp "$root/.cross-platform/.profiled-path/$os" "$profiled_path/path"
