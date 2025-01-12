@@ -35,3 +35,5 @@
 - Update nvim-treesitter to v0.9.2 or above (currently breaks with nvim 0.9.2 due to incompatibility with builtin lua parser, ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/3970)
 - Look into not relying on Makefile to build nvim, since it seems to be broken from 0.9.2 onwards (ref: https://github.com/neovim/neovim/issues/27475#issuecomment-1948174057)
 - Add git-active-files to https://github.com/ahmetsait/toolgit
+- Find a better alternative to netrw (renaming files in netrw is extremely dangerous, it overwrites files without even mentioning it). We want an alternative that is lightweight and buffer-friendly.
+- Personalize tmux status bar (e.g. use hburger to shorten long tmux session names)
