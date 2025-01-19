@@ -17,6 +17,9 @@ function bkp () {
     mv -- "$file_path" "$backup_file_path"
 }
 
+pre_ssh_workstation_functions=()
+post_ssh_workstation_functions=()
+
 function sw () {
     local workstation="$1"
 
@@ -33,5 +36,7 @@ function sw () {
     # Source ~/.profile as otherwise ~/.local/bin is not included in the path
     ssh_command="$ssh_command 'source ~/.profile && tmux ls &> /dev/null && tmux attach || tmux new'"
 
+    for f in "${pre_ssh_workstation_functions[@]}"; do "$f" "$workstation"; done
     sh -c "$ssh_command"
+    for f in "${post_ssh_workstation_functions[@]}"; do "$f"; done
 }

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -eu
+
+ssh_workstation="$(tmux show-options -pqv @ssh_workstation)"
+
+if [ -z "$ssh_workstation" ]; then
+    tmux display-message "Not connected to a workstation"
+    exit
+fi
+
+ssh "$ssh_workstation" 'source .profile; clipboard read' | clipboard write
