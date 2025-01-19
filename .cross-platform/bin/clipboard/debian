@@ -11,9 +11,9 @@ command="$1"
 shift
 
 if [ "$command" = 'read' ]; then
-    tmux save-buffer -
+    tmux show-buffer
 elif [ "$command" = 'write' ]; then
-    tmux load-buffer
+    tmux load-buffer -
 else
     >&2 echo "Error: unknown command $command"
     exit 1
