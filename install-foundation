@@ -35,4 +35,8 @@ cp "$source_profile_path" "$target_profile_path"
 
 profiled_path="$HOME/.profile.d"
 mkdir -p "$profiled_path"
-cp "$cross_platform_path/profiled-path/$os" "$profiled_path/path"
+
+profiled_path_sample="$cross_platform_path/profiled-path-sample/$os"
+if [ -e "$profiled_path_sample" ]; then
+    cp "$profiled_path_sample" "$profiled_path/.path.sample"
+fi
