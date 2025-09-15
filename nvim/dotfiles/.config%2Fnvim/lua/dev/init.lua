@@ -27,8 +27,8 @@ vim.api.nvim_create_user_command('DevAssemble', function()
 end, {})
 
 -- Create startup commands for automatic loading of modules
-local workspace_config_dir = require('dev.core.utils').get_workspace_config_dir()
-local startup_path = workspace_config_dir .. '/startup.nvim-dev'
+local atdir = require('dev.core.utils').get_atdir()
+local startup_path = atdir .. '/startup.nvim-dev'
 vim.api.nvim_create_user_command('DevCreateStartup', function()
     local startup_file = io.open(startup_path, 'w')
     for _, module in ipairs(modules) do

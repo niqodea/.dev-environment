@@ -13,7 +13,7 @@ return function(lsp_config, cmp_nvim_lsp)
         },
     }
 
-    local ropefolder = require('dev.core.utils').get_workspace_config_dir() .. '/ropeproject'
+    local ropefolder = require('dev.core.utils').get_atdir() .. '/ropeproject'
 
     vim.api.nvim_create_user_command('PythonRopifyMoveModule', function()
         local resource = vim.fn.expand('%')

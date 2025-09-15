@@ -10,12 +10,12 @@ function() {
     alias cdr='cd "$ZSH_ROOT"'
 
 
-    # WORKSPACE CONFIG
-    # We can create a workspace config directory inside a working directory
-    # Programs can use the workspace config to store state and contextualize their operation,
+    # ATDIR HANDLE
+    # We can create an atdir from a handle inside a working directory
+    # Programs can use the atdir to store state and contextualize their operation,
     # allowing them to tailor their behavior based on the originating working directory
-    # NOTE: WORKSPACE_CONFIG_DIR is a first-class citizen in our dotfiles, many configs rely on it
-    alias mkw='mkdir "$WORKSPACE_CONFIG_DIR"'
+    # NOTE: ATIDIR_HANDLE is a first-class citizen in our dotfiles, many configs rely on it
+    alias mk@='mkdir ".@$ATDIR_HANDLE"'
 
 
     # SHELL VARIABLE

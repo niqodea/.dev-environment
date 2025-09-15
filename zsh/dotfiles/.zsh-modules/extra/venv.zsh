@@ -10,9 +10,9 @@ function format_venv_path() {
     if [[ "$venv_path" == *"/.venv"  ]]; then
         local base_path="${venv_path%/.venv}"
         local postfix="."
-    elif [[ "$venv_path" == *"$WORKSPACE_CONFIG_DIR/venv" ]]; then
-        local base_path="${venv_path%$WORKSPACE_CONFIG_DIR/venv}"
-        local postfix="w"
+    elif [[ "$venv_path" == *"/.@$ATDIR_HANDLE/venv" ]]; then
+        local base_path="${venv_path%/.@$ATDIR_HANDLE/venv}"
+        local postfix="@"
     else
         local base_path="$venv_path"
         local postfix=" "
