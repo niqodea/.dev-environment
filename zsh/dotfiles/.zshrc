@@ -10,12 +10,12 @@ function() {
     alias cdr='cd "$ZSH_ROOT"'
 
 
-    # ATDIR HANDLE
+    # ATDIR
     # We can create an atdir from a handle inside a working directory
     # Programs can use the atdir to store state and contextualize their operation,
     # allowing them to tailor their behavior based on the originating working directory
-    # NOTE: ATIDIR_HANDLE is a first-class citizen in our dotfiles, many configs rely on it
-    alias mk@='mkdir ".@$ATDIR_HANDLE"'
+    # NOTE: ATDIR is a first-class citizen in our dotfiles, many configs rely on it
+    alias mk@='mkdir "$ATDIR"'
 
 
     # SHELL VARIABLE

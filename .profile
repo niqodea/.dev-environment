@@ -3,4 +3,4 @@ for file in "$HOME/.profile.d/"*; do
 done
 
 export PATH="$HOME/.local/bin:$PATH"
-export ATDIR_HANDLE='niqodea'
+export ATDIR=".@$USER"
