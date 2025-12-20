@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eux
+
+sudo apt install zsh --yes --no-install-recommends

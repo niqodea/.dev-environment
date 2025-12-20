@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -eux
+
+sudo apt install tmux --yes --no-install-recommends

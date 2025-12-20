@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -eux
+
+root="$(dirname "$(realpath "$0")")"
+install_path="$1"
+
+sudo apt install python3 python3-venv --yes --no-install-recommends
+
+tooling_venv_path="$HOME/.py-tooling-venv"
+python3 -m venv "$tooling_venv_path"
+# Ref: https://github.com/pappasam/jedi-language-server#installation
+"$tooling_venv_path/bin/pip" install jedi-language-server==0.41.2
+ln -s "$tooling_venv_path/bin/jedi-language-server" "$install_path/bin/"
+ropify_path="$root/bin-submodules/ropify"
+git submodule update --init "$ropify_path"
+"$tooling_venv_path/bin/pip" install "$ropify_path"
+ln -s "$tooling_venv_path/bin/ropify" "$install_path/bin/"
+
+sudo apt install --yes --no-install-recommends libc6-dev gcc
+parser_path="$root/bin-submodules/tree-sitter-python"
+# TODO: Find a way to centralize this definition, maybe .profile env?
+parsers_install_path="$install_path/lib/tree-sitter"
+parser_install_path="$parsers_install_path/python.so"
+git submodule update --init "$parser_path"
+mkdir -p "$parsers_install_path"
+cc -o "$parser_install_path" -I"$parser_path/src" -shared -Os -fPIC "$parser_path/src/parser.c" "$parser_path/src/scanner.c"
