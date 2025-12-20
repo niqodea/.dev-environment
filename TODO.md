@@ -41,5 +41,7 @@
   - Support multiple platforms like Linux vs MacOS
   - Understand what's "foundational" (e.g. rsync) vs "nice-to-have" (e.g. breadcrumbs)
   - Understand how to cleanly separate what gets installed from source / tarball / apt
+  - Do not install if program is already available in the path (perhaps opt-in)
 - Use ty instead of jedi-language-server
 - Find alternatives to copilot that do not rely on node
+- Fix treesitter issues with nvim 0.11
