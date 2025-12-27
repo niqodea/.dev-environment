@@ -1,16 +1,12 @@
 -- Setup language servers for each language
-vim.cmd('packadd nvim-lspconfig')
 vim.cmd('packadd cmp-nvim-lsp')
-local lspconfig = require('lspconfig')
 local cmp_nvim_lsp = require('cmp_nvim_lsp')
 cmp_nvim_lsp.setup()
 local language_files = vim.api.nvim_get_runtime_file('lua/dev/modules/lsp-languages/*.lua', true)
 for _, language_file in ipairs(language_files) do
     local language = language_file:match(".+/([^/]+)%.lua")
-    require('dev.modules.lsp-languages.' .. language)(lspconfig, cmp_nvim_lsp)
+    require('dev.modules.lsp-languages.' .. language)(cmp_nvim_lsp)
 end
--- Start LSP service
-vim.cmd('LspStart')
 
 -- Mnemonics: a staple symbol of many languages, also easy to type
 local lsp_prefix = vim.g.mapleader..';'

@@ -1,8 +1,11 @@
-return function(lsp_config, cmp_nvim_lsp)
+return function(cmp_nvim_lsp)
     -- Best lightweight server, but no environment-wide autoimport
     -- Also document symbols currently include imports
     -- Ref: https://github.com/pappasam/jedi-language-server/issues/288
-    lsp_config.jedi_language_server.setup{
+    vim.lsp.config('jedi_language_server', {
+        cmd = { 'jedi-language-server' },
+        filetypes = { 'python' },
+        root_markers = { '.' },
         capabilities = {
             textDocument = {
                 completion = cmp_nvim_lsp.default_capabilities().textDocument.completion,
@@ -11,7 +14,8 @@ return function(lsp_config, cmp_nvim_lsp)
                 },
             },
         },
-    }
+    })
+    vim.lsp.enable('jedi_language_server')
 
     local ropefolder = require('dev.core.utils').get_atdir() .. '/ropeproject'
 
@@ -37,28 +41,5 @@ return function(lsp_config, cmp_nvim_lsp)
         vim.api.nvim_buf_set_option(0, 'buflisted', false)
     end, {})
 
-    -- Other servers
-
-    -- Best environment-wide autoimport, but quite heavy on resources
-    -- lsp_config.pyright.setup{
-    --     capabilities = cmp_nvim_lsp.default_capabilities(),
-    -- }
-
-    -- Very configurable, but also very slow for some reason
-    -- lsp_config.pylsp.setup{
-    --     capabilities = cmp_nvim_lsp.default_capabilities(),
-    --     settings = {
-    --         pylsp = {
-    --             plugins = {
-    --                 -- rope_autoimport = { enabled = true },
-    --                 jedi_symbols = { include_import_symbols = false },
-    --             }
-    --         }
-    --     }
-    -- }
-
-    -- Very fast, but also very buggy
-    -- lsp_config.pylyzer.setup{
-    --     capabilities = cmp_nvim_lsp.default_capabilities(),
-    -- }
+    -- TODO: Try ty LSP
 end

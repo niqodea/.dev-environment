@@ -30,12 +30,3 @@ wget "$conda_url" -O "$conda_tmp_path"
 sh "$conda_tmp_path" -b -p "$conda_install_path"
 rm "$conda_tmp_path"
 ln -s "$conda_install_path/bin/conda" "$install_path/bin/"
-
-sudo apt install --yes --no-install-recommends libc6-dev gcc
-parser_path="$root/bin-submodules/tree-sitter-python"
-# TODO: Find a way to centralize this definition, maybe .profile env?
-parsers_install_path="$install_path/lib/tree-sitter"
-parser_install_path="$parsers_install_path/python.so"
-git submodule update --init "$parser_path"
-mkdir -p "$parsers_install_path"
-cc -o "$parser_install_path" -I"$parser_path/src" -shared -Os -fPIC "$parser_path/src/parser.c" "$parser_path/src/scanner.c"

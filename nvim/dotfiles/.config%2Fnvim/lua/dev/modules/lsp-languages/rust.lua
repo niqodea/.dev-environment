@@ -1,6 +1,9 @@
 -- TODO: This config kind of works for now, but probably can be improved
-return function(lsp_config, cmp_nvim_lsp)
-    lsp_config.rust_analyzer.setup{
+return function(cmp_nvim_lsp)
+    vim.lsp.config('rust_analyzer', {
+        cmd = { 'rust-analyzer' },
+        filetypes = { 'rust' },
+        root_markers = { '.' },
         settings = {
             ['rust-analyzer'] = {
                 imports = {
@@ -19,5 +22,6 @@ return function(lsp_config, cmp_nvim_lsp)
                 },
             },
         },
-    }
+    })
+    vim.lsp.enable('rust_analyzer')
 end
