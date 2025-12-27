@@ -4,6 +4,9 @@
 [submodule "nvim/bin-submodules/neovim"]
 	path = nvim/bin-submodules/neovim
 	url = https://github.com/neovim/neovim.git
+[submodule "nvim/bin-submodules/nvim-treesitter"]
+	path = nvim/bin-submodules/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "nvim/dotfiles-submodules/aerial.nvim"]
 	path = nvim/dotfiles-submodules/aerial.nvim
 	url = https://github.com/stevearc/aerial.nvim.git
@@ -25,18 +28,9 @@
 [submodule "nvim/dotfiles-submodules/nvim-cmp"]
 	path = nvim/dotfiles-submodules/nvim-cmp
 	url = https://github.com/hrsh7th/nvim-cmp.git
-[submodule "nvim/dotfiles-submodules/nvim-comment"]
-	path = nvim/dotfiles-submodules/nvim-comment
-	url = https://github.com/terrortylor/nvim-comment.git
-[submodule "nvim/dotfiles-submodules/nvim-lspconfig"]
-	path = nvim/dotfiles-submodules/nvim-lspconfig
-	url = https://github.com/neovim/nvim-lspconfig.git
 [submodule "nvim/dotfiles-submodules/nvim-snippy"]
 	path = nvim/dotfiles-submodules/nvim-snippy
 	url = https://github.com/dcampos/nvim-snippy.git
-[submodule "nvim/dotfiles-submodules/nvim-treesitter"]
-	path = nvim/dotfiles-submodules/nvim-treesitter
-	url = https://github.com/nvim-treesitter/nvim-treesitter.git
 [submodule "python/bin-submodules/ropify"]
 	path = python/bin-submodules/ropify
 	url = https://github.com/niqodea/ropify
