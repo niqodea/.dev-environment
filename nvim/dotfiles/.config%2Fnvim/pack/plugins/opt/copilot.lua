@@ -1,1 +1,1 @@
-../../../../../.nvim.bc/dotfiles-submodules/copilot.lua
+../../../../../..module/dotfiles-submodules/copilot.lua

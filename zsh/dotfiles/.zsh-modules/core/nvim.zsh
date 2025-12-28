@@ -1,1 +1,1 @@
-../../../.dev-environment.bc/nvim/exported-dotfiles/nvim.zsh
+../../../..root/nvim/exported-dotfiles/nvim.zsh

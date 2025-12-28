@@ -1,1 +1,1 @@
-../../../../../../.dev-environment.bc/python/exported-dotfiles/fix.lua
+../../../../../../..root/python/exported-dotfiles/fix.lua

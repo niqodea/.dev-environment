@@ -36,4 +36,3 @@
   - Understand how to cleanly separate what gets installed from source / tarball / apt
   - Do not install if program is already available in the path (perhaps opt-in)
 - Find alternatives to copilot that do not rely on node
-- Replace .breadcrumbs.bc with ..breadcrumbs
