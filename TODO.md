@@ -1,26 +1,23 @@
 # TODO
 
-- Remove unused auto-loaded nvim plugins (e.g. matchit)
 - Add nvim git command to visualize unchanged file side-by-side with windiff
 - Add nvim git command to visualize merge conflicts with windiff
 - (maybe) move nvim lua files dealing with git as exported git dotfiles
 - write handy snippets (e.g. python)
 - Only pull repository info for the specific commit
-- Check out https://github.com/abhinav/tmux-fastcopy
-- Consider using a mini-modal solution to pane resizing, both in tmux and nvim, to make it unnecessary for alt and ctrl to be pressed together (inspiration: https://github.com/whame/tmux-modal)
+- (maybe) heck out https://github.com/abhinav/tmux-fastcopy or alternatives
+- (maybe) onsider using a mini-modal solution to pane resizing, both in tmux and nvim, to make it unnecessary for alt and ctrl to be pressed together (inspiration: https://github.com/whame/tmux-modal)
 - Consider a solution that saves content of tmux panes in a backup directory, so that you can have an idea of what you were working on after a reboot. Potentially, we could keep track of the state of the shells with hooks, so that we can reinflate the state automatically afterwards!
-- Move all dotfiles to separate git submodule
-- Implement two different breadcrumbs command: `trail` (current) and `scatter` (recursively trail all directories, optionally with a max depth)
+- (maybe) move all dotfiles to separate git submodule
 - Write READMEs for all modules
-- Add configuration for optimized Xournal++ use (one hand for keyboard, other for pen)
-- Compile ffmpeg and imagemagick
-- Write aliases for ffmpeg and imagemagick
-- Add automatic linting
+- (maybe) add configuration for optimized Xournal++ use (one hand for keyboard, other for pen) (if not possible with this tool, find another that best accommodates this workflow)
+- Compile/install ffmpeg and imagemagick and write aliases for it
+- Add automatic linting for sh files, lua files, ...
 - Add docker (utils or module)
 - Explore frecency solutions (zsh, nvim, tmux, ...)
 - Look for/implement neovim command that restores all swap files as buffers (useful in case of crashes)
 - Look for possible injection vulnerabilities, especially when it comes to using arbitrary paths to build command strings
-- Refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
+- (maybe) refactor nvim dev modules to always be directories with an `init.lua` and other files that can be exported
 - Create alias to deal with processes more easily (exposed ports with `lsof`, better `psg`, etc.)
 - Find nvim window reordering solution (can be less complete than tmux's since closing a pane won't close the underlying buffer)
 - Look into other tools for a richer, semantic diff
@@ -29,11 +26,7 @@
 - Implement nvim string/lines diff solution (search the web, an idea could be to compare yank register and visual selection)
 - Implement non-intrusive monitoring of key metrics like MEM usage, GPU usage, Disk usage (they should only be visually noticeable if above a critical threshold)
 - Find a way to effortlessly move to edited parts of a Git-tracked file in neovim (not necessarily next/previous hunk from the git nvim plugin)
-- Implement a standardized solution for logging of errors that are hard to reproduce
 - Check for new functionalities of nvim, git versions
-- Update nvim to past v0.9.5. This version takes a while to close while keeps consuming stdin, at least when compiled manually. For now we reverted back to 0.9.4. Possibly related: https://github.com/neovim/neovim/issues/18670#issuecomment-1133496341
-- Update nvim-treesitter to v0.9.2 or above (currently breaks with nvim 0.9.2 due to incompatibility with builtin lua parser, ref: https://github.com/nvim-treesitter/nvim-treesitter/issues/3970)
-- Look into not relying on Makefile to build nvim, since it seems to be broken from 0.9.2 onwards (ref: https://github.com/neovim/neovim/issues/27475#issuecomment-1948174057)
 - Add git-active-files to https://github.com/ahmetsait/toolgit
 - Find a better alternative to netrw (renaming files in netrw is extremely dangerous, it overwrites files without even mentioning it). We want an alternative that is lightweight and buffer-friendly.
 - Personalize tmux status bar (e.g. use hburger to shorten long tmux session names)
@@ -44,4 +37,4 @@
   - Do not install if program is already available in the path (perhaps opt-in)
 - Use ty instead of jedi-language-server
 - Find alternatives to copilot that do not rely on node
-- Fix treesitter issues with nvim 0.11
+- Replace .breadcrumbs.bc with ..breadcrumbs
