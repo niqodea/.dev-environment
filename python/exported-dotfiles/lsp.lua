@@ -2,20 +2,13 @@ return function(cmp_nvim_lsp)
     -- Best lightweight server, but no environment-wide autoimport
     -- Also document symbols currently include imports
     -- Ref: https://github.com/pappasam/jedi-language-server/issues/288
-    vim.lsp.config('jedi_language_server', {
-        cmd = { 'jedi-language-server' },
+    vim.lsp.config('ty', {
+        cmd = { 'uvx', 'ty', 'server' },
         filetypes = { 'python' },
         root_markers = { '.' },
-        capabilities = {
-            textDocument = {
-                completion = cmp_nvim_lsp.default_capabilities().textDocument.completion,
-                documentSymbol = {
-                    hierarchical_document_symbol_support = true,
-                },
-            },
-        },
+        capabilities = cmp_nvim_lsp.default_capabilities(),
     })
-    vim.lsp.enable('jedi_language_server')
+    vim.lsp.enable('ty')
 
     local ropefolder = require('dev.core.utils').get_atdir() .. '/ropeproject'
 
