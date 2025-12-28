@@ -1,4 +1,4 @@
-# Dev Environment
+# .dev
 
 Monorepo containing dotfiles and programs for my development environment.
 
