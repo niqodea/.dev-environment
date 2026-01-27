@@ -6,3 +6,7 @@ Host *
     # Use a ControlMaster to speed up subsequent connections
     ControlPath ~/.ssh/controlmasters/%C
     ControlMaster auto
+
+    # Enables running local commands with <Enter>~C!
+    PermitLocalCommand yes
+    EnableEscapeCommandline yes

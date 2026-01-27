@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -eu
+
+if [ "$#" -eq 0 ]; then
+    >&2 echo "Error: no command specified"
+    exit 1
+fi
+
+command="$1"
+shift
+
+if [ "$command" = 'connect' ]; then
+    destination="$1"
+    SSH_DESTINATION="$destination" ssh "$destination"
+# subcommands below to be used when connected with <Enter>~C!
+# NOTE: requires PermitLocalCommand and EnableEscapeCommandLine in ~/.ssh/config
+# NOTE: we need to use a separate background process to release the lock on the ssh controlmaster
+#   this sadly makes the command async, seems to be no way around this though
+elif [ "$command" = 'put' ]; then
+    (clipboard read | ssh "$SSH_DESTINATION" 'source .profile; clipboard write') &
+elif [ "$command" = 'yank' ]; then
+    (ssh "$SSH_DESTINATION" 'source .profile; clipboard read' | clipboard write) &
+else
+    >&2 echo "Error: unknown command $command"
+    exit 1
+fi
